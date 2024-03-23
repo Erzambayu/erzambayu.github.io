@@ -1,7 +1,7 @@
 ### Site Settings ###
 title               : Home
 description         : >-
-                      I turn tangled cables :cable: into connected networks,
+                      I turn tangled cables :signal_strength: into connected networks,
                       prioritize uptime over downtime
                       and troubleshoot before the first call.
 baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
@@ -79,7 +79,7 @@ buymeacoffee:
   enabled: true
   username: erzambayu
   color: "#007bff"
-  message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
+  message: "aaaa Kasian aaaa."                    # Message to be displayed aside from the button for a few seconds.
   description: "Support me on Buy me a coffee!"
 
 
