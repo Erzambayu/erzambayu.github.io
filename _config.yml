@@ -35,7 +35,7 @@ author:
 # gitlab            : your_username
   instagram         : erzam.03
 # kaggle            : your_username
-  linkedin          : your_username
+# linkedin          : your_username
 # medium            : your_username
 # soundcloud        : your_username
 # spotify           : your_username
@@ -76,7 +76,7 @@ analytics:
 ### Buy me a coffee ###
 # See https://www.buymeacoffee.com/
 buymeacoffee:
-  enabled: ture
+  enabled: true
   username: erzambayu
   color: "#007bff"
   message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
@@ -99,7 +99,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      comments: true                                   # Set to true to enable disqus comments
+      comments: false                                   # Set to true to enable disqus comments
 
 
 ### Exclude from processing ###
