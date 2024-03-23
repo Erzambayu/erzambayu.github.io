@@ -8,7 +8,7 @@ weight: 3
 # **About Me**
 
 Hi I am **{{Erzam Bayu}}** :wave:,<br>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+I am an individual who thrives on challenges and is passionate about continuous learning. With specialized expertise in networking and technology, I possess the ability to adapt to the latest technologies and am always ready to delve deeper into mastering them.
 
 <div class="row">
 {% include about/skills.html title="Main Skills" source=site.data.programming-skills %}
