@@ -26,14 +26,14 @@ nav_exclude:                                            # The following paths ar
 ### Author Info ###
 author:
   name              : Erzam Bayu
-  image             : https://i.imgur.com/uyDNQnn.jpg
+  image             : https://assets.kompasiana.com/items/album/2023/09/12/305315085-1709967759387772-2221161566711831765-n-64ff80d9e1a1677017485c62.jpg?t=o&v=740&x=416
   behance           : your_username
 # dribbble          : your_username
-  email             : username@domain.com
-  facebook          : your_username
-  github            : your_username
+  email             : erzambayu@gmail.com
+  facebook          : erzama.bayu
+  github            : erzambayu
 # gitlab            : your_username
-# instagram         : your_username
+  instagram         : erzam.bayu
 # kaggle            : your_username
   linkedin          : your_username
   medium            : your_username
@@ -42,7 +42,7 @@ author:
 # stackoverflow     : your_user_id
 # tumblr            : your_username.tumblr.com
 # twitch            : your_username
-  twitter           : your_username
+  twitter           : bayuerzam
 # vimeo             : your_username
 # youtube           : your_channel_name
 # keybase           : your_username
