@@ -7,7 +7,7 @@ weight: 3
 
 # **About Me**
 
-Hi I am **{{Erzam Bayu}}** :wave:,<br>
+Hi I am **Erzam Bayu** :wave:,<br>
 I am an individual who thrives on challenges and is passionate about continuous learning. With specialized expertise in networking and technology, I possess the ability to adapt to the latest technologies and am always ready to delve deeper into mastering them.
 
 <div class="row">
