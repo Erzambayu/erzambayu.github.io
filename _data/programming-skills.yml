@@ -1,11 +1,15 @@
-- name: HTML5/CSS3
+- name: CIsco
+  percentage: 70
+  color: secondary
+
+- name: Mikrotik
+  percentage: 70
+  color: secondary
+
+- name: OS Instalation
   percentage: 90
   color: danger
 
-- name: Go
-  percentage: 80
-  color:
-
-- name: Python
-  percentage: 70
-  color: secondary
+  - name: Application Instalation
+  percentage: 90
+  color: danger
