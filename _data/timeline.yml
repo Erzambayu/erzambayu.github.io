@@ -1,6 +1,6 @@
 - title: Student, SMK Perguruan Rakyat 2, Jakarta
   from: 2016
-  to: 2020
+  to:   2020
   description: I am a student at SMK Perguruan Rakyat 2
                majoring in Computer and Network Engineering. 
                At school, I delve into various technical skills such as network device installation and configuration, operating system management, basic programming, and network security. 
@@ -9,14 +9,14 @@
 
 - title: Information System, Universitas Terbuka, Jakrta
   from: 2021
-  to: present
+  to:   present
   description: I am pursuing a Bachelor's degree in Information Systems since 2021. 
                I've gained skills in database management, system analysis, software development, and IT project management. 
                Passionate about leveraging technology to solve problems and improve processes.
 
--title: Game Promoter, PT. Indofun Games Digital Technology
+- title: Game Promoter, PT. Indofun Games Digital Technology
 from: 2023
-to: present
+to:   present
 description: I am currently working at PT Indofun Games Technology as a game promoter.
              In this role, I am responsible for promoting and showcasing our diverse range of gaming products to potential customers.
              I engage with customers to demonstrate the features and benefits of our games, ensuring they have a clear understanding and interest in our offerings.
@@ -24,7 +24,7 @@ description: I am currently working at PT Indofun Games Technology as a game pro
 
 - title: IT technician, Cisco Indo, Tangerang
   from: 2021
-  to: 2022
+  to:   2022
   description: I previously worked at Cisco Indo as an IT technician.
                responsible for maintaining network devices and ensuring their optimal performance.
 
