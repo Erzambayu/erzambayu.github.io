@@ -1,7 +1,7 @@
-- name: Adobe Photoshop
-  percentage: 95
+- name: Phone Repair
+  percentage: 65
   color: info
 
-- name: Adobe Illustrator
-  percentage: 90
-  color: success
+- name: PC/Laptop Repair
+  percentage: 50
+  color: info
