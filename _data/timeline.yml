@@ -1,17 +1,15 @@
-- title: Student, Harvard CS
-  from: 2014
-  to: 2018
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+- title: Student, SMK Perguruan Rakyat 2, Jakarta
+  from: 2016
+  to: 2020
+  description: I am a student at SMK Perguruan Rakyat 2
+               majoring in Computer and Network Engineering. 
+               At school, I delve into various technical skills such as network device installation and configuration, operating system management, basic programming, and network security. 
+               Additionally, I am involved in hands-on projects that allow me to apply my knowledge and skills in real-world scenarios. 
+               I am always eager to continue learning and developing my expertise in the field of information technology.
 
-- title: Software Engineer, Google, UK
-  from: 2018
+- title: Information System, Universitas Terbuka, Jakrta
+  from: 2021
   to: present
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  description: I am pursuing a Bachelor's degree in Information Systems since 2021. 
+               I've gained skills in database management, system analysis, software development, and IT project management. 
+               Passionate about leveraging technology to solve problems and improve processes.
