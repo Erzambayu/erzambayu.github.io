@@ -1,0 +1,15 @@
+- name: Cisco
+  percentage: 70
+  color: secondary
+  
+- name: Mikrotik
+  percentage: 70
+  color: secondary
+
+- name: OS Instalation
+  percentage: 90
+  color: danger
+
+- name: Application Instalation
+  percentage: 90
+  color: danger

@@ -1,0 +1,7 @@
+- name: Phone Repair
+  percentage: 65
+  color: info
+
+- name: PC/Laptop Repair
+  percentage: 50
+  color: info
