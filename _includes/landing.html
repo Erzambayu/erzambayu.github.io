@@ -1,0 +1,603 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-lg-10 text-center">
+      
+      <!-- Hero Section with Enhanced Animated Text -->
+      <div class="hero-section mb-5">
+        <div class="profile-image-container mb-4" data-aos="zoom-in" data-aos-duration="1000">
+          <div class="profile-image-wrapper">
+            <img class="profile-image" src="{{ site.author.image }}" alt="{{ site.author.name }}" 
+                 style="width: 200px; height: 200px; border-radius: 50%; border: 5px solid #0099ff; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <div class="profile-image-overlay">
+              <div class="profile-image-icons">
+                <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:{{ site.author.email }}"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h1 class="display-3 font-weight-bold text-center animate__animated animate__fadeInUp" style="color: #0099ff; text-shadow: 1px 1px 3px rgba(0,0,0,0.1);">
+          <span class="typing-animation">{{ site.author.name }}</span>
+        </h1>
+        
+        <p class="lead text-center mb-4 animate__animated animate__fadeInUp animate__delay-1s" style="max-width: 800px; margin: 0 auto; font-size: 1.5rem;">
+          <span class="typing-animation-subtitle">Network Engineer & Technology Enthusiast</span>
+        </p>
+        
+        <div class="typed-text-container animate__animated animate__fadeInUp animate__delay-2s">
+          <span id="typed-strings">
+            <span>Connecting people through technology</span>
+            <span>Building networks that empower businesses</span>
+            <span>Securing digital infrastructures for the future</span>
+            <span>Transforming challenges into innovative solutions</span>
+          </span>
+          <span id="typed" class="lead" style="color: #333; font-style: italic;"></span>
+        </div>
+      </div>
+      
+      <!-- Skills Highlights with Improved Animation -->
+      <div class="row skills-highlights mb-5">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 border-0 shadow-sm hover-card">
+            <div class="card-body text-center">
+              <div class="icon-container">
+                <i class="fas fa-network-wired fa-3x mb-3 icon-pulse"></i>
+              </div>
+              <h3 class="card-title">Network Design</h3>
+              <p class="card-text">Creating scalable and reliable network infrastructures for businesses of all sizes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 border-0 shadow-sm hover-card">
+            <div class="card-body text-center">
+              <div class="icon-container">
+                <i class="fas fa-shield-alt fa-3x mb-3 icon-bounce"></i>
+              </div>
+              <h3 class="card-title">Security Solutions</h3>
+              <p class="card-text">Implementing robust security measures to protect critical business data and systems.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 border-0 shadow-sm hover-card">
+            <div class="card-body text-center">
+              <div class="icon-container">
+                <i class="fas fa-cloud fa-3x mb-3 icon-float"></i>
+              </div>
+              <h3 class="card-title">Cloud Infrastructure</h3>
+              <p class="card-text">Migrating and managing cloud-based solutions for enhanced flexibility and scalability.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Animated Stats Section -->
+      <div class="stats-section mb-5 animate__animated animate__fadeIn animate__delay-3s">
+        <div class="row text-center">
+          <div class="col-6 col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="stat-item">
+              <div class="stat-number">7</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="stat-item">
+              <div class="stat-number">25</div>
+              <div class="stat-label">Projects Completed</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stat-item">
+              <div class="stat-number">18</div>
+              <div class="stat-label">Happy Clients</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="400">
+            <div class="stat-item">
+              <div class="stat-number">99.9</div>
+              <div class="stat-label">% Uptime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Call to Action Buttons with Enhanced Animation -->
+      <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-3s">
+        <a href="{{ '/about' | relative_url }}" class="btn btn-primary btn-lg m-2 shadow-sm btn-animated">
+          <i class="fas fa-user-circle mr-2"></i> About Me
+        </a>
+        <a href="{{ '/projects' | relative_url }}" class="btn btn-outline-primary btn-lg m-2 shadow-sm btn-animated">
+          <i class="fas fa-project-diagram mr-2"></i> View Projects
+        </a>
+        <a href="{{ '/blog' | relative_url }}" class="btn btn-outline-primary btn-lg m-2 shadow-sm btn-animated">
+          <i class="fas fa-blog mr-2"></i> Read Blog
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Custom CSS for the landing page with enhanced animations -->
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+  
+  .hero-section {
+    padding: 3rem 0;
+  }
+  
+  .typing-animation, .typing-animation-subtitle {
+    display: inline-block;
+    border-right: 3px solid #0099ff;
+    padding-right: 5px;
+    animation: blink 0.7s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #0099ff; }
+  }
+  
+  /* Enhanced Card Animations */
+  .hover-card {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 15px;
+  }
+  
+  .hover-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,153,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    z-index: -1;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+  }
+  
+  .hover-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .hover-card:hover:before {
+    transform: translateY(0);
+  }
+  
+  /* Enhanced Button Animations */
+  .cta-buttons .btn {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 30px;
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-animated:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+  }
+  
+  .btn-animated:hover:after {
+    animation: ripple 1s ease-out;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(0, 0);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(20, 20);
+      opacity: 0;
+    }
+  }
+  
+  .cta-buttons .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  /* Enhanced Profile Image Animation */
+  .profile-image-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-image-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .profile-image {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profile-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 153, 255, 0.7);
+    border-radius: 50%;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+  }
+  
+  .profile-image-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .profile-image-icons a {
+    color: white;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .profile-image-icons a:hover {
+    transform: scale(1.2);
+  }
+  
+  .profile-image-wrapper:hover .profile-image {
+    transform: scale(1.1);
+  }
+  
+  .profile-image-wrapper:hover .profile-image-overlay {
+    opacity: 1;
+  }
+  
+  /* Typed.js Styling */
+  #typed {
+    font-size: 1.5rem;
+    min-height: 3rem;
+    display: inline-block;
+  }
+  
+  .typed-text-container {
+    min-height: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Icon Animations */
+  .icon-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0,153,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  }
+  
+  .icon-pulse {
+    color: #0099ff;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(0, 153, 255, 0.7);
+    }
+    
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(0, 153, 255, 0);
+    }
+    
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(0, 153, 255, 0);
+    }
+  }
+  
+  .icon-bounce {
+    color: #28a745;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .icon-float {
+    color: #6610f2;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* Stats Section Styling */
+  .stats-section {
+    padding: 2rem 0;
+  }
+  
+  .stat-item {
+    padding: 1rem;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0099ff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  /* Add responsive adjustments for mobile */
+  @media (max-width: 768px) {
+    .display-3 {
+      font-size: 2.2rem;
+    }
+    
+    .lead {
+      font-size: 1.1rem;
+    }
+    
+    #typed {
+      font-size: 1.1rem;
+      min-height: 2.5rem;
+    }
+    
+    .profile-image-wrapper {
+      width: 150px !important;
+      height: 150px !important;
+    }
+    
+    .icon-container {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .icon-container i {
+      font-size: 1.8rem !important;
+    }
+    
+    .stat-number {
+      font-size: 1.8rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+    }
+    
+    .cta-buttons .btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      margin: 0.3rem !important;
+    }
+    
+    .hero-section {
+      padding: 1.5rem 0;
+    }
+    
+    .skills-highlights .card {
+      margin-bottom: 1rem;
+    }
+    
+    /* Reduce animation intensity for mobile to prevent performance issues */
+    .hover-card:hover {
+      transform: translateY(-5px) scale(1.01);
+    }
+    
+    .cta-buttons .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+    
+    /* Optimize animations for mobile performance */
+    @keyframes pulse {
+      0% {
+        transform: scale(0.98);
+      }
+      
+      70% {
+        transform: scale(1);
+      }
+      
+      100% {
+        transform: scale(0.98);
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-5px);
+      }
+      60% {
+        transform: translateY(-3px);
+      }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+  }
+  
+  /* Reduce motion for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .icon-pulse, .icon-bounce, .icon-float {
+      animation: none;
+    }
+    
+    .hover-card, .cta-buttons .btn, .profile-image, .profile-image-overlay {
+      transition: none;
+    }
+    
+    .hover-card:hover, .cta-buttons .btn:hover, .profile-image-wrapper:hover .profile-image {
+      transform: none;
+    }
+  }
+</style>
+
+<!-- Add Animate.css for enhanced animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<!-- Add Typed.js for text animation -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<!-- Add CountUp.js for number animation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.8/countUp.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize Typed.js
+    var typed = new Typed('#typed', {
+      stringsElement: '#typed-strings',
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      startDelay: 1000,
+      loop: true,
+      showCursor: true,
+      cursorChar: '|'
+    });
+    
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false,
+      disable: window.innerWidth < 768 ? true : false // Disable on mobile for better performance
+    });
+    
+    // Initialize CountUp.js - Fixed version
+    const countUpElements = document.querySelectorAll('.count-up');
+    countUpElements.forEach(element => {
+      const countTo = parseFloat(element.getAttribute('data-count'));
+      const decimal = countTo % 1 !== 0 ? 1 : 0; // Check if number has decimal
+      
+      // Force start counting immediately
+      const countUp = new CountUp(element, countTo, {
+        duration: 2.5,
+        useEasing: true,
+        useGrouping: true,
+        decimalPlaces: decimal
+      });
+      
+      // Start counting immediately
+      countUp.start();
+      
+      // Also set up intersection observer as fallback
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !countUp.error) {
+            countUp.start();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(element);
+    });
+    
+    // Add animation to navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.style.transition = 'transform 0.3s ease';
+      });
+      
+      link.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+    
+    // Optimize animations for mobile
+    function checkMobile() {
+      if (window.innerWidth < 768) {
+        document.querySelectorAll('.animate__animated').forEach(el => {
+          el.classList.remove('animate__animated');
+          el.classList.remove('animate__fadeInUp');
+          el.classList.remove('animate__fadeIn');
+          el.classList.remove('animate__delay-1s');
+          el.classList.remove('animate__delay-2s');
+          el.classList.remove('animate__delay-3s');
+        });
+      }
+    }
+    
+    // Check on load and resize
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+  });
+</script>

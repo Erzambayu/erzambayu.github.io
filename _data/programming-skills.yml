@@ -1,15 +1,31 @@
-- name: Cisco
-  percentage: 70
-  color: secondary
+- name: Cisco Networking
+  percentage: 85
+  color: info
   
-- name: Mikrotik
+- name: Mikrotik Configuration
+  percentage: 80
+  color: primary
+
+- name: Network Security
+  percentage: 75
+  color: success
+
+- name: Cloud Infrastructure
   percentage: 70
+  color: warning
+
+- name: OS Installation & Management
+  percentage: 90
+  color: danger
+
+- name: Application Deployment
+  percentage: 85
+  color: info
+
+- name: Troubleshooting
+  percentage: 95
+  color: dark
+
+- name: System Administration
+  percentage: 80
   color: secondary
-
-- name: OS Instalation
-  percentage: 90
-  color: danger
-
-- name: Application Instalation
-  percentage: 90
-  color: danger

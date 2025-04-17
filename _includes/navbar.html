@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="{{ '/' | relative_url }}">
+      <i class="fas fa-network-wired mr-2"></i>{{ site.title }}
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/' | relative_url }}">
+            <i class="fas fa-home fa-fw mr-1"></i>Home
+          </a>
+        </li>
+
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/about/' | relative_url }}">
+            <i class="fas fa-user fa-fw mr-1"></i>About
+          </a>
+        </li>
+
+        <!-- Projects -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/projects/' | relative_url }}">
+            <i class="fas fa-project-diagram fa-fw mr-1"></i>Projects
+          </a>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/blog/' | relative_url }}">
+            <i class="fas fa-blog fa-fw mr-1"></i>Blog
+          </a>
+        </li>
+
+        <!-- Social Media Icons -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-share-alt fa-fw mr-1"></i>Connect
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            {% if site.author.email %}
+            <a class="dropdown-item" href="mailto:{{ site.author.email }}">
+              <i class="fas fa-envelope fa-fw mr-2"></i>Email
+            </a>
+            {% endif %}
+            
+            {% if site.author.github %}
+            <a class="dropdown-item" href="https://github.com/{{ site.author.github }}" target="_blank">
+              <i class="fab fa-github fa-fw mr-2"></i>GitHub
+            </a>
+            {% endif %}
+            
+            {% if site.author.linkedin %}
+            <a class="dropdown-item" href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank">
+              <i class="fab fa-linkedin fa-fw mr-2"></i>LinkedIn
+            </a>
+            {% endif %}
+            
+            {% if site.author.twitter %}
+            <a class="dropdown-item" href="https://twitter.com/{{ site.author.twitter }}" target="_blank">
+              <i class="fab fa-twitter fa-fw mr-2"></i>Twitter
+            </a>
+            {% endif %}
+            
+            {% if site.author.instagram %}
+            <a class="dropdown-item" href="https://www.instagram.com/{{ site.author.instagram }}" target="_blank">
+              <i class="fab fa-instagram fa-fw mr-2"></i>Instagram
+            </a>
+            {% endif %}
+            
+            {% if site.author.facebook %}
+            <a class="dropdown-item" href="https://www.facebook.com/{{ site.author.facebook }}" target="_blank">
+              <i class="fab fa-facebook fa-fw mr-2"></i>Facebook
+            </a>
+            {% endif %}
+            
+            {% if site.author.youtube %}
+            <a class="dropdown-item" href="https://www.youtube.com/{{ site.author.youtube }}" target="_blank">
+              <i class="fab fa-youtube fa-fw mr-2"></i>YouTube
+            </a>
+            {% endif %}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Add padding for fixed navbar -->
+<div style="padding-top: 70px;"></div>

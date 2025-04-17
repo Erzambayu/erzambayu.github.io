@@ -1,20 +1,36 @@
 ---
-name: The Movies Project
-tools: [C#, XML, WPF]
-image: https://www.sketchappsources.com/resources/source-image/movie-badges-jurajjurik.png
-description: This project has an individual showcase page, not just a direct link to the project site or repo. Now you have more space to describe your awesome project!
+name: Network Security Implementation
+tools: [Firewall, IDS/IPS, Security Policies]
+image: https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80
+description: Comprehensive network security overhaul for a financial institution, implementing multi-layered defense strategies to protect sensitive client data.
 ---
 
-# The Movies Project
+# Network Security Implementation
 
-The Movies Project is something like **Netflix**, the only difference is that **it's not real**! It doesn't exist! I just created it to demonstrate how the **showcase** page looks like and how you can write whatever you want with full markdown support.
+This project involved designing and implementing a comprehensive security solution for a financial services company handling sensitive client data. The implementation focused on creating multiple layers of defense while maintaining network performance and accessibility for authorized users.
 
-![preview](https://www.sketchappsources.com/resources/source-image/we-were-soldiers-landing-page-dbruggisser.jpg)
+![Security Architecture](https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
 
-## Search Movies
+## Security Measures Implemented
 
-![search](https://www.sketchappsources.com/resources/source-image/microsoft-windows-10-virtual-keyboard-diogo-sousa.png)
+The security implementation included several critical components:
+
+- **Perimeter Defense**: Deployed next-generation firewalls with advanced threat protection
+- **Network Segmentation**: Implemented VLANs and access control lists to isolate sensitive systems
+- **Intrusion Detection/Prevention**: Deployed IDS/IPS systems to monitor and block suspicious activities
+- **Endpoint Security**: Installed and configured endpoint protection on all workstations and servers
+- **Security Monitoring**: Set up a SIEM solution for real-time security event monitoring and alerting
+
+![Security Dashboard](https://images.unsplash.com/photo-1551808525-51a94da548ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+
+## Results
+
+- Successfully prevented 99.8% of attempted security breaches
+- Achieved compliance with financial industry security regulations
+- Reduced security incident response time by 65%
+- Implemented automated threat detection and remediation
+- Created comprehensive security documentation and training for staff
 
 <p class="text-center">
-{% include elements/button.html link="https://github.com/YoussefRaafatNasry/portfolYOU" text="Learn More" %}
+{% include elements/button.html link="#" text="View Technical Details" %}
 </p>

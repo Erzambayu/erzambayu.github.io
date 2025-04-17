@@ -1,11 +1,12 @@
 ### Site Settings ###
-title               : Home
+title               : Erzam Bayu | Portfolio
 description         : >-
-                      I turn tangled cables :signal_strength: into connected networks,
-                      prioritize uptime over downtime
-                      and troubleshoot before the first call.
+                      Network Engineer & Technology Enthusiast. 
+                      Connecting people through technology,
+                      building networks that empower businesses,
+                      and securing digital infrastructures for the future.
 baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
-repository          : YoussefRaafatNasry/portfolYOU     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
+repository          : erzambayu/erzambayu.github.io     # Change to <your-username>/<your-username>.github.io
 remote_theme        : YoussefRaafatNasry/portfolYOU
 open_new_tab        : true                             # Opens external URLs in new tab (works for posts, projects and navbar only)
 
@@ -13,6 +14,8 @@ open_new_tab        : true                             # Opens external URLs in 
 ### Plugins ###
 plugins:
   - jemoji
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 
 ### Navbar Settings ###
@@ -35,7 +38,7 @@ author:
 # gitlab            : your_username
   instagram         : erzam.bayu
 # kaggle            : your_username
-# linkedin          : your_username
+  linkedin          : erzam-bayu
 # medium            : your_username
 # soundcloud        : your_username
 # spotify           : your_username
@@ -44,7 +47,7 @@ author:
 # twitch            : your_username
   twitter           : bayuerzam
 # vimeo             : your_username
-# youtube           : Erzam Bayu L
+  youtube           : erzambayu
 # keybase           : your_username
 
 
@@ -63,7 +66,7 @@ collections:
 
 ### Disqus ###
 disqus:
-  shortname: your-short-name-disqus                     # Your website Shortname on disqus
+  shortname: erzam-bayu                     # Your website Shortname on disqus
 
 
 ### Analytics ###
@@ -78,9 +81,14 @@ analytics:
 buymeacoffee:
   enabled: true
   username: erzambayu
-  color: "#007bff"
-  message: "aaaa Kasian aaaa."                    # Message to be displayed aside from the button for a few seconds.
+  color: "#0099ff"
+  message: "Terima kasih atas dukungannya!"                    # Message to be displayed aside from the button for a few seconds.
   description: "Support me on Buy me a coffee!"
+
+
+### Custom CSS ###
+custom_css:
+  - custom.css
 
 
 ### Defaults for collections ###
@@ -99,7 +107,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      comments: false                                   # Set to true to enable disqus comments
+      comments: true                                   # Set to true to enable disqus comments
 
 
 ### Exclude from processing ###

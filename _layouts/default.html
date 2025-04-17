@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include head.html %}
+</head>
+
+<body>
+  <!-- Loading Animation -->
+  {% include loading.html %}
+  
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+
+  {% include navbar.html %}
+  
+  <main class="container-fluid">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  <!-- Initialize AOS animations -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false,
+        disable: window.innerWidth < 768 ? true : false // Disable on mobile for better performance
+      });
+      
+      // Check if user prefers reduced motion
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        // Disable animations for users who prefer reduced motion
+        const animatedElements = document.querySelectorAll('[data-aos]');
+        animatedElements.forEach(el => {
+          el.removeAttribute('data-aos');
+          el.removeAttribute('data-aos-delay');
+          el.removeAttribute('data-aos-duration');
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

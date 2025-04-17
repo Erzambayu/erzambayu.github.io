@@ -1,0 +1,105 @@
+<footer class="mt-5 py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <h5 class="font-weight-bold text-primary mb-4">{{ site.title }}</h5>
+        <p>{{ site.description }}</p>
+        
+        <!-- Buy Me A Coffee Button -->
+        {% if site.buymeacoffee.enabled %}
+        <div class="mt-4">
+          <a class="btn btn-outline-primary" href="https://www.buymeacoffee.com/{{ site.buymeacoffee.username }}" target="_blank">
+            <i class="fas fa-coffee mr-2"></i>Buy me a coffee
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <h5 class="font-weight-bold text-primary mb-4">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a href="{{ '/' | relative_url }}" class="text-dark">
+              <i class="fas fa-chevron-right text-primary mr-2"></i>Home
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="{{ '/about/' | relative_url }}" class="text-dark">
+              <i class="fas fa-chevron-right text-primary mr-2"></i>About
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="{{ '/projects/' | relative_url }}" class="text-dark">
+              <i class="fas fa-chevron-right text-primary mr-2"></i>Projects
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="{{ '/blog/' | relative_url }}" class="text-dark">
+              <i class="fas fa-chevron-right text-primary mr-2"></i>Blog
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-4">
+        <h5 class="font-weight-bold text-primary mb-4">Connect With Me</h5>
+        <div class="social-icons">
+          {% if site.author.email %}
+          <a href="mailto:{{ site.author.email }}" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          {% endif %}
+          
+          {% if site.author.github %}
+          <a href="https://github.com/{{ site.author.github }}" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          {% endif %}
+          
+          {% if site.author.linkedin %}
+          <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          {% endif %}
+          
+          {% if site.author.twitter %}
+          <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          {% endif %}
+          
+          {% if site.author.instagram %}
+          <a href="https://www.instagram.com/{{ site.author.instagram }}" target="_blank" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          {% endif %}
+          
+          {% if site.author.facebook %}
+          <a href="https://www.facebook.com/{{ site.author.facebook }}" target="_blank" title="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          {% endif %}
+          
+          {% if site.author.youtube %}
+          <a href="https://www.youtube.com/{{ site.author.youtube }}" target="_blank" title="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <hr class="my-4">
+    
+    <div class="row">
+      <div class="col-md-6 text-center text-md-left">
+        <p class="mb-0">&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-right">
+        <p class="mb-0">
+          <small>Network Engineer & Technology Enthusiast</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

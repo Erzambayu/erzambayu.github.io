@@ -1,0 +1,496 @@
+/* Custom styles for Erzam Bayu's Portfolio */
+
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  overflow-x: hidden; /* Prevent horizontal scroll on animations */
+}
+
+/* Animated Background */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(-45deg, #f8f9fa, #e9ecef, #dee2e6, #ced4da);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Navbar Enhancements */
+.navbar {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #0099ff !important;
+}
+
+.nav-link {
+  font-weight: 500;
+  position: relative;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0099ff;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover:before {
+  width: 100%;
+}
+
+/* Card Enhancements */
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform; /* Optimize animation performance */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: #0099ff;
+  border-color: #0099ff;
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-weight: 600;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform; /* Optimize animation performance */
+}
+
+.btn-primary:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 153, 255, 0.2);
+}
+
+.btn-outline-primary {
+  color: #0099ff;
+  border-color: #0099ff;
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-weight: 600;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform; /* Optimize animation performance */
+}
+
+.btn-outline-primary:hover {
+  background-color: #0099ff;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 153, 255, 0.2);
+}
+
+/* Skills Progress Bars */
+.progress {
+  height: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  border-radius: 5px;
+  position: relative;
+  animation: progress-animation 1.5s ease-in-out forwards;
+  transform-origin: left;
+}
+
+@keyframes progress-animation {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Timeline Enhancements */
+.timeline-item {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 50px;
+  transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+}
+
+.timeline-item:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #0099ff;
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.2);
+  z-index: 1;
+}
+
+.timeline-item:after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 15px;
+  bottom: -50px;
+  width: 2px;
+  background-color: rgba(0, 153, 255, 0.2);
+}
+
+.timeline-item:last-child:after {
+  display: none;
+}
+
+/* Social Media Icons */
+.social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  color: #0099ff;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+  will-change: transform; /* Optimize animation performance */
+}
+
+.social-icons a:hover {
+  background-color: #0099ff;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 153, 255, 0.3);
+}
+
+/* Project Cards */
+.project-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform; /* Optimize animation performance */
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.project-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.project-card .card-body {
+  padding: 1.5rem;
+}
+
+.project-card .card-title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.project-card .card-text {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+.project-card .badge {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.project-card .badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s ease-in-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-in-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Loading Animation */
+.loading-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #0099ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Optimize animations for mobile */
+  .card:hover, 
+  .project-card:hover,
+  .timeline-item:hover,
+  .social-icons a:hover {
+    transform: translateY(-5px);
+  }
+  
+  .btn-primary:hover,
+  .btn-outline-primary:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Adjust card image heights */
+  .card-img-top,
+  .project-card .card-img-top {
+    height: 150px;
+  }
+  
+  /* Adjust spacing */
+  .card {
+    margin-bottom: 20px;
+  }
+  
+  .timeline-item {
+    padding-left: 30px;
+  }
+  
+  .timeline-item:before {
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Adjust font sizes */
+  h1, .h1 {
+    font-size: 2rem;
+  }
+  
+  h2, .h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3, .h3 {
+    font-size: 1.5rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+  }
+  
+  /* Adjust button sizes */
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  /* Optimize animations for better performance */
+  .animated-bg {
+    animation-duration: 30s; /* Slower animation for better performance */
+  }
+  
+  /* Simplify some animations to improve performance */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-img-top,
+  .project-card .card-img-top {
+    height: 180px;
+  }
+  
+  h1, .h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  /* Disable hover effects on touch devices */
+  .card:hover,
+  .project-card:hover,
+  .btn:hover,
+  .social-icons a:hover {
+    transform: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Add active state for touch */
+  .card:active,
+  .project-card:active,
+  .btn:active,
+  .social-icons a:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Accessibility - Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animated-bg {
+    animation: none;
+    background: #f8f9fa;
+  }
+  
+  .card:hover,
+  .project-card:hover,
+  .btn:hover,
+  .social-icons a:hover,
+  .timeline-item:hover {
+    transform: none;
+  }
+}
