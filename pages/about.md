@@ -14,7 +14,7 @@ weight: 3
 <div class="col-lg-8">
 <p class="text-muted">Network Engineer & Technology Enthusiast</p>
 
-Hi, I am **Erzam Bayu** :wave:
+Hi, I am <strong>Erzam Bayu</strong> :wave:
 
 I am a passionate Network Engineer with a strong drive for technological innovation. With specialized expertise in networking infrastructure and system administration, I transform complex technical challenges into streamlined solutions.
 

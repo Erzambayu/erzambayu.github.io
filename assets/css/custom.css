@@ -190,6 +190,31 @@ body {
   display: none;
 }
 
+/* Timeline Description Formatting */
+.timeline-body p {
+  white-space: pre-line !important;
+  line-height: 1.8;
+}
+
+.timeline-body ul {
+  padding-left: 20px;
+}
+
+.timeline-body li {
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Force each bullet point to display as a separate line */
+.timeline-body ul li::before {
+  content: "•";
+  color: #0099ff;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+
 /* Social Media Icons */
 .social-icons a {
   display: inline-block;
