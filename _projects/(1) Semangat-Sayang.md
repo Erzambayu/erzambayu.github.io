@@ -1,7 +1,7 @@
 ---
 name: Semangat Sayang
 tools: [HTML5, CSS3, JavaScript, Local Storage API]
-image: https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80
+image: https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70
 description: Sebuah website sederhana untuk memberikan motivasi dan semangat bagi pasangan dalam mencapai target pekerjaan.
 ---
 
@@ -33,7 +33,7 @@ Developed a motivational web application designed to help couples track their wo
 - Web Notifications API for reminders
 - Responsive design with mobile-first approach
 
-![Project Screenshot](https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+![Project Screenshot](https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=70)
 
 This project demonstrates my ability to create interactive web applications with a focus on user experience, data persistence, and responsive design. The application serves a practical purpose while showcasing my front-end development skills.
 

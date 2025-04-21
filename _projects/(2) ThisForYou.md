@@ -1,7 +1,7 @@
 ---
 name: ThisForYou
 tools: [HTML, CSS, JavaScript, Animation]
-image: https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80
+image: https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70
 description: An interactive love message website with beautiful animations and personalized responses.
 ---
 
@@ -30,7 +30,7 @@ Developed an interactive web experience designed to express affection through a 
 - Responsive design principles
 - Animation libraries for visual effects
 
-![Project Screenshot](https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+![Project Screenshot](https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=70)
 
 This project showcases my front-end development skills with a focus on creating engaging user experiences through animations and interactive elements. The application demonstrates my ability to combine technical skills with creative design to create emotionally resonant digital experiences.
 

@@ -1,7 +1,7 @@
 ---
 name: Birthday Website
 tools: [HTML, CSS, JavaScript, NodeJS]
-image: https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80
+image: https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70
 description: An interactive birthday celebration website with animations and personalized birthday wishes.
 ---
 
@@ -28,7 +28,7 @@ Adapted and customized an interactive birthday celebration website that creates 
 - Node.js for local development server
 - Python SimpleHTTPServer alternative for hosting
 
-![Project Screenshot](https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+![Project Screenshot](https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=70)
 
 This project demonstrates my ability to work with web technologies to create engaging and interactive user experiences. It showcases my skills in front-end development and my ability to adapt and customize existing code to create personalized digital experiences.
 
