@@ -1,0 +1,296 @@
+<!-- Modern Particle Background -->
+<div id="particles-js"></div>
+
+<!-- Loading Screen -->
+<div id="loading-screen" class="loading-screen">
+  <div class="loading-content">
+    <div class="loading-logo">EB</div>
+    <div class="loading-text">Loading Portfolio...</div>
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content" id="main-content">
+  
+  <!-- Hero Section with Enhanced Design -->
+  <section class="hero-section" id="hero">
+    <div class="container-fluid">
+      <div class="row min-vh-100 align-items-center justify-content-center">
+        <div class="col-lg-10 text-center">
+          
+          <!-- Profile Section -->
+          <div class="profile-container" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="profile-image-wrapper">
+              <div class="profile-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+              </div>
+              <img class="profile-image" src="{{ site.author.image }}" alt="{{ site.author.name }}" loading="lazy">
+              <div class="profile-status">
+                <div class="status-dot"></div>
+                <span>Available for hire</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Title and Subtitle -->
+          <div class="hero-text" data-aos="fade-up" data-aos-delay="300">
+            <h1 class="hero-title">
+              <span class="hero-greeting">Hi, I'm</span>
+              <span class="hero-name">{{ site.author.name }}</span>
+            </h1>
+            
+            <div class="hero-subtitle">
+              <span id="typewriter"></span>
+              <span class="cursor">|</span>
+            </div>
+            
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="600">
+              Crafting innovative digital solutions that bridge traditional IT infrastructure 
+              with cutting-edge web technologies. Passionate about creating tools that solve 
+              real-world problems and enhance user experiences.
+            </p>
+          </div>
+          
+          <!-- Action Buttons -->
+          <div class="hero-actions" data-aos="fade-up" data-aos-delay="900">
+            <a href="{{ '/projects' | relative_url }}" class="btn btn-primary btn-hero">
+              <i class="fas fa-rocket"></i>
+              <span>View My Work</span>
+              <div class="btn-particles"></div>
+            </a>
+            <a href="{{ '/about' | relative_url }}" class="btn btn-outline btn-hero">
+              <i class="fas fa-user"></i>
+              <span>About Me</span>
+            </a>
+            <a href="mailto:{{ site.author.email }}" class="btn btn-contact btn-hero">
+              <i class="fas fa-envelope"></i>
+              <span>Get In Touch</span>
+            </a>
+          </div>
+          
+          <!-- Social Links -->
+          <div class="social-links" data-aos="fade-up" data-aos-delay="1200">
+            {% if site.author.github %}
+            <a href="https://github.com/{{ site.author.github }}" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+              <span class="tooltip">GitHub</span>
+            </a>
+            {% endif %}
+            {% if site.author.linkedin %}
+            <a href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank" class="social-link">
+              <i class="fab fa-linkedin"></i>
+              <span class="tooltip">LinkedIn</span>
+            </a>
+            {% endif %}
+            {% if site.author.instagram %}
+            <a href="https://instagram.com/{{ site.author.instagram }}" target="_blank" class="social-link">
+              <i class="fab fa-instagram"></i>
+              <span class="tooltip">Instagram</span>
+            </a>
+            {% endif %}
+            {% if site.author.twitter %}
+            <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" class="social-link">
+              <i class="fab fa-twitter"></i>
+              <span class="tooltip">Twitter</span>
+            </a>
+            {% endif %}
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" data-aos="fade-in" data-aos-delay="1500">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+  
+  <!-- Skills Preview Section -->
+  <section class="skills-preview" id="skills-preview">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2 class="section-title" data-aos="fade-up">What I Do</h2>
+          <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+            Specialized in multiple domains of technology
+          </p>
+        </div>
+      </div>
+      
+      <div class="row skills-grid">
+        <!-- Full-Stack Development -->
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="skill-title">Full-Stack Development</h3>
+            <p class="skill-description">
+              Building modern web applications with React, Node.js, Python Flask, 
+              and comprehensive API development.
+            </p>
+            <div class="skill-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">API</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Security Research -->
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="skill-title">Security Research</h3>
+            <p class="skill-description">
+              OSINT tools development, ethical hacking, and cybersecurity 
+              research for enterprise security solutions.
+            </p>
+            <div class="skill-tech">
+              <span class="tech-tag">OSINT</span>
+              <span class="tech-tag">Security</span>
+              <span class="tech-tag">Research</span>
+              <span class="tech-tag">Tools</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Network Engineering -->
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h3 class="skill-title">Network Engineering</h3>
+            <p class="skill-description">
+              Enterprise network design, Cisco & Mikrotik configuration, 
+              and infrastructure optimization.
+            </p>
+            <div class="skill-tech">
+              <span class="tech-tag">Cisco</span>
+              <span class="tech-tag">Mikrotik</span>
+              <span class="tech-tag">Network</span>
+              <span class="tech-tag">Security</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Projects Section -->
+  <section class="featured-projects" id="featured-projects">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+          <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+            Some of my recent work that I'm proud of
+          </p>
+        </div>
+      </div>
+      
+      <div class="projects-showcase">
+        <!-- Featured Project 1 -->
+        <div class="project-featured" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70" alt="PoopDL" loading="lazy">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://poopdl.vercel.app" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="https://github.com/Erzambayu/PoopDL" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">PoopDL</h3>
+            <p class="project-description">
+              Advanced video streaming platform with multi-URL processing, 
+              ultra-fast downloads, and comprehensive API integration.
+            </p>
+            <div class="project-tech">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Flask</span>
+              <span class="tech-badge">API</span>
+              <span class="tech-badge">Video Processing</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- More Projects Button -->
+        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
+          <a href="{{ '/projects' | relative_url }}" class="btn btn-outline btn-lg">
+            <i class="fas fa-th-large"></i>
+            <span>View All Projects</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Statistics Section -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="stat-number" data-count="15">0</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-number" data-count="1000">0</div>
+            <div class="stat-label">Users Served</div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="stat-number" data-count="50000">0</div>
+            <div class="stat-label">Lines of Code</div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-number" data-count="7">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</div>
+
+<!-- Scripts sudah di-load di default.html, tidak perlu duplikasi di sini -->

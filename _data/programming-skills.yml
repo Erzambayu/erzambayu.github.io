@@ -1,0 +1,47 @@
+- name: Full-Stack Web Development
+  percentage: 90
+  color: primary
+  
+- name: Python & Flask Development
+  percentage: 85
+  color: info
+
+- name: JavaScript & Modern Frontend
+  percentage: 88
+  color: success
+
+- name: API Design & Development
+  percentage: 85
+  color: warning
+
+- name: Network Engineering & Security
+  percentage: 85
+  color: danger
+
+- name: Cisco & Mikrotik Configuration
+  percentage: 80
+  color: secondary
+
+- name: OSINT & Security Research
+  percentage: 82
+  color: dark
+
+- name: Video Processing & Streaming
+  percentage: 78
+  color: info
+
+- name: Web Scraping & Automation
+  percentage: 80
+  color: primary
+
+- name: Database Management
+  percentage: 75
+  color: success
+
+- name: Cloud Infrastructure & DevOps
+  percentage: 70
+  color: warning
+
+- name: System Administration
+  percentage: 85
+  color: danger

@@ -1,0 +1,16 @@
+<div class="col-lg-6">
+  <h3 class="skills-title">{{ include.title }}</h3>
+  <div class="skills-list">
+    {% for skill in include.source %}
+    <div class="skill-item">
+      <div class="skill-info">
+        <span class="skill-name">{{ skill.name }}</span>
+        <span class="skill-percentage">{{ skill.percentage }}%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: {{ skill.percentage }}%"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div> 
