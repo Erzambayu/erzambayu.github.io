@@ -159,9 +159,10 @@ class ModernPortfolio {
 
     // Smooth scrolling for navigation
     document.addEventListener('click', (e) => {
-      if (e.target.matches('a[href^="#"]')) {
+      const link = e.target.closest('a[href^="#"]');
+      if (link) {
         e.preventDefault();
-        const target = document.querySelector(e.target.getAttribute('href'));
+        const target = document.querySelector(link.getAttribute('href'));
         if (target) {
           target.scrollIntoView({
             behavior: 'smooth',
