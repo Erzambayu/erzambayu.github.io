@@ -1,0 +1,449 @@
+# Multi-language translations for the portfolio website
+
+# Navigation
+nav:
+  home:
+    id: "Beranda"
+    en: "Home"
+  about:
+    id: "Tentang"
+    en: "About"
+  projects:
+    id: "Portofolio"
+    en: "Projects"
+  blog:
+    id: "Blog"
+    en: "Blog"
+  connect:
+    id: "Kontak"
+    en: "Connect"
+  
+# Hero Section
+hero:
+  greeting:
+    id: "Halo, saya"
+    en: "Hello, I'm"
+  status:
+    id: "Siap untuk proyek baru"
+    en: "Available for new projects"
+  description:
+    id: "Full-Stack Developer & Network Engineer dengan fokus pada solusi teknologi inovatif. Mengkhususkan diri dalam web development, cybersecurity, dan infrastruktur jaringan enterprise."
+    en: "Full-Stack Developer & Network Engineer focused on innovative technology solutions. Specializing in web development, cybersecurity, and enterprise network infrastructure."
+  contact_now:
+    id: "Konsultasi Sekarang"
+    en: "Consult Now"
+  contact_me:
+    id: "Hubungi Saya"
+    en: "Contact Me"
+  view_portfolio:
+    id: "Lihat Portfolio"
+    en: "View Portfolio"
+  scroll_explore:
+    id: "Gulir untuk Eksplor"
+    en: "Scroll to Explore"
+  cta_consult:
+    id: "Konsultasi Sekarang"
+    en: "Get Consultation"
+  cta_contact:
+    id: "Hubungi Saya"
+    en: "Contact Me"
+  cta_portfolio:
+    id: "Lihat Portofolio"
+    en: "View Portfolio"
+  scroll_text:
+    id: "Scroll untuk Eksplor"
+    en: "Scroll to Explore"
+  
+# Typewriter Effect
+typewriter:
+  id:
+    - "Game Promoter 🎮"
+    - "Full-Stack Developer 💻"
+    - "Network Engineer 🌐"
+    - "Security Researcher 🔒"
+    - "IT Support Specialist 🛠️"
+  en:
+    - "Game Promoter 🎮"
+    - "Full-Stack Developer 💻"
+    - "Network Engineer 🌐"
+    - "Security Researcher 🔒"
+    - "IT Support Specialist 🛠️"
+
+# About Section
+about:
+  title:
+    id: "Tentang Saya"
+    en: "About Me"
+  description1:
+    id: "Saya adalah seorang profesional di bidang teknologi informasi dengan pengalaman lebih dari 3 tahun dalam hardware troubleshooting, pemeliharaan server, dan manajemen infrastruktur jaringan. Saat ini sedang menempuh pendidikan S1 Sistem Informasi."
+    en: "I am an information technology professional with over 3 years of experience in hardware troubleshooting, server maintenance, and network infrastructure management. Currently pursuing a Bachelor's degree in Information Systems."
+  description2:
+    id: "Berdomisili di Bekasi/Jakarta dengan pengalaman bekerja di berbagai perusahaan teknologi, dari game promotion hingga technical support. Memiliki kemampuan dalam mengelola tim, troubleshooting sistem, dan memberikan solusi teknis yang efektif."
+    en: "Based in Bekasi/Jakarta with experience working at various technology companies, from game promotion to technical support. Skilled in team management, system troubleshooting, and providing effective technical solutions."
+  skills_title:
+    id: "Keahlian Utama:"
+    en: "Core Skills:"
+  cta_more:
+    id: "Selengkapnya Tentang Saya"
+    en: "More About Me"
+
+# Services Section
+services:
+  title:
+    id: "Layanan Profesional"
+    en: "Professional Services"
+  subtitle:
+    id: "Solusi teknologi dan dukungan teknis yang dapat diandalkan"
+    en: "Reliable technology solutions and technical support"
+  game_promotion:
+    title:
+      id: "Game Promotion & Marketing"
+      en: "Game Promotion & Marketing"
+    description:
+      id: "Pengalaman sebagai Leader Game di PT Indofun dalam mengelola tim promosi game, strategi pemasaran digital, dan koordinasi event gaming. Berpengalaman dalam membangun komunitas gaming dan meningkatkan engagement pemain."
+      en: "Experience as Game Leader at PT Indofun managing game promotion teams, digital marketing strategies, and gaming event coordination. Experienced in building gaming communities and increasing player engagement."
+  it_support:
+    title:
+      id: "IT Support & Technical Service"
+      en: "IT Support & Technical Service"
+    description:
+      id: "Layanan dukungan teknis komprehensif meliputi troubleshooting hardware, pemeliharaan sistem, dan perbaikan perangkat mobile (Apple UP certified). Pengalaman dalam menangani berbagai masalah teknis dengan solusi yang efektif."
+      en: "Comprehensive technical support services including hardware troubleshooting, system maintenance, and mobile device repair (Apple UP certified). Experience in handling various technical issues with effective solutions."
+  network_infrastructure:
+    title:
+      id: "Network Infrastructure & Consultation"
+      en: "Network Infrastructure & Consultation"
+    description:
+      id: "Pengalaman di PT IASA Multi Integrator dalam konsultasi jaringan, instalasi infrastruktur, dan manajemen sistem jaringan. Mampu merancang dan mengimplementasikan solusi jaringan yang stabil dan efisien untuk berbagai kebutuhan bisnis."
+      en: "Experience at PT IASA Multi Integrator in network consultation, infrastructure installation, and network system management. Capable of designing and implementing stable and efficient network solutions for various business needs."
+  customer_service:
+    title:
+      id: "Customer Service & Communication"
+      en: "Customer Service & Communication"
+    description:
+      id: "Pengalaman dalam layanan pelanggan dan telemarketing dengan kemampuan komunikasi yang baik. Mampu menangani berbagai jenis klien, memberikan solusi yang tepat, dan membangun hubungan bisnis yang positif dengan pendekatan profesional."
+      en: "Experience in customer service and telemarketing with good communication skills. Able to handle various types of clients, provide appropriate solutions, and build positive business relationships with a professional approach."
+
+# Skills Section
+skills:
+  title:
+    id: "Tech Stack & Expertise"
+    en: "Tech Stack & Expertise"
+  subtitle:
+    id: "Tools dan teknologi yang saya kuasai untuk deliver hasil terbaik"
+    en: "Tools and technologies I master to deliver the best results"
+  fullstack:
+    title:
+      id: "Full-Stack Development"
+      en: "Full-Stack Development"
+    description:
+      id: "Building modern web applications with React, Node.js, Python Flask, and comprehensive API development."
+      en: "Building modern web applications with React, Node.js, Python Flask, and comprehensive API development."
+  security:
+    title:
+      id: "Security Research"
+      en: "Security Research"
+    description:
+      id: "OSINT tools development, ethical hacking, and cybersecurity research for enterprise security solutions."
+      en: "OSINT tools development, ethical hacking, and cybersecurity research for enterprise security solutions."
+  network:
+    title:
+      id: "Network Engineering"
+      en: "Network Engineering"
+    description:
+      id: "Enterprise network design, Cisco & Mikrotik configuration, and infrastructure optimization."
+      en: "Enterprise network design, Cisco & Mikrotik configuration, and infrastructure optimization."
+
+# Projects Section
+projects:
+  title:
+    id: "Portofolio Unggulan"
+    en: "Featured Portfolio"
+  subtitle:
+    id: "Proyek-proyek yang bikin bangga dan impact nyata untuk klien"
+    en: "Projects that make me proud with real impact for clients"
+  cta_all:
+    id: "Lihat Semua Portofolio"
+    en: "View All Projects"
+  categories:
+    all:
+      id: "Semua"
+      en: "All"
+    web:
+      id: "Web Dev"
+      en: "Web Dev"
+    tools:
+      id: "Tools"
+      en: "Tools"
+    security:
+      id: "Security"
+      en: "Security"
+    api:
+      id: "API"
+      en: "API"
+  metrics:
+    downloads:
+      id: "Download"
+      en: "Downloads"
+    users:
+      id: "Pengguna"
+      en: "Users"
+    rating:
+      id: "Rating"
+      en: "Rating"
+    revenue:
+      id: "Revenue"
+      en: "Revenue"
+    community:
+      id: "Komunitas"
+      en: "Community"
+    success_rate:
+      id: "Tingkat Keberhasilan"
+      en: "Success Rate"
+
+# Testimonials Section
+testimonials:
+  title:
+    id: "Kata Mereka"
+    en: "What They Say"
+  subtitle:
+    id: "Feedback dari klien dan partner yang puas dengan hasil kerja saya"
+    en: "Feedback from clients and partners satisfied with my work"
+
+# Blog Section
+blog:
+  title:
+    id: "Blog & Artikel"
+    en: "Blog & Articles"
+  subtitle:
+    id: "Berbagi pengetahuan dan pengalaman dalam bidang teknologi informasi"
+    en: "Sharing knowledge and experience in information technology"
+  coming_soon:
+    title:
+      id: "Blog Akan Segera Tersedia"
+      en: "Blog Coming Soon"
+    description:
+      id: "Saya sedang menyiapkan artikel-artikel berkualitas mengenai teknologi informasi, troubleshooting hardware, manajemen jaringan, dan pengalaman dalam industri gaming. Nantikan konten edukatif yang akan membantu Anda dalam bidang teknologi."
+      en: "I am preparing quality articles on information technology, hardware troubleshooting, network management, and experience in the gaming industry. Expect educational content that will help you in the technology field."
+    topics_title:
+      id: "Topik yang Akan Dibahas:"
+      en: "Topics to Be Discussed:"
+
+# Statistics Section
+stats:
+  game_campaigns:
+    id: "Game Campaigns"
+    en: "Game Campaigns"
+  downloads:
+    id: "Total Downloads"
+    en: "Total Downloads"
+  websites:
+    id: "Websites Built"
+    en: "Websites Built"
+  experience:
+    id: "Tahun Pengalaman"
+    en: "Years Experience"
+
+# Contact Section
+contact:
+  title:
+    id: "Mari Berkolaborasi!"
+    en: "Let's Collaborate!"
+  subtitle:
+    id: "Siap membantu project teknologi Anda dengan solusi yang profesional dan terpercaya. Hubungi saya untuk konsultasi dan diskusi kebutuhan Anda."
+    en: "Ready to help your technology projects with professional and reliable solutions. Contact me for consultation and discussion of your needs."
+  email:
+    id: "Email"
+    en: "Email"
+  whatsapp:
+    id: "WhatsApp"
+    en: "WhatsApp"
+  location:
+    id: "Lokasi"
+    en: "Location"
+  social_media:
+    id: "Sosial Media"
+    en: "Social Media"
+  quick_links:
+    id: "Quick Links"
+    en: "Quick Links"
+  cta_start:
+    id: "Mulai Konsultasi"
+    en: "Start Consultation"
+
+# Footer
+footer:
+  copyright:
+    id: "Semua hak cipta dilindungi"
+    en: "All rights reserved"
+  made_with:
+    id: "Dibuat dengan"
+    en: "Made with"
+  by:
+    id: "oleh"
+    en: "by"
+
+# Form Labels
+form:
+  name:
+    id: "Nama Lengkap"
+    en: "Full Name"
+  email:
+    id: "Email"
+    en: "Email"
+  subject:
+    id: "Subjek"
+    en: "Subject"
+  message:
+    id: "Pesan"
+    en: "Message"
+  send:
+    id: "Kirim Pesan"
+    en: "Send Message"
+  required:
+    id: "Wajib diisi"
+    en: "Required"
+
+# Buttons
+buttons:
+  download_cv:
+    id: "Download CV"
+    en: "Download CV"
+  view_project:
+    id: "Lihat Proyek"
+    en: "View Project"
+  source_code:
+    id: "Source Code"
+    en: "Source Code"
+  live_demo:
+    id: "Live Demo"
+    en: "Live Demo"
+  read_more:
+    id: "Baca Selengkapnya"
+    en: "Read More"
+  load_more:
+    id: "Muat Lebih Banyak"
+    en: "Load More"
+  back_to_top:
+    id: "Kembali ke Atas"
+    en: "Back to Top"
+
+# SEO Meta
+meta:
+  description:
+    id: "Game Promoter dan IT Support profesional dengan pengalaman 3+ tahun di Jakarta/Bekasi. Spesialisasi troubleshooting hardware, manajemen jaringan, dan pemeliharaan server."
+    en: "Professional Game Promoter and IT Support with 3+ years experience in Jakarta/Bekasi. Specializing in hardware troubleshooting, network management, and server maintenance."
+  keywords:
+    id: "game promoter jakarta, it support bekasi, teknisi jaringan jakarta, hardware troubleshooting, server maintenance, network infrastructure, erzam bayu, bekasi it support"
+    en: "game promoter jakarta, it support bekasi, network technician jakarta, hardware troubleshooting, server maintenance, network infrastructure, erzam bayu, bekasi it support"
+
+# Accessibility
+accessibility:
+  toggle_menu:
+    id: "Toggle menu navigasi"
+    en: "Toggle navigation menu"
+  toggle_theme:
+    id: "Toggle mode gelap/terang"
+    en: "Toggle dark/light mode"
+  toggle_language:
+    id: "Ganti bahasa"
+    en: "Change language"
+  image_alt:
+    profile:
+      id: "Foto profil Erzam Bayu - Game Promoter dan Developer"
+      en: "Profile photo of Erzam Bayu - Game Promoter and Developer"
+  skip_to_content:
+    id: "Lewati ke konten utama"
+    en: "Skip to main content"
+
+# Theme translations
+theme:
+  light:
+    id: "Mode Terang"
+    en: "Light Mode"
+  dark:
+    id: "Mode Gelap"
+    en: "Dark Mode"
+  auto:
+    id: "Mode Otomatis"
+    en: "Auto Mode"
+
+# Button translations
+buttons:
+  back_to_top:
+    id: "Kembali ke Atas"
+    en: "Back to Top"
+
+# Blog translations  
+blog:
+  title:
+    id: "Blog & Artikel"
+    en: "Blog & Articles"
+  subtitle:
+    id: "Berbagi pengetahuan, pengalaman, dan insight tentang teknologi, programming, dan pengembangan software"
+    en: "Sharing knowledge, experience, and insights about technology, programming, and software development"
+  search_title:
+    id: "Cari Artikel"
+    en: "Search Articles"
+  search_subtitle:
+    id: "Temukan artikel yang Anda cari dengan mudah"
+    en: "Find the articles you're looking for easily"
+  search_placeholder:
+    id: "Ketik untuk mencari artikel, teknologi, atau topik..."
+    en: "Type to search articles, technology, or topics..."
+  popular_tags:
+    id: "Tag Populer"
+    en: "Popular Tags"
+  articles_available:
+    id: "artikel tersedia"
+    en: "articles available"
+  read_more:
+    id: "Baca Selengkapnya"
+    en: "Read More"
+  no_results:
+    id: "Tidak ada artikel yang ditemukan"
+    en: "No articles found"
+  reset_search:
+    id: "Reset Pencarian"
+    en: "Reset Search"
+  try_different_keywords:
+    id: "Coba gunakan kata kunci yang berbeda atau hapus filter pencarian"
+    en: "Try using different keywords or remove search filters"
+
+# Testimonials translations
+testimonials:
+  title:
+    id: "Testimoni Klien"
+    en: "Client Testimonials"
+  subtitle:
+    id: "Feedback dari klien dan rekan kerja yang pernah berkolaborasi"
+    en: "Feedback from clients and colleagues who have collaborated"
+  load_more:
+    id: "Muat Lebih Banyak"
+    en: "Load More"
+  stats:
+    happy_clients:
+      id: "Klien Senang"
+      en: "Happy Clients"
+    average_rating:
+      id: "Rating Rata-rata"
+      en: "Average Rating"
+    satisfaction:
+      id: "Tingkat Kepuasan"
+      en: "Satisfaction Rate"
+    years_experience:
+      id: "Tahun Pengalaman"
+      en: "Years Experience"
+  cta:
+    title:
+      id: "Siap Menjadi Klien Selanjutnya?"
+      en: "Ready to Be the Next Client?"
+    description:
+      id: "Mari diskusikan project Anda dan wujudkan solusi teknologi yang Anda butuhkan"
+      en: "Let's discuss your project and realize the technology solutions you need"
+    discuss_project:
+      id: "Diskusi Project"
+      en: "Discuss Project"
+    view_portfolio:
+      id: "Lihat Portfolio"
+      en: "View Portfolio"

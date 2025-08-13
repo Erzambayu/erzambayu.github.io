@@ -1,0 +1,85 @@
+# Professional Experience Timeline
+
+- title: "Game Leader"
+  organization: "PT Indofun"
+  period: "2021 - 2023"
+  location: "Jakarta, Indonesia"
+  type: "work"
+  icon: "fas fa-gamepad"
+  description: |
+    Memimpin tim promosi game dan strategi pemasaran digital untuk meningkatkan user acquisition dan engagement. 
+    Bertanggung jawab dalam koordinasi event gaming dan pengembangan komunitas gaming.
+  achievements:
+    - "Meningkatkan download game hingga 250K+ dalam 2 bulan melalui strategi marketing 360°"
+    - "Mengelola tim 8 orang untuk campaign influencer dan social media marketing"
+    - "Mengembangkan komunitas gaming dengan 50K+ active members"
+    - "Mencapai rating 4.8/5.0 di Play Store melalui community management yang efektif"
+  technologies:
+    - "Social Media Marketing"
+    - "Community Management"
+    - "Event Coordination"
+    - "Team Leadership"
+    - "Analytics & Reporting"
+
+- title: "IT Support & Network Technician"
+  organization: "PT IASA Multi Integrator"
+  period: "2020 - 2021"
+  location: "Bekasi, Indonesia"
+  type: "work"
+  icon: "fas fa-network-wired"
+  description: |
+    Menyediakan dukungan teknis komprehensif untuk infrastruktur jaringan perusahaan dan konsultasi solusi 
+    teknologi untuk klien. Bertanggung jawab dalam pemeliharaan server dan troubleshooting sistem.
+  achievements:
+    - "Mengelola infrastruktur jaringan untuk 200+ workstations dengan uptime 99.5%"
+    - "Menyelesaikan 95% ticket support dalam waktu kurang dari 24 jam"
+    - "Mengimplementasikan solusi backup yang mengurangi downtime hingga 80%"
+    - "Melakukan konsultasi jaringan untuk 15+ klien korporat"
+  technologies:
+    - "Cisco Networking"
+    - "Mikrotik Configuration"
+    - "Windows Server"
+    - "Linux Administration"
+    - "Network Security"
+
+- title: "Mobile Device Technician"
+  organization: "Freelance - Apple UP Certified"
+  period: "2019 - Present"
+  location: "Bekasi/Jakarta, Indonesia"
+  type: "freelance"
+  icon: "fas fa-mobile-alt"
+  description: |
+    Spesialis perbaikan perangkat mobile dengan sertifikasi Apple Unauthorized Partner. 
+    Memberikan layanan repair berkualitas tinggi untuk berbagai brand smartphone dan tablet.
+  achievements:
+    - "Menyelesaikan 500+ kasus repair dengan success rate 92%"
+    - "Memperoleh sertifikasi Apple UP (Unauthorized Partner)"
+    - "Membangun base klien loyal dengan repeat customer rate 75%"
+    - "Mengembangkan teknik repair efisien yang mengurangi turnaround time 40%"
+  technologies:
+    - "iOS Diagnostics"
+    - "Android Repair"
+    - "Hardware Troubleshooting"
+    - "Micro-soldering"
+    - "Quality Assurance"
+
+- title: "Customer Service Representative"
+  organization: "Various Companies"
+  period: "2018 - 2020"
+  location: "Jakarta, Indonesia"
+  type: "work"
+  icon: "fas fa-headset"
+  description: |
+    Pengalaman dalam layanan pelanggan dan telemarketing dengan fokus pada problem solving 
+    dan membangun hubungan bisnis yang positif dengan klien.
+  achievements:
+    - "Mencapai customer satisfaction score 4.7/5.0 secara konsisten"
+    - "Menangani 100+ customer inquiries per hari dengan resolusi rate 89%"
+    - "Meningkatkan conversion rate telemarketing hingga 25%"
+    - "Melatih 5+ junior staff dalam customer service best practices"
+  technologies:
+    - "CRM Systems"
+    - "Telemarketing"
+    - "Problem Resolution"
+    - "Data Analysis"
+    - "Communication Skills"

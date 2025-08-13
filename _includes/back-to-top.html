@@ -1,0 +1,41 @@
+<!-- Back to Top Button -->
+<button id="back-to-top" class="back-to-top-btn" aria-label="Kembali ke atas">
+  <i class="fas fa-arrow-up"></i>
+  <span class="tooltip-text" data-translate="buttons.back_to_top">Kembali ke Atas</span>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const backToTopBtn = document.getElementById('back-to-top');
+  let isVisible = false;
+
+  // Show/hide button based on scroll position
+  function toggleBackToTop() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const shouldShow = scrollTop > 300;
+
+    if (shouldShow && !isVisible) {
+      backToTopBtn.classList.add('visible');
+      isVisible = true;
+    } else if (!shouldShow && isVisible) {
+      backToTopBtn.classList.remove('visible');
+      isVisible = false;
+    }
+  }
+
+  // Smooth scroll to top
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  // Event listeners
+  window.addEventListener('scroll', toggleBackToTop);
+  backToTopBtn.addEventListener('click', scrollToTop);
+
+  // Initialize
+  toggleBackToTop();
+});
+</script>

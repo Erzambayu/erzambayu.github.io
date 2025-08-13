@@ -1,0 +1,96 @@
+{
+  "name": "Erzam Bayu - Full-Stack Developer & Network Engineer",
+  "short_name": "Erzam Bayu",
+  "description": "Portfolio website of Erzam Bayu - Full-Stack Developer, Network Engineer, and Security Researcher specializing in web development, network infrastructure, and cybersecurity solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "id",
+  "dir": "ltr",
+  "categories": ["portfolio", "technology", "developer"],
+  "icons": [
+    {
+      "src": "/assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Portfolio",
+      "short_name": "Projects",
+      "description": "View my latest projects and work",
+      "url": "/projects/",
+      "icons": [
+        {
+          "src": "/assets/favicon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Articles",
+      "description": "Read my latest blog articles",
+      "url": "/blog/",
+      "icons": [
+        {
+          "src": "/assets/favicon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Get in Touch",
+      "description": "Contact me for projects or collaboration",
+      "url": "/#contact-form",
+      "icons": [
+        {
+          "src": "/assets/favicon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop view of Erzam Bayu's portfolio"
+    },
+    {
+      "src": "/assets/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile view of Erzam Bayu's portfolio"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
+}

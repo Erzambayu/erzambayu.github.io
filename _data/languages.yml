@@ -1,0 +1,13 @@
+# Language Configuration for Multi-language Support
+default_lang: id
+languages:
+  id:
+    name: "Bahasa Indonesia"
+    code: "id"
+    flag: "🇮🇩"
+    locale: "id_ID"
+  en:
+    name: "English"
+    code: "en"
+    flag: "🇺🇸"
+    locale: "en_US"

@@ -4,18 +4,35 @@
     
     <!-- Page Header -->
     <div class="page-header" data-aos="fade-up">
-      <h1 class="page-title">My Projects</h1>
-      <p class="page-subtitle">A collection of my work showcasing web development, security research, and innovative solutions</p>
+      <h1 class="page-title" data-translate="projects.title">Portfolio Unggulan</h1>
+      <p class="page-subtitle" data-translate="projects.subtitle_extended">Koleksi proyek-proyek yang menampilkan keahlian dalam web development, security research, network engineering, dan solusi inovatif yang memberikan dampak nyata</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="projects-search" data-aos="fade-up" data-aos-delay="50">
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="project-search" class="search-input" 
+               placeholder="Cari proyek berdasarkan nama atau teknologi..." 
+               data-translate-placeholder="projects.search_placeholder">
+        <button class="search-clear" id="search-clear" aria-label="Clear search">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
     </div>
 
     <!-- Projects Filter -->
     <div class="projects-filter" data-aos="fade-up" data-aos-delay="100">
       <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">All Projects</button>
-        <button class="filter-btn" data-filter="web">Web Apps</button>
-        <button class="filter-btn" data-filter="tools">Tools</button>
-        <button class="filter-btn" data-filter="security">Security</button>
-        <button class="filter-btn" data-filter="api">API</button>
+        <button class="filter-btn active" data-filter="all" data-translate="projects.categories.all">Semua</button>
+        <button class="filter-btn" data-filter="web" data-translate="projects.categories.web">Web Dev</button>
+        <button class="filter-btn" data-filter="tools" data-translate="projects.categories.tools">Tools</button>
+        <button class="filter-btn" data-filter="security" data-translate="projects.categories.security">Security</button>
+        <button class="filter-btn" data-filter="network" data-translate="projects.categories.network">Network</button>
+        <button class="filter-btn" data-filter="api" data-translate="projects.categories.api">API</button>
+      </div>
+      <div class="filter-results">
+        <span class="results-count">Menampilkan <span id="visible-count">{{ site.projects.size }}</span> dari <span id="total-count">{{ site.projects.size }}</span> proyek</span>
       </div>
     </div>
 
@@ -24,7 +41,9 @@
       {% assign sorted_projects = site.projects | sort: 'name' %}
       {% for project in sorted_projects %}
         <div class="project-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}" 
-             data-category="{% if project.tools contains 'API' %}api{% elsif project.tools contains 'Security' or project.name contains 'UserRecon' %}security{% elsif project.tools contains 'Python' or project.tools contains 'Flask' %}tools{% else %}web{% endif %}">
+             data-category="{% if project.tools contains 'API' %}api{% elsif project.tools contains 'Security' or project.tools contains 'OSINT' or project.name contains 'UserRecon' %}security{% elsif project.tools contains 'Network' or project.name contains 'Network' %}network{% elsif project.tools contains 'Python' or project.tools contains 'Flask' %}tools{% else %}web{% endif %}"
+             data-name="{{ project.name | downcase }}"
+             data-technologies="{{ project.tools | join: ' ' | downcase }}">
           
           <!-- Project Image -->
           <div class="project-image">
@@ -36,20 +55,37 @@
               </div>
             {% endif %}
             
+            <!-- Project Metrics Badge -->
+            <div class="project-metrics">
+              {% if project.name == 'PoopDL' %}
+                <span class="metric-badge downloads">
+                  <i class="fas fa-download"></i> 10K+ Downloads
+                </span>
+              {% elsif project.name == 'UserRecon' %}
+                <span class="metric-badge users">
+                  <i class="fas fa-users"></i> 5K+ Users
+                </span>
+              {% elsif project.name contains 'Website' %}
+                <span class="metric-badge revenue">
+                  <i class="fas fa-dollar-sign"></i> $50K+ Revenue
+                </span>
+              {% endif %}
+            </div>
+            
             <!-- Project Overlay -->
             <div class="project-overlay">
               <div class="project-links">
                 {% if project.external_url %}
-                  <a href="{{ project.external_url }}" target="_blank" class="project-link" title="Live Demo">
+                  <a href="{{ project.external_url }}" target="_blank" class="project-link" title="Live Demo" aria-label="Live Demo">
                     <i class="fas fa-external-link-alt"></i>
                   </a>
                 {% endif %}
                 {% if project.source_url %}
-                  <a href="{{ project.source_url }}" target="_blank" class="project-link" title="Source Code">
+                  <a href="{{ project.source_url }}" target="_blank" class="project-link" title="Source Code" aria-label="Source Code">
                     <i class="fab fa-github"></i>
                   </a>
                 {% endif %}
-                <a href="{{ project.url | relative_url }}" class="project-link" title="View Details">
+                <a href="{{ project.url | relative_url }}" class="project-link" title="View Details" aria-label="View Details">
                   <i class="fas fa-info-circle"></i>
                 </a>
               </div>
@@ -63,14 +99,34 @@
               <div class="project-category">
                 {% if project.tools contains 'API' %}
                   <span class="category-badge api">API</span>
-                {% elsif project.tools contains 'Security' or project.name contains 'UserRecon' %}
+                {% elsif project.tools contains 'Security' or project.tools contains 'OSINT' or project.name contains 'UserRecon' %}
                   <span class="category-badge security">Security</span>
+                {% elsif project.tools contains 'Network' or project.name contains 'Network' %}
+                  <span class="category-badge network">Network</span>
                 {% elsif project.tools contains 'Python' or project.tools contains 'Flask' %}
                   <span class="category-badge tools">Tools</span>
                 {% else %}
                   <span class="category-badge web">Web App</span>
                 {% endif %}
               </div>
+            </div>
+            
+            <!-- Project Status -->
+            <div class="project-status">
+              {% if project.external_url %}
+                <span class="status-badge live">
+                  <i class="fas fa-circle"></i> Live
+                </span>
+              {% else %}
+                <span class="status-badge development">
+                  <i class="fas fa-code"></i> In Development
+                </span>
+              {% endif %}
+              {% if project.source_url %}
+                <span class="status-badge open-source">
+                  <i class="fab fa-github"></i> Open Source
+                </span>
+              {% endif %}
             </div>
             
             <p class="project-description">{{ project.description | truncate: 120 }}</p>
@@ -137,30 +193,135 @@
   </div>
 </div>
 
-<!-- Filter JavaScript -->
+<!-- Enhanced Filter & Search JavaScript -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
+  const searchInput = document.getElementById('project-search');
+  const searchClear = document.getElementById('search-clear');
+  const visibleCount = document.getElementById('visible-count');
+  const totalCount = document.getElementById('total-count');
+  
+  let currentFilter = 'all';
+  let currentSearch = '';
 
+  // Set total count
+  totalCount.textContent = projectCards.length;
+
+  // Filter functionality
+  function filterProjects() {
+    let visibleProjects = 0;
+    
+    projectCards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      const name = card.getAttribute('data-name');
+      const technologies = card.getAttribute('data-technologies');
+      
+      // Check filter match
+      const filterMatch = currentFilter === 'all' || category === currentFilter;
+      
+      // Check search match
+      const searchMatch = currentSearch === '' || 
+                         name.includes(currentSearch.toLowerCase()) ||
+                         technologies.includes(currentSearch.toLowerCase());
+      
+      if (filterMatch && searchMatch) {
+        card.style.display = 'block';
+        card.style.opacity = '0';
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100);
+        visibleProjects++;
+      } else {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.display = 'none';
+        }, 300);
+      }
+    });
+    
+    // Update visible count
+    visibleCount.textContent = visibleProjects;
+    
+    // Show/hide no results message
+    const noResults = document.getElementById('no-results');
+    if (visibleProjects === 0) {
+      if (!noResults) {
+        const noResultsEl = document.createElement('div');
+        noResultsEl.id = 'no-results';
+        noResultsEl.className = 'no-results text-center py-5';
+        noResultsEl.innerHTML = `
+          <i class="fas fa-search fa-3x mb-3 text-muted"></i>
+          <h3>Tidak ada proyek yang ditemukan</h3>
+          <p class="text-muted">Coba gunakan kata kunci yang berbeda atau filter lainnya</p>
+        `;
+        document.querySelector('.projects-grid').appendChild(noResultsEl);
+      }
+    } else {
+      if (noResults) {
+        noResults.remove();
+      }
+    }
+  }
+
+  // Filter button events
   filterButtons.forEach(button => {
     button.addEventListener('click', function() {
-      const filterValue = this.getAttribute('data-filter');
+      currentFilter = this.getAttribute('data-filter');
       
       // Update active button
       filterButtons.forEach(btn => btn.classList.remove('active'));
       this.classList.add('active');
       
-      // Filter projects
-      projectCards.forEach(card => {
-        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-          card.style.display = 'block';
-          card.style.animation = 'fadeInUp 0.5s ease forwards';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      filterProjects();
     });
+  });
+
+  // Search functionality
+  searchInput.addEventListener('input', function() {
+    currentSearch = this.value.trim();
+    
+    // Show/hide clear button
+    if (currentSearch) {
+      searchClear.style.opacity = '1';
+      searchClear.style.visibility = 'visible';
+    } else {
+      searchClear.style.opacity = '0';
+      searchClear.style.visibility = 'hidden';
+    }
+    
+    filterProjects();
+  });
+
+  // Search clear functionality
+  searchClear.addEventListener('click', function() {
+    searchInput.value = '';
+    currentSearch = '';
+    this.style.opacity = '0';
+    this.style.visibility = 'hidden';
+    filterProjects();
+  });
+
+  // Initialize
+  filterProjects();
+
+  // Lazy loading for project images
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        observer.unobserve(img);
+      }
+    });
+  });
+
+  document.querySelectorAll('.project-image img[data-src]').forEach(img => {
+    imageObserver.observe(img);
   });
 });
 </script> 

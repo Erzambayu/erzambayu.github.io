@@ -7,11 +7,25 @@
       <span class="brand-text">Erzam Bayu</span>
     </a>
 
-    <!-- Dark Mode Toggle - Positioned in Navbar -->
-    <div class="navbar-theme-toggle d-none d-lg-block">
-      <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon theme-icon" id="theme-icon"></i>
-      </button>
+    <!-- Language & Theme Controls -->
+    <div class="navbar-controls d-none d-lg-flex align-items-center">
+      <!-- Download CV Button -->
+      <a href="{{ '/Erzam_Bayu_CV_ATS_english.pdf' | relative_url }}" 
+         target="_blank" 
+         class="btn-download-cv me-3" 
+         aria-label="Download CV">
+        <i class="fas fa-download"></i>
+        <span data-translate="buttons.download_cv">Download CV</span>
+      </a>
+      
+      <!-- Language Toggle - Will be inserted by JavaScript -->
+      
+      <!-- Dark Mode Toggle -->
+      <div class="navbar-theme-toggle">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon theme-icon" id="theme-icon"></i>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Menu Toggle -->
@@ -27,7 +41,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ '/' | relative_url }}">
             <i class="fas fa-home nav-icon"></i>
-            <span class="nav-text">Home</span>
+            <span class="nav-text" data-translate="nav.home">Home</span>
           </a>
         </li>
 
@@ -35,7 +49,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ '/about/' | relative_url }}">
             <i class="fas fa-user nav-icon"></i>
-            <span class="nav-text">About</span>
+            <span class="nav-text" data-translate="nav.about">About</span>
           </a>
         </li>
 
@@ -43,7 +57,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ '/projects/' | relative_url }}">
             <i class="fas fa-project-diagram nav-icon"></i>
-            <span class="nav-text">Projects</span>
+            <span class="nav-text" data-translate="nav.projects">Projects</span>
           </a>
         </li>
 
@@ -51,7 +65,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ '/blog/' | relative_url }}">
             <i class="fas fa-blog nav-icon"></i>
-            <span class="nav-text">Blog</span>
+            <span class="nav-text" data-translate="nav.blog">Blog</span>
           </a>
         </li>
 
@@ -60,7 +74,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="connectDropdown" role="button" 
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-share-alt nav-icon"></i>
-            <span class="nav-text">Connect</span>
+            <span class="nav-text" data-translate="nav.connect">Connect</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right rose-pine-dropdown">
             {% if site.author.email %}
@@ -96,6 +110,22 @@
           </div>
         </li>
 
+        <!-- Mobile-only Controls -->
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" href="{{ '/Erzam_Bayu_CV_ATS_english.pdf' | relative_url }}" target="_blank">
+            <i class="fas fa-download nav-icon"></i>
+            <span class="nav-text" data-translate="buttons.download_cv">Download CV</span>
+          </a>
+        </li>
+        
+        <li class="nav-item d-lg-none">
+          <button class="nav-link theme-toggle-mobile" id="theme-toggle-mobile" style="border: none; background: none;">
+            <i class="fas fa-moon theme-icon-mobile nav-icon"></i>
+            <span class="nav-text">Theme</span>
+          </button>
+        </li>
+
+        <!-- Mobile Language Toggle - Will be inserted by JavaScript -->
 
       </ul>
     </div>

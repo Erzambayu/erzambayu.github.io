@@ -60,7 +60,7 @@
               <img class="profile-image" src="{{ site.author.image }}" alt="Erzam Bayu - Game Promoter dan Full-Stack Developer Jakarta" loading="lazy">
               <div class="profile-status">
                 <div class="status-dot"></div>
-                <span>Siap untuk proyek baru</span>
+                <span data-translate="hero.status">Siap untuk proyek baru</span>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
           <!-- Title and Subtitle -->
           <div class="hero-text" data-aos="fade-up" data-aos-delay="300">
             <h1 class="hero-title">
-              <span class="hero-greeting">Halo, saya</span>
+              <span class="hero-greeting" data-translate="hero.greeting">Halo, saya</span>
               <span class="hero-name">{{ site.author.name }}</span>
             </h1>
             
@@ -77,10 +77,9 @@
               <span class="cursor">|</span>
             </div>
             
-            <p class="hero-description" data-aos="fade-up" data-aos-delay="600">
-              Game Promoter & Teknisi Jaringan/IT Support dengan pengalaman lebih dari 3 tahun dalam 
-              pemeliharaan hardware, troubleshooting sistem, dan manajemen infrastruktur jaringan. 
-              Saat ini sedang menempuh pendidikan S1 Sistem Informasi.
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="600" data-translate="hero.description">
+              Full-Stack Developer & Network Engineer dengan fokus pada solusi teknologi inovatif. 
+              Mengkhususkan diri dalam web development, cybersecurity, dan infrastruktur jaringan enterprise.
             </p>
           </div>
           
@@ -88,16 +87,16 @@
           <div class="hero-actions" data-aos="fade-up" data-aos-delay="900">
             <a href="mailto:erzambayu@gmail.com?subject=Konsultasi Layanan" class="btn btn-primary btn-hero">
               <i class="fas fa-envelope"></i>
-              <span>Konsultasi Sekarang</span>
+              <span data-translate="hero.contact_now">Konsultasi Sekarang</span>
               <div class="btn-particles"></div>
             </a>
             <a href="https://wa.me/6285156545003" target="_blank" class="btn btn-contact btn-hero">
               <i class="fab fa-whatsapp"></i>
-              <span>Hubungi Saya</span>
+              <span data-translate="hero.contact_me">Hubungi Saya</span>
             </a>
             <a href="{{ '/projects' | relative_url }}" class="btn btn-outline btn-hero">
               <i class="fas fa-briefcase"></i>
-              <span>Lihat Portfolio</span>
+              <span data-translate="hero.view_portfolio">Lihat Portfolio</span>
             </a>
           </div>
           
@@ -672,6 +671,12 @@
       </div>
     </div>
   </section>
+  
+  <!-- Testimonials Section -->
+{% include testimonials.html %}
+
+<!-- Contact Form Section -->
+{% include contact-form.html %}
   
   <!-- Contact Footer Section -->
   <section class="contact-footer" id="contact">

@@ -1,0 +1,510 @@
+<!-- Testimonials Section -->
+<section class="testimonials-section py-5" id="testimonials">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="section-title" data-aos="fade-up">
+          <i class="fas fa-quote-left me-3"></i>
+          <span data-translate="testimonials.title">Testimoni Klien</span>
+        </h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-translate="testimonials.subtitle">
+          Feedback dari klien dan rekan kerja yang pernah berkolaborasi
+        </p>
+      </div>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="row" id="testimonials-container">
+      {% for testimonial in site.data.testimonials %}
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
+          <div class="testimonial-card">
+            <!-- Rating Stars -->
+            <div class="testimonial-rating">
+              {% for i in (1..5) %}
+                {% if i <= testimonial.rating %}
+                  <i class="fas fa-star"></i>
+                {% else %}
+                  <i class="far fa-star"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <!-- Quote -->
+            <div class="testimonial-quote">
+              <i class="fas fa-quote-left quote-icon"></i>
+              <p class="quote-text">{{ testimonial.quote }}</p>
+            </div>
+
+            <!-- Author Info -->
+            <div class="testimonial-author">
+              <div class="author-image">
+                <img src="{{ testimonial.image }}" alt="{{ testimonial.name }}" loading="lazy">
+              </div>
+              <div class="author-info">
+                <h4 class="author-name">{{ testimonial.name }}</h4>
+                <p class="author-role">{{ testimonial.role }}</p>
+                <p class="author-company">{{ testimonial.company }}</p>
+              </div>
+            </div>
+
+            <!-- Project Info -->
+            <div class="project-info">
+              <span class="project-tag">
+                <i class="fas fa-briefcase me-1"></i>
+                {{ testimonial.project }}
+              </span>
+              <span class="project-date">
+                <i class="fas fa-calendar me-1"></i>
+                {{ testimonial.date | date: "%B %Y" }}
+              </span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Load More Button -->
+    <div class="row mt-4" id="load-more-testimonials" style="display: none;">
+      <div class="col-12 text-center">
+        <button class="btn btn-outline-primary btn-lg" onclick="loadMoreTestimonials()">
+          <i class="fas fa-plus me-2"></i>
+          <span data-translate="testimonials.load_more">Muat Lebih Banyak</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="testimonials-stats mt-5">
+      <div class="row text-center">
+        <div class="col-md-3 col-6">
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-number">{{ site.data.testimonials | size }}+</div>
+            <div class="stat-label" data-translate="testimonials.stats.happy_clients">Happy Clients</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+            {% assign total_rating = 0 %}
+            {% for testimonial in site.data.testimonials %}
+              {% assign total_rating = total_rating | plus: testimonial.rating %}
+            {% endfor %}
+            {% assign average_rating = total_rating | divided_by: site.data.testimonials.size | round: 1 %}
+            <div class="stat-number">{{ average_rating }}/5</div>
+            <div class="stat-label" data-translate="testimonials.stats.average_rating">Average Rating</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="stat-number">100%</div>
+            <div class="stat-label" data-translate="testimonials.stats.satisfaction">Satisfaction Rate</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="stat-number">2+</div>
+            <div class="stat-label" data-translate="testimonials.stats.years_experience">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="testimonials-cta mt-5" data-aos="fade-up" data-aos-delay="600">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <div class="cta-content">
+            <h3 class="cta-title" data-translate="testimonials.cta.title">
+              Siap Menjadi Klien Selanjutnya?
+            </h3>
+            <p class="cta-description" data-translate="testimonials.cta.description">
+              Mari diskusikan project Anda dan wujudkan solusi teknologi yang Anda butuhkan
+            </p>
+            <div class="cta-actions">
+              <a href="#contact-form" class="btn btn-primary btn-lg me-3">
+                <i class="fas fa-comments me-2"></i>
+                <span data-translate="testimonials.cta.discuss_project">Diskusi Project</span>
+              </a>
+              <a href="/projects/" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-portfolio me-2"></i>
+                <span data-translate="testimonials.cta.view_portfolio">Lihat Portfolio</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Testimonials Section Styling */
+.testimonials-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(102, 126, 234, 0.05)"/><circle cx="80" cy="80" r="1" fill="rgba(118, 75, 162, 0.05)"/><circle cx="40" cy="60" r="1.5" fill="rgba(240, 147, 251, 0.03)"/></svg>');
+  animation: float 30s linear infinite;
+  pointer-events: none;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 32px var(--card-shadow);
+  transition: all var(--transition-medium);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-medium);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-color);
+}
+
+.testimonial-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Rating */
+.testimonial-rating {
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.testimonial-rating .fas.fa-star {
+  color: #fbbf24;
+  font-size: 1.1rem;
+  margin: 0 2px;
+}
+
+.testimonial-rating .far.fa-star {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin: 0 2px;
+}
+
+/* Quote */
+.testimonial-quote {
+  flex: 1;
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.quote-icon {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  font-size: 2rem;
+  color: var(--primary-color);
+  opacity: 0.3;
+}
+
+.quote-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+  padding-left: var(--spacing-lg);
+  position: relative;
+}
+
+/* Author */
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.author-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary-color);
+  flex-shrink: 0;
+}
+
+.author-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.testimonial-card:hover .author-image img {
+  transform: scale(1.1);
+}
+
+.author-info {
+  flex: 1;
+}
+
+.author-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.author-role {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  margin: 0 0 2px 0;
+  font-weight: 500;
+}
+
+.author-company {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Project Info */
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--card-border);
+}
+
+.project-tag, .project-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.project-tag {
+  background: rgba(102, 126, 234, 0.1);
+  color: var(--primary-color);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* Statistics */
+.testimonials-stats {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 32px var(--card-shadow);
+}
+
+.stat-item {
+  padding: var(--spacing-md) 0;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Call to Action */
+.testimonials-cta {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 32px var(--card-shadow);
+}
+
+.cta-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.cta-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: var(--spacing-lg);
+  }
+  
+  .testimonial-author {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .author-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .project-info {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-xs);
+  }
+  
+  .testimonials-stats {
+    padding: var(--spacing-lg);
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-actions .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .quote-text {
+    font-size: 0.9rem;
+    padding-left: var(--spacing-md);
+  }
+  
+  .quote-icon {
+    font-size: 1.5rem;
+    top: -5px;
+    left: -5px;
+  }
+  
+  .testimonial-rating .fas.fa-star,
+  .testimonial-rating .far.fa-star {
+    font-size: 1rem;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -30px) rotate(120deg); }
+  66% { transform: translate(-20px, 20px) rotate(240deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initially show only first 3 testimonials on mobile
+  if (window.innerWidth < 768) {
+    const testimonials = document.querySelectorAll('#testimonials-container .col-lg-4');
+    if (testimonials.length > 3) {
+      // Hide testimonials beyond first 3
+      for (let i = 3; i < testimonials.length; i++) {
+        testimonials[i].style.display = 'none';
+      }
+      // Show load more button
+      document.getElementById('load-more-testimonials').style.display = 'block';
+    }
+  }
+});
+
+function loadMoreTestimonials() {
+  const hiddenTestimonials = document.querySelectorAll('#testimonials-container .col-lg-4[style*="display: none"]');
+  const loadMoreBtn = document.getElementById('load-more-testimonials');
+  
+  // Show next 3 testimonials
+  for (let i = 0; i < Math.min(3, hiddenTestimonials.length); i++) {
+    hiddenTestimonials[i].style.display = 'block';
+    hiddenTestimonials[i].style.animation = 'fadeInUp 0.6s ease forwards';
+  }
+  
+  // Hide load more button if no more testimonials
+  const stillHidden = document.querySelectorAll('#testimonials-container .col-lg-4[style*="display: none"]');
+  if (stillHidden.length === 0) {
+    loadMoreBtn.style.display = 'none';
+  }
+}
+
+// Add smooth scroll to CTA buttons
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+</script>

@@ -7,9 +7,9 @@
           <div class="search-header text-center mb-4">
             <h2 class="search-title">
               <i class="fas fa-search me-2"></i>
-              Cari Artikel
+              <span data-translate="blog.search_title">Cari Artikel</span>
             </h2>
-            <p class="search-subtitle">
+            <p class="search-subtitle" data-translate="blog.search_subtitle">
               Temukan artikel yang Anda cari dengan mudah
             </p>
           </div>
@@ -23,7 +23,7 @@
                 type="text" 
                 class="form-control search-input" 
                 id="blog-search" 
-                placeholder="Ketik untuk mencari artikel, teknologi, atau topik..."
+                data-translate-placeholder="blog.search_placeholder" placeholder="Ketik untuk mencari artikel, teknologi, atau topik..."
                 autocomplete="off"
               >
               <button class="btn btn-outline-secondary" type="button" id="clear-search">
@@ -41,7 +41,7 @@
           
           <!-- Popular Tags -->
           <div class="popular-tags mt-4">
-            <h6 class="tags-title mb-3">Tag Populer:</h6>
+            <h6 class="tags-title mb-3" data-translate="blog.popular_tags">Tag Populer:</h6>
             <div class="tags-container">
               {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
               {% for tag in all_tags limit: 8 %}

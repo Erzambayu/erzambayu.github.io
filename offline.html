@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Erzam Bayu Portfolio</title>
+    <style>
+        :root {
+            /* Rose Pine Theme Colors */
+            --bg-primary: #191724;
+            --bg-secondary: #1f1d2e;
+            --bg-tertiary: #26233a;
+            --text-primary: #e0def4;
+            --text-secondary: #908caa;
+            --text-muted: #6e6a86;
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --card-bg: #26233a;
+            --card-border: rgba(224, 222, 244, 0.1);
+            --card-shadow: rgba(0, 0, 0, 0.3);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --transition-fast: 0.15s ease;
+            --transition-medium: 0.3s ease;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .offline-container {
+            text-align: center;
+            max-width: 500px;
+            padding: var(--spacing-xl);
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 40px var(--card-shadow);
+            position: relative;
+            z-index: 10;
+        }
+
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--spacing-lg);
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .offline-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .offline-message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        .offline-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            border: none;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition-medium);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .network-status {
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--card-border);
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f87171;
+            animation: blink 1.5s infinite;
+        }
+
+        .status-dot.online {
+            background: #34d399;
+        }
+
+        .cached-pages {
+            margin-top: var(--spacing-lg);
+            text-align: left;
+        }
+
+        .cached-pages h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .cached-links {
+            list-style: none;
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .cached-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid transparent;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cached-links a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(102, 126, 234, 0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(118, 75, 162, 0.1)"/><circle cx="40" cy="60" r="1.5" fill="rgba(240, 147, 251, 0.1)"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .offline-container {
+                margin: var(--spacing-md);
+                padding: var(--spacing-lg);
+            }
+
+            .offline-title {
+                font-size: 2rem;
+            }
+
+            .offline-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+            .offline-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cached-pages {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="offline-container">
+        <div class="offline-icon">
+            📡
+        </div>
+        
+        <h1 class="offline-title">You're Offline</h1>
+        
+        <p class="offline-message">
+            Sepertinya Anda sedang offline. Jangan khawatir, beberapa halaman masih tersedia untuk dilihat!
+        </p>
+        
+        <div class="offline-actions">
+            <button onclick="window.location.reload()" class="btn btn-primary">
+                🔄 Try Again
+            </button>
+            <a href="/" class="btn btn-secondary">
+                🏠 Go Home
+            </a>
+        </div>
+        
+        <div class="network-status">
+            <div class="status-indicator">
+                <span class="status-dot" id="status-dot"></span>
+                <span id="status-text">Checking connection...</span>
+            </div>
+        </div>
+        
+        <div class="cached-pages">
+            <h3>📄 Available Pages</h3>
+            <ul class="cached-links">
+                <li><a href="/">🏠 Home</a></li>
+                <li><a href="/about/">👤 About</a></li>
+                <li><a href="/projects/">💼 Projects</a></li>
+                <li><a href="/blog/">📝 Blog</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Check network status
+        function updateNetworkStatus() {
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('status-text');
+            
+            if (navigator.onLine) {
+                statusDot.classList.add('online');
+                statusText.textContent = 'Connection restored!';
+                
+                // Auto-reload after a short delay
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                statusDot.classList.remove('online');
+                statusText.textContent = 'No internet connection';
+            }
+        }
+
+        // Check network status on load
+        updateNetworkStatus();
+
+        // Listen for network status changes
+        window.addEventListener('online', updateNetworkStatus);
+        window.addEventListener('offline', updateNetworkStatus);
+
+        // Periodic connectivity check
+        setInterval(() => {
+            fetch('/', { 
+                method: 'HEAD',
+                cache: 'no-cache'
+            })
+            .then(() => {
+                if (!navigator.onLine) {
+                    // Force online status if fetch succeeds
+                    window.dispatchEvent(new Event('online'));
+                }
+            })
+            .catch(() => {
+                // Connection failed
+                if (navigator.onLine) {
+                    window.dispatchEvent(new Event('offline'));
+                }
+            });
+        }, 5000);
+
+        // Add some interaction
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                window.location.reload();
+            }
+        });
+
+        // Service worker update check
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                window.location.reload();
+            });
+        }
+    </script>
+</body>
+</html>

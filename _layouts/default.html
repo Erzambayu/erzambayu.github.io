@@ -141,6 +141,9 @@
   </main>
 
   {% include footer.html %}
+  
+  <!-- Back to Top Button -->
+  {% include back-to-top.html %}
 
   <!-- Scripts with error handling and fallbacks -->
   
@@ -290,6 +293,14 @@
     loadAOS();
   </script>
   
+  <!-- Language Switcher JavaScript -->
+  <script src="{{ '/assets/js/language-switcher.js' | relative_url }}" 
+          onerror="console.warn('Failed to load language-switcher.js')"></script>
+  
+  <!-- Performance Optimizer -->
+  <script src="{{ '/assets/js/performance-optimizer.js' | relative_url }}" 
+          onerror="console.warn('Failed to load performance-optimizer.js')"></script>
+
   <!-- Custom Portfolio JavaScript -->
   {% if site.custom_js %}
     {% for js_file in site.custom_js %}
@@ -318,6 +329,74 @@
         console.warn('Loading screen fallback error:', error);
       }
     }, 3000);
+  </script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+            
+            // Check for updates
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // Show update notification
+                  showUpdateNotification();
+                }
+              });
+            });
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+    
+    // Show update notification
+    function showUpdateNotification() {
+      if (confirm('A new version is available! Would you like to update?')) {
+        window.location.reload();
+      }
+    }
+    
+    // Install prompt for PWA
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      showInstallButton();
+    });
+    
+    function showInstallButton() {
+      // Create install button
+      const installBtn = document.createElement('button');
+      installBtn.innerHTML = '📱 Install App';
+      installBtn.className = 'btn btn-sm btn-outline-primary position-fixed';
+      installBtn.style.cssText = 'bottom: 80px; right: 20px; z-index: 1000; border-radius: 25px; font-size: 0.8rem;';
+      installBtn.addEventListener('click', installApp);
+      document.body.appendChild(installBtn);
+      
+      // Auto-hide after 10 seconds
+      setTimeout(() => {
+        installBtn.style.display = 'none';
+      }, 10000);
+    }
+    
+    function installApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    }
   </script>
 </body>
 

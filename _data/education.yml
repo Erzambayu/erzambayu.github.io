@@ -1,0 +1,85 @@
+# Education Timeline
+
+- title: "S1 Sistem Informasi"
+  organization: "Universitas Terbuka"
+  period: "2022 - Present"
+  location: "Jakarta, Indonesia"
+  type: "education"
+  icon: "fas fa-university"
+  description: |
+    Sedang menempuh pendidikan S1 Sistem Informasi dengan fokus pada pengembangan sistem, 
+    manajemen database, dan analisis bisnis. IPK saat ini: 3.7/4.0
+  achievements:
+    - "IPK 3.7/4.0 dengan fokus pada mata kuliah teknologi informasi"
+    - "Menyelesaikan project sistem informasi manajemen inventori"
+    - "Aktif dalam organisasi mahasiswa Himpunan Mahasiswa Sistem Informasi"
+    - "Mengikuti berbagai webinar dan workshop teknologi terbaru"
+  technologies:
+    - "System Analysis & Design"
+    - "Database Management"
+    - "Business Process Analysis"
+    - "Software Engineering"
+    - "Project Management"
+
+- title: "Sertifikasi Apple Unauthorized Partner"
+  organization: "Apple Inc."
+  period: "2019"
+  location: "Jakarta, Indonesia"
+  type: "certification"
+  icon: "fab fa-apple"
+  description: |
+    Memperoleh sertifikasi resmi dari Apple sebagai Unauthorized Partner untuk layanan 
+    perbaikan perangkat iOS dengan standar kualitas Apple.
+  achievements:
+    - "Lulus ujian sertifikasi Apple dengan skor 95%"
+    - "Memahami prosedur repair resmi Apple untuk seluruh product line"
+    - "Berhak melakukan repair resmi untuk perangkat dalam dan luar garansi"
+    - "Mengikuti training update teknologi Apple secara berkala"
+  technologies:
+    - "iOS Diagnostics"
+    - "Apple Hardware"
+    - "Repair Procedures"
+    - "Quality Standards"
+    - "Customer Service"
+
+- title: "Cisco Network Associate (CCNA) - Preparation"
+  organization: "Self-Study & Online Courses"
+  period: "2020 - 2021"
+  location: "Online Learning"
+  type: "certification"
+  icon: "fas fa-network-wired"
+  description: |
+    Mempersiapkan sertifikasi CCNA melalui self-study intensif dan kursus online. 
+    Fokus pada networking fundamentals, routing, switching, dan network security.
+  achievements:
+    - "Menguasai konsep networking dari basic hingga advanced level"
+    - "Praktik hands-on dengan Cisco Packet Tracer dan lab virtual"
+    - "Memahami routing protocols (OSPF, EIGRP, BGP)"
+    - "Implementasi network security best practices"
+  technologies:
+    - "Cisco IOS"
+    - "Routing & Switching"
+    - "Network Security"
+    - "Subnetting"
+    - "VLANs & Trunking"
+
+- title: "SMA Negeri 1 Bekasi"
+  organization: "SMA Negeri 1 Bekasi"
+  period: "2015 - 2018"
+  location: "Bekasi, Indonesia"
+  type: "education"
+  icon: "fas fa-graduation-cap"
+  description: |
+    Lulus dari SMA Negeri 1 Bekasi jurusan IPA dengan nilai yang memuaskan. 
+    Aktif dalam ekstrakurikuler komputer dan robotika.
+  achievements:
+    - "Lulus dengan nilai rata-rata 8.5/10"
+    - "Juara 2 Lomba Programming tingkat Kota Bekasi"
+    - "Ketua organisasi Klub Komputer sekolah"
+    - "Mengikuti Olimpiade Sains Nasional bidang Informatika"
+  technologies:
+    - "Basic Programming"
+    - "Web Development"
+    - "Computer Hardware"
+    - "Problem Solving"
+    - "Logical Thinking"
