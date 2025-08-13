@@ -1,0 +1,166 @@
+<!-- Projects Page -->
+<div class="projects-page">
+  <div class="container">
+    
+    <!-- Page Header -->
+    <div class="page-header" data-aos="fade-up">
+      <h1 class="page-title">My Projects</h1>
+      <p class="page-subtitle">A collection of my work showcasing web development, security research, and innovative solutions</p>
+    </div>
+
+    <!-- Projects Filter -->
+    <div class="projects-filter" data-aos="fade-up" data-aos-delay="100">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Web Apps</button>
+        <button class="filter-btn" data-filter="tools">Tools</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+        <button class="filter-btn" data-filter="api">API</button>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      {% assign sorted_projects = site.projects | sort: 'name' %}
+      {% for project in sorted_projects %}
+        <div class="project-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}" 
+             data-category="{% if project.tools contains 'API' %}api{% elsif project.tools contains 'Security' or project.name contains 'UserRecon' %}security{% elsif project.tools contains 'Python' or project.tools contains 'Flask' %}tools{% else %}web{% endif %}">
+          
+          <!-- Project Image -->
+          <div class="project-image">
+            {% if project.image %}
+              <img src="{{ project.image }}" alt="{{ project.name }}" loading="lazy">
+            {% else %}
+              <div class="project-placeholder">
+                <i class="fas fa-code"></i>
+              </div>
+            {% endif %}
+            
+            <!-- Project Overlay -->
+            <div class="project-overlay">
+              <div class="project-links">
+                {% if project.external_url %}
+                  <a href="{{ project.external_url }}" target="_blank" class="project-link" title="Live Demo">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                {% endif %}
+                {% if project.source_url %}
+                  <a href="{{ project.source_url }}" target="_blank" class="project-link" title="Source Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                {% endif %}
+                <a href="{{ project.url | relative_url }}" class="project-link" title="View Details">
+                  <i class="fas fa-info-circle"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Content -->
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">{{ project.name }}</h3>
+              <div class="project-category">
+                {% if project.tools contains 'API' %}
+                  <span class="category-badge api">API</span>
+                {% elsif project.tools contains 'Security' or project.name contains 'UserRecon' %}
+                  <span class="category-badge security">Security</span>
+                {% elsif project.tools contains 'Python' or project.tools contains 'Flask' %}
+                  <span class="category-badge tools">Tools</span>
+                {% else %}
+                  <span class="category-badge web">Web App</span>
+                {% endif %}
+              </div>
+            </div>
+            
+            <p class="project-description">{{ project.description | truncate: 120 }}</p>
+            
+            <!-- Project Technologies -->
+            <div class="project-technologies">
+              {% for tool in project.tools limit: 4 %}
+                <span class="tech-badge">{{ tool }}</span>
+              {% endfor %}
+              {% if project.tools.size > 4 %}
+                <span class="tech-badge more">+{{ project.tools.size | minus: 4 }}</span>
+              {% endif %}
+            </div>
+            
+            <!-- Project Actions -->
+            <div class="project-actions">
+              {% if project.external_url %}
+                <a href="{{ project.external_url }}" target="_blank" class="btn btn-primary btn-sm">
+                  <i class="fas fa-rocket mr-1"></i>Live Demo
+                </a>
+              {% endif %}
+              <a href="{{ project.url | relative_url }}" class="btn btn-outline btn-sm">
+                <i class="fas fa-arrow-right mr-1"></i>Details
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Projects Stats -->
+    <div class="projects-stats" data-aos="fade-up">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">{{ site.projects.size }}+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Technologies Used</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1000+</div>
+          <div class="stat-label">Users Reached</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">GitHub Stars</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="projects-cta" data-aos="fade-up">
+      <div class="cta-content">
+        <h2>Have a Project in Mind?</h2>
+        <p>Let's collaborate and build something amazing together!</p>
+        <a href="{{ '/about/' | relative_url }}#contact" class="btn btn-primary btn-lg">
+          <i class="fas fa-envelope mr-2"></i>Get In Touch
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Filter JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const filterValue = this.getAttribute('data-filter');
+      
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Filter projects
+      projectCards.forEach(card => {
+        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+          card.style.display = 'block';
+          card.style.animation = 'fadeInUp 0.5s ease forwards';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script> 

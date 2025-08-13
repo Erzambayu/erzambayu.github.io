@@ -1,0 +1,106 @@
+<!-- Rose Pine Navbar -->
+<nav class="rose-pine-navbar navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <!-- Brand Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="{{ '/' | relative_url }}">
+      <i class="fas fa-gamepad me-2 brand-icon"></i>
+      <span class="brand-text">Erzam Bayu</span>
+    </a>
+
+    <!-- Dark Mode Toggle - Positioned in Navbar -->
+    <div class="navbar-theme-toggle d-none d-lg-block">
+      <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon theme-icon" id="theme-icon"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/' | relative_url }}">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Home</span>
+          </a>
+        </li>
+
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/about/' | relative_url }}">
+            <i class="fas fa-user nav-icon"></i>
+            <span class="nav-text">About</span>
+          </a>
+        </li>
+
+        <!-- Projects -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/projects/' | relative_url }}">
+            <i class="fas fa-project-diagram nav-icon"></i>
+            <span class="nav-text">Projects</span>
+          </a>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/blog/' | relative_url }}">
+            <i class="fas fa-blog nav-icon"></i>
+            <span class="nav-text">Blog</span>
+          </a>
+        </li>
+
+        <!-- Connect -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="connectDropdown" role="button" 
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-share-alt nav-icon"></i>
+            <span class="nav-text">Connect</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right rose-pine-dropdown">
+            {% if site.author.email %}
+            <a class="dropdown-item" href="mailto:{{ site.author.email }}">
+              <i class="fas fa-envelope"></i> Email
+            </a>
+            {% endif %}
+            {% if site.author.github %}
+            <a class="dropdown-item" href="https://github.com/{{ site.author.github }}" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            {% endif %}
+            {% if site.author.linkedin %}
+            <a class="dropdown-item" href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            {% endif %}
+            {% if site.author.instagram %}
+            <a class="dropdown-item" href="https://www.instagram.com/{{ site.author.instagram }}" target="_blank">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            {% endif %}
+            {% if site.author.twitter %}
+            <a class="dropdown-item" href="https://twitter.com/{{ site.author.twitter }}" target="_blank">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            {% endif %}
+            {% if site.author.youtube %}
+            <a class="dropdown-item" href="https://www.youtube.com/{{ site.author.youtube }}" target="_blank">
+              <i class="fab fa-youtube"></i> YouTube
+            </a>
+            {% endif %}
+          </div>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Navbar spacing -->
+<div class="navbar-spacer"></div>
