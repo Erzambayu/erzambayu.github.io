@@ -473,6 +473,7 @@ main {
   left: 0;
   width: 100%;
   background: hsla(240, 1%, 17%, 0.75);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
@@ -614,9 +615,9 @@ main {
   font-weight: var(--fw-300);
   line-height: 1.6;
   display: -webkit-box;
-  line-clamp: 4;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  line-clamp: 4;
   overflow: hidden;
 }
 
@@ -1448,8 +1449,8 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .testimonials-text {
-    line-clamp: 2;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 
   /* testimonials modal */
@@ -1893,3 +1894,19 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+
+/*-----------------------------------*\
+  #CUSTOM STYLES - NO INLINE
+\*-----------------------------------*/
+
+/* Technology icons sizing */
+.clients-item img {
+  width: 60px;
+  height: 60px;
+}
+
+/* Skill progress bar widths */
+.skill-progress-fill[data-width="75"] { width: 75%; }
+.skill-progress-fill[data-width="80"] { width: 80%; }
+.skill-progress-fill[data-width="85"] { width: 85%; }
+.skill-progress-fill[data-width="90"] { width: 90%; }

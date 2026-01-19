@@ -161,3 +161,12 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// Initialize skill progress bars from data-width attribute
+const skillProgressBars = document.querySelectorAll(".skill-progress-fill[data-width]");
+skillProgressBars.forEach(function(bar) {
+  const width = bar.getAttribute("data-width");
+  if (width) {
+    bar.style.width = width + "%";
+  }
+});
