@@ -40,14 +40,6 @@
 <body>
 
   <!--
-    - #LANGUAGE TOGGLE
-  -->
-  <div class="lang-toggle" title="Switch Language">
-    <button class="lang-toggle-btn active" data-lang="id">ID</button>
-    <button class="lang-toggle-btn" data-lang="en">EN</button>
-  </div>
-
-  <!--
     - #MAIN
   -->
 
@@ -73,11 +65,17 @@
           <p class="title">Game Promoter & Developer</p>
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
+        <div class="sidebar-actions">
+          <div class="lang-toggle" title="Switch Language">
+            <button class="lang-toggle-btn active" data-lang="id">ID</button>
+            <button class="lang-toggle-btn" data-lang="en">EN</button>
+          </div>
 
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
+          <button class="info_more-btn" data-sidebar-btn>
+            <span>Show Contacts</span>
+            <ion-icon name="chevron-down"></ion-icon>
+          </button>
+        </div>
 
       </div>
 

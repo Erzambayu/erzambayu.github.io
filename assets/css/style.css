@@ -391,10 +391,7 @@ main {
 }
 
 .info_more-btn {
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  border-radius: 0 15px;
+  border-radius: 15px;
   font-size: 13px;
   color: var(--orange-yellow-crayola);
   background: var(--border-gradient-onyx);
@@ -1518,12 +1515,6 @@ textarea.form-input::-webkit-resizer {
     padding: 5px 18px;
   }
 
-  .info_more-btn {
-    top: -30px;
-    right: -30px;
-    padding: 10px 15px;
-  }
-
   .info_more-btn span {
     display: block;
     font-size: var(--fs-8);
@@ -2118,7 +2109,16 @@ textarea.form-input::-webkit-resizer {
     margin: auto;
   }
 
-  .info_more-btn {
+  .sidebar-actions {
+    position: relative;
+    top: 0;
+    right: 0;
+    transform: none;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .sidebar-actions .info_more-btn {
     display: none;
   }
 
@@ -2674,21 +2674,26 @@ textarea.form-input::-webkit-resizer {
 
 
 /*-----------------------------------*\
-  #LANGUAGE TOGGLE
+  #SIDEBAR ACTIONS & LANGUAGE TOGGLE
 \*-----------------------------------*/
 
-.lang-toggle {
-  position: fixed;
-  top: 15px;
-  left: 15px;
+.sidebar-actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 3px;
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
-  border-radius: 25px;
-  padding: 5px 10px;
-  z-index: 20;
+  border-radius: 20px;
+  padding: 3px 6px;
   box-shadow: var(--shadow-2);
   transition: all 0.3s ease;
 }
@@ -2702,10 +2707,10 @@ textarea.form-input::-webkit-resizer {
   background: none;
   border: none;
   color: var(--light-gray-70);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: var(--fw-400);
-  padding: 4px 8px;
-  border-radius: 12px;
+  padding: 3px 6px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -2720,11 +2725,33 @@ textarea.form-input::-webkit-resizer {
   color: var(--white-2);
 }
 
+/* Adjust info_more-btn when inside sidebar-actions */
+.sidebar-actions .info_more-btn {
+  position: relative;
+  top: 0;
+  right: 0;
+  border-radius: 12px;
+  flex-shrink: 0;
+  padding: 5px;
+}
+
+.sidebar-actions .info_more-btn span {
+  display: none;
+}
+
+.sidebar-actions .info_more-btn ion-icon {
+  font-size: 14px;
+}
+
 /* Tablet and small desktop */
 @media (min-width: 580px) {
+  .sidebar-actions {
+    top: 15px;
+    right: 15px;
+    gap: 10px;
+  }
+
   .lang-toggle {
-    top: 20px;
-    left: 20px;
     padding: 6px 12px;
   }
 
@@ -2732,20 +2759,25 @@ textarea.form-input::-webkit-resizer {
     font-size: 12px;
     padding: 4px 10px;
   }
-}
 
-/* Large desktop - move to side to avoid navbar */
-@media (min-width: 1024px) {
-  .lang-toggle {
-    top: 20px;
-    left: 30px;
+  .sidebar-actions .info_more-btn {
+    padding: 10px 15px;
+  }
+
+  .sidebar-actions .info_more-btn span {
+    display: block;
+    font-size: var(--fs-8);
+  }
+
+  .sidebar-actions .info_more-btn ion-icon {
+    display: none;
   }
 }
 
-/* Extra large desktop */
-@media (min-width: 1250px) {
-  .lang-toggle {
-    top: 25px;
-    left: calc(50% - 600px + 30px);
+/* Large desktop */
+@media (min-width: 1024px) {
+  .sidebar-actions {
+    top: 20px;
+    right: 20px;
   }
 }
