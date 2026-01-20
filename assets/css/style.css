@@ -2680,7 +2680,7 @@ textarea.form-input::-webkit-resizer {
 .lang-toggle {
   position: fixed;
   top: 15px;
-  right: 15px;
+  left: 15px;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -2724,7 +2724,7 @@ textarea.form-input::-webkit-resizer {
 @media (min-width: 580px) {
   .lang-toggle {
     top: 20px;
-    right: 20px;
+    left: 20px;
     padding: 6px 12px;
   }
 
@@ -2738,7 +2738,7 @@ textarea.form-input::-webkit-resizer {
 @media (min-width: 1024px) {
   .lang-toggle {
     top: 20px;
-    right: 30px;
+    left: 30px;
   }
 }
 
@@ -2746,6 +2746,6 @@ textarea.form-input::-webkit-resizer {
 @media (min-width: 1250px) {
   .lang-toggle {
     top: 25px;
-    right: calc(50% - 600px + 30px);
+    left: calc(50% - 600px + 30px);
   }
 }
