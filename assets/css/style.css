@@ -2679,18 +2679,17 @@ textarea.form-input::-webkit-resizer {
 
 .lang-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
-  border-radius: 30px;
-  padding: 8px 16px;
-  z-index: 15;
+  border-radius: 25px;
+  padding: 5px 10px;
+  z-index: 20;
   box-shadow: var(--shadow-2);
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -2703,10 +2702,10 @@ textarea.form-input::-webkit-resizer {
   background: none;
   border: none;
   color: var(--light-gray-70);
-  font-size: var(--fs-8);
+  font-size: 11px;
   font-weight: var(--fw-400);
-  padding: 4px 10px;
-  border-radius: 15px;
+  padding: 4px 8px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -2721,25 +2720,32 @@ textarea.form-input::-webkit-resizer {
   color: var(--white-2);
 }
 
-/* Mobile positioning */
-@media (max-width: 580px) {
+/* Tablet and small desktop */
+@media (min-width: 580px) {
   .lang-toggle {
-    top: auto;
-    bottom: 80px;
-    right: auto;
-    left: 20px;
+    top: 20px;
+    right: 20px;
     padding: 6px 12px;
   }
 
   .lang-toggle-btn {
-    font-size: 11px;
-    padding: 3px 8px;
+    font-size: 12px;
+    padding: 4px 10px;
   }
 }
 
+/* Large desktop - move to side to avoid navbar */
 @media (min-width: 1024px) {
   .lang-toggle {
+    top: 20px;
+    right: 30px;
+  }
+}
+
+/* Extra large desktop */
+@media (min-width: 1250px) {
+  .lang-toggle {
     top: 25px;
-    right: 25px;
+    right: calc(50% - 600px + 30px);
   }
 }
