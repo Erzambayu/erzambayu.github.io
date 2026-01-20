@@ -2,6 +2,47 @@
 
 
 
+// ============================================
+// LOADING SCREEN
+// ============================================
+
+const loadingScreen = document.getElementById("loading-screen");
+
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    if (loadingScreen) {
+      loadingScreen.classList.add("hidden");
+    }
+  }, 500);
+});
+
+
+
+// ============================================
+// BACK TO TOP BUTTON
+// ============================================
+
+const backToTopBtn = document.getElementById("back-to-top");
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 300) {
+    if (backToTopBtn) backToTopBtn.classList.add("visible");
+  } else {
+    if (backToTopBtn) backToTopBtn.classList.remove("visible");
+  }
+});
+
+if (backToTopBtn) {
+  backToTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
+
+
 // element toggle function
 const elementToggleFunc = function (elem) { if (elem) elem.classList.toggle("active"); }
 
@@ -147,33 +188,74 @@ const pages = document.querySelectorAll("[data-page]");
 // Map navigation links to page names (fixed order: about, resume, portfolio, contact)
 const pageNames = ["about", "resume", "portfolio", "contact"];
 
+// Function to activate a page by name
+function activatePage(pageName) {
+  // Update pages
+  for (let j = 0; j < pages.length; j++) {
+    if (pageName === pages[j].dataset.page) {
+      pages[j].classList.add("active");
+    } else {
+      pages[j].classList.remove("active");
+    }
+  }
+
+  // Update navigation links
+  const pageIndex = pageNames.indexOf(pageName);
+  for (let j = 0; j < navigationLinks.length; j++) {
+    if (j === pageIndex) {
+      navigationLinks[j].classList.add("active");
+    } else {
+      navigationLinks[j].classList.remove("active");
+    }
+  }
+}
+
+// Restore last active page from localStorage or URL hash
+function restoreActivePage() {
+  // Check URL hash first (e.g., #resume)
+  const hash = window.location.hash.replace("#", "");
+  if (hash && pageNames.includes(hash)) {
+    activatePage(hash);
+    localStorage.setItem("activePage", hash);
+    return;
+  }
+
+  // Otherwise check localStorage
+  const savedPage = localStorage.getItem("activePage");
+  if (savedPage && pageNames.includes(savedPage)) {
+    activatePage(savedPage);
+  }
+}
+
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   // Store the page target in a closure
   const targetPage = pageNames[i];
 
   navigationLinks[i].addEventListener("click", function () {
-    // Update pages
-    for (let j = 0; j < pages.length; j++) {
-      if (targetPage === pages[j].dataset.page) {
-        pages[j].classList.add("active");
-      } else {
-        pages[j].classList.remove("active");
-      }
-    }
-
-    // Update navigation links
-    for (let j = 0; j < navigationLinks.length; j++) {
-      if (j === i) {
-        navigationLinks[j].classList.add("active");
-      } else {
-        navigationLinks[j].classList.remove("active");
-      }
-    }
+    activatePage(targetPage);
+    
+    // Save to localStorage
+    localStorage.setItem("activePage", targetPage);
+    
+    // Update URL hash without scrolling
+    history.replaceState(null, null, "#" + targetPage);
 
     window.scrollTo(0, 0);
   });
 }
+
+// Restore page on load
+restoreActivePage();
+
+// Listen for hash changes (browser back/forward)
+window.addEventListener("hashchange", function () {
+  const hash = window.location.hash.replace("#", "");
+  if (hash && pageNames.includes(hash)) {
+    activatePage(hash);
+    localStorage.setItem("activePage", hash);
+  }
+});
 
 // Initialize skill progress bars from data-width attribute
 const skillProgressBars = document.querySelectorAll(".skill-progress-fill[data-width]");

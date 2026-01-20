@@ -18,6 +18,19 @@
     content="🎮 Game promoter & full-stack developer Jakarta dengan 7+ years expertise dalam gaming marketing, web development, dan tech innovation.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://erzambayu.github.io">
+  <meta property="og:image" content="https://erzambayu.net/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:site_name" content="Erzam Bayu Portfolio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Erzam Bayu | Game Promoter & Full-Stack Developer">
+  <meta name="twitter:description" content="🎮 Game promoter & full-stack developer Jakarta dengan expertise dalam gaming marketing dan web development.">
+  <meta name="twitter:image" content="https://erzambayu.net/assets/images/og-image.png">
+  <meta name="twitter:site" content="@bayuerzam">
+  <meta name="twitter:creator" content="@bayuerzam">
 
   <!--
     - favicon
@@ -38,6 +51,19 @@
 </head>
 
 <body>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="loader">
+      <div class="loader-circle"></div>
+      <span class="loader-text">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" title="Back to Top" aria-label="Back to Top">
+    <ion-icon name="chevron-up-outline"></ion-icon>
+  </button>
 
   <!--
     - #MAIN
@@ -756,78 +782,12 @@
 
           <ul class="project-list">
 
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="#" data-project-item data-title="Semangat Sayang" data-category="Web Development"
-                data-description="Website motivasi dan dukungan untuk orang tersayang. Dibuat dengan desain yang hangat dan interaktif untuk memberikan semangat kepada pengunjung."
-                data-tech="HTML,CSS,JavaScript,Vercel" data-live="https://semangat-sayang.vercel.app" data-github="">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Semangat Sayang" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Semangat Sayang</h3>
-
-                <p class="project-category">Web Development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="#" data-project-item data-title="PoopDL" data-category="Web Development"
-                data-description="Social media downloader tool yang memungkinkan pengguna mengunduh konten dari berbagai platform media sosial dengan mudah dan cepat."
-                data-tech="HTML,CSS,JavaScript,API Integration,Vercel" data-live="https://poopdl.vercel.app"
-                data-github="">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="PoopDL" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">PoopDL</h3>
-
-                <p class="project-category">Web Development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="#" data-project-item data-title="TeraDL" data-category="Web Development"
-                data-description="Terabox file downloader yang dibuat dengan Python dan Flask. Memungkinkan pengguna untuk mengunduh file dari Terabox dengan bypass limit."
-                data-tech="Python,Flask,HTML,CSS,JavaScript" data-live=""
-                data-github="https://github.com/Erzambayu/TeraDL">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="TeraDL" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">TeraDL</h3>
-
-                <p class="project-category">Web Development</p>
-
-              </a>
-            </li>
-
+            <!-- ⭐ WA-BOT - 21 Stars -->
             <li class="project-item active" data-filter-item data-category="applications">
-              <a href="#" data-project-item data-title="UserRecon" data-category="Applications"
-                data-description="OSINT (Open Source Intelligence) tool untuk username reconnaissance. Membantu menemukan keberadaan username di berbagai platform media sosial."
-                data-tech="Python,CLI,OSINT" data-live="" data-github="https://github.com/Erzambayu/UserRecon">
+              <a href="#" data-project-item data-title="WA-BOT" data-category="WhatsApp Bot"
+                data-description="WhatsApp Bot dengan berbagai fitur automation. Bot yang powerful untuk membantu otomatisasi pesan dan interaksi di WhatsApp. ⭐ 21 Stars"
+                data-tech="JavaScript,Node.js,WhatsApp Web API" data-live=""
+                data-github="https://github.com/Erzambayu/WA-BOT">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -835,21 +795,23 @@
                   </div>
 
                   <img
-                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="UserRecon" loading="lazy">
+                    src="https://images.unsplash.com/photo-1633675254053-d96c7668c3b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
+                    alt="WA-BOT" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">UserRecon</h3>
+                <h3 class="project-title">WA-BOT ⭐21</h3>
 
-                <p class="project-category">Applications</p>
+                <p class="project-category">WhatsApp Bot</p>
 
               </a>
             </li>
 
+            <!-- ⭐ BudgetKu - 18 Stars -->
             <li class="project-item active" data-filter-item data-category="web development">
-              <a href="#" data-project-item data-title="Birthday Website" data-category="Web Development"
-                data-description="Custom birthday greeting page dengan animasi dan efek visual yang menarik. Dibuat khusus untuk memberikan ucapan ulang tahun yang berkesan."
-                data-tech="HTML,CSS,JavaScript,Animation" data-live="" data-github="">
+              <a href="#" data-project-item data-title="BudgetKu" data-category="Web Application"
+                data-description="Aplikasi manajemen keuangan modern dengan analisis prediktif dan UI yang elegan. Kelola budget dan pengeluaran dengan mudah! ⭐ 18 Stars"
+                data-tech="JavaScript,HTML,CSS,LocalStorage" data-live="https://erzambayu.me/BudgetKu/"
+                data-github="https://github.com/Erzambayu/BudgetKu">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -857,21 +819,95 @@
                   </div>
 
                   <img
-                    src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Birthday Website" loading="lazy">
+                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
+                    alt="BudgetKu" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Birthday Website</h3>
+                <h3 class="project-title">BudgetKu ⭐18</h3>
+
+                <p class="project-category">Web Application</p>
+
+              </a>
+            </li>
+
+            <!-- ⭐ Session Changer - 10 Stars -->
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#" data-project-item data-title="Session Changer" data-category="Browser Extension"
+                data-description="Browser extension untuk switching login sessions dengan mudah. Mendukung multiple accounts dan quick switch antar sesi login di berbagai website. ⭐ 10 Stars"
+                data-tech="JavaScript,Chrome Extension,Browser API" data-live=""
+                data-github="https://github.com/Erzambayu/sessionns-changerr">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
+                    alt="Session Changer" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Session Changer ⭐10</h3>
+
+                <p class="project-category">Browser Extension</p>
+
+              </a>
+            </li>
+
+            <!-- ⭐ TaskFlow - 6 Stars -->
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" data-project-item data-title="TaskFlow" data-category="Web Application"
+                data-description="Task management application dengan TypeScript. Kelola tugas dan workflow dengan interface yang modern dan intuitif. ⭐ 6 Stars"
+                data-tech="TypeScript,React,CSS" data-live=""
+                data-github="https://github.com/Erzambayu/taskflow">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
+                    alt="TaskFlow" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">TaskFlow ⭐6</h3>
+
+                <p class="project-category">Web Application</p>
+
+              </a>
+            </li>
+
+            <!-- ⭐ Homepage Islami - 1 Star -->
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" data-project-item data-title="Homepage Islami" data-category="Web Development"
+                data-description="Homepage dengan tema Islami. Menampilkan jadwal sholat, Al-Quran digital, dan konten Islami lainnya dengan desain yang elegan. ⭐ 1 Star"
+                data-tech="JavaScript,HTML,CSS,API" data-live="https://erzambayu.me/homepage-islami/"
+                data-github="https://github.com/Erzambayu/homepage-islami">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1585036156171-384164a8c675?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
+                    alt="Homepage Islami" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Homepage Islami ⭐1</h3>
 
                 <p class="project-category">Web Development</p>
 
               </a>
             </li>
 
+            <!-- ⭐ Toko Aplikasi Premium - 1 Star -->
             <li class="project-item active" data-filter-item data-category="web development">
-              <a href="#" data-project-item data-title="ThisForYou" data-category="Web Development"
-                data-description="Personal message website untuk mengirimkan pesan khusus kepada orang tersayang dengan tampilan yang elegan dan romantis."
-                data-tech="HTML,CSS,JavaScript" data-live="" data-github="">
+              <a href="#" data-project-item data-title="Toko Aplikasi Premium" data-category="E-Commerce"
+                data-description="Platform e-commerce untuk menjual aplikasi premium. Dilengkapi dengan sistem pembayaran dan katalog produk digital. ⭐ 1 Star"
+                data-tech="JavaScript,HTML,CSS" data-live=""
+                data-github="https://github.com/Erzambayu/toko-aplikasi-premium">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -879,13 +915,61 @@
                   </div>
 
                   <img
-                    src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="ThisForYou" loading="lazy">
+                    src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
+                    alt="Toko Aplikasi Premium" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">ThisForYou</h3>
+                <h3 class="project-title">Toko Aplikasi ⭐1</h3>
 
-                <p class="project-category">Web Development</p>
+                <p class="project-category">E-Commerce</p>
+
+              </a>
+            </li>
+
+            <!-- ⭐ GitHub Unfollower - 1 Star -->
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" data-project-item data-title="GitHub Unfollower" data-category="Web Application"
+                data-description="🕵️ Detect GitHub users who don't follow you back and those you don't follow back. Supports accounts with +6,000 connections using personal access tokens. ⭐ 1 Star"
+                data-tech="JavaScript,GitHub API,HTML,CSS" data-live="https://erzambayu.net/github-unfollower/"
+                data-github="https://github.com/Erzambayu/github-unfollower">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
+                    alt="GitHub Unfollower" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">GitHub Unfollower ⭐1</h3>
+
+                <p class="project-category">Web Application</p>
+
+              </a>
+            </li>
+
+            <!-- Smart Translate Extension -->
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#" data-project-item data-title="Smart Translate Extension" data-category="Browser Extension"
+                data-description="Ekstensi Chrome untuk menerjemahkan teks secara instan menggunakan berbagai layanan AI. Cukup blok teks dan terjemahan akan muncul otomatis!"
+                data-tech="JavaScript,Chrome Extension,AI API" data-live=""
+                data-github="https://github.com/Erzambayu/smart-translate-extension">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
+                    alt="Smart Translate Extension" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Smart Translate</h3>
+
+                <p class="project-category">Browser Extension</p>
 
               </a>
             </li>

@@ -2674,6 +2674,118 @@ textarea.form-input::-webkit-resizer {
 
 
 /*-----------------------------------*\
+  #LOADING SCREEN
+\*-----------------------------------*/
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--smoky-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.loader-circle {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--jet);
+  border-top-color: var(--orange-yellow-crayola);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-text {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  letter-spacing: 2px;
+}
+
+
+
+/*-----------------------------------*\
+  #BACK TO TOP BUTTON
+\*-----------------------------------*/
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange-yellow-crayola);
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  box-shadow: var(--shadow-2);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  border-color: var(--orange-yellow-crayola);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px hsla(45, 100%, 72%, 0.3);
+}
+
+.back-to-top:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (min-width: 580px) {
+  .back-to-top {
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+}
+
+
+
+/*-----------------------------------*\
   #SIDEBAR ACTIONS & LANGUAGE TOGGLE
 \*-----------------------------------*/
 
