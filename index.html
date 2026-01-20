@@ -40,6 +40,14 @@
 <body>
 
   <!--
+    - #LANGUAGE TOGGLE
+  -->
+  <div class="lang-toggle" title="Switch Language">
+    <button class="lang-toggle-btn active" data-lang="id">ID</button>
+    <button class="lang-toggle-btn" data-lang="en">EN</button>
+  </div>
+
+  <!--
     - #MAIN
   -->
 
@@ -114,42 +122,55 @@
         <ul class="social-list">
 
           <li class="social-item">
-            <a href="https://github.com/erzambayu" class="social-link" target="_blank" rel="noopener noreferrer" title="GitHub Profile">
+            <a href="https://github.com/erzambayu" class="social-link" target="_blank" rel="noopener noreferrer"
+              title="GitHub Profile">
               <ion-icon name="logo-github"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://linkedin.com/in/erzam-bayu" class="social-link" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
+            <a href="https://linkedin.com/in/erzam-bayu" class="social-link" target="_blank" rel="noopener noreferrer"
+              title="LinkedIn Profile">
               <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://instagram.com/erzam.bayu" class="social-link" target="_blank" rel="noopener noreferrer" title="Instagram Profile">
+            <a href="https://instagram.com/erzam.bayu" class="social-link" target="_blank" rel="noopener noreferrer"
+              title="Instagram Profile">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://facebook.com/erzam.bayu" class="social-link" target="_blank" rel="noopener noreferrer" title="Facebook Profile">
+            <a href="https://facebook.com/erzam.bayu" class="social-link" target="_blank" rel="noopener noreferrer"
+              title="Facebook Profile">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://twitter.com/bayuerzam" class="social-link" target="_blank" rel="noopener noreferrer" title="Twitter Profile">
+            <a href="https://twitter.com/bayuerzam" class="social-link" target="_blank" rel="noopener noreferrer"
+              title="Twitter Profile">
               <ion-icon name="logo-twitter"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://youtube.com/erzambayu" class="social-link" target="_blank" rel="noopener noreferrer" title="YouTube Channel">
+            <a href="https://youtube.com/erzambayu" class="social-link" target="_blank" rel="noopener noreferrer"
+              title="YouTube Channel">
               <ion-icon name="logo-youtube"></ion-icon>
             </a>
           </li>
 
         </ul>
+
+        <div class="separator"></div>
+
+        <a href="./Erzam_Bayu_CV_ATS_english.pdf" class="download-cv-btn" download>
+          <ion-icon name="download-outline"></ion-icon>
+          <span>Download CV</span>
+        </a>
 
       </div>
 
@@ -404,8 +425,8 @@
               <span>2024 — Present</span>
 
               <p class="timeline-text">
-                Courses: Desktop-Based Programming, Business and Technical Communication, Software Engineering, 
-                System Analysis and Design, IT Infrastructure Fundamentals, Information Systems Risk Management 
+                Courses: Desktop-Based Programming, Business and Technical Communication, Software Engineering,
+                System Analysis and Design, IT Infrastructure Fundamentals, Information Systems Risk Management
                 and Audit, Server Administration.
               </p>
 
@@ -413,12 +434,14 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">Vocational High School Computer and Network Engineering - SMK Perguruan Rakyat 2</h4>
+              <h4 class="h4 timeline-item-title">Vocational High School Computer and Network Engineering - SMK Perguruan
+                Rakyat 2</h4>
 
               <span>2018 — 2020</span>
 
               <p class="timeline-text">
-                Located in Duren Sawit, East Jakarta. Achieved Runner-Up position in DKI Jakarta Network Engineering Competition.
+                Located in Duren Sawit, East Jakarta. Achieved Runner-Up position in DKI Jakarta Network Engineering
+                Competition.
               </p>
 
             </li>
@@ -735,8 +758,10 @@
 
           <ul class="project-list">
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="https://semangat-sayang.vercel.app" target="_blank" rel="noopener noreferrer">
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" data-project-item data-title="Semangat Sayang" data-category="Web Development"
+                data-description="Website motivasi dan dukungan untuk orang tersayang. Dibuat dengan desain yang hangat dan interaktif untuk memberikan semangat kepada pengunjung."
+                data-tech="HTML,CSS,JavaScript,Vercel" data-live="https://semangat-sayang.vercel.app" data-github="">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -755,8 +780,11 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="https://poopdl.vercel.app" target="_blank" rel="noopener noreferrer">
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" data-project-item data-title="PoopDL" data-category="Web Development"
+                data-description="Social media downloader tool yang memungkinkan pengguna mengunduh konten dari berbagai platform media sosial dengan mudah dan cepat."
+                data-tech="HTML,CSS,JavaScript,API Integration,Vercel" data-live="https://poopdl.vercel.app"
+                data-github="">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -775,8 +803,11 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="https://github.com/Erzambayu/TeraDL" target="_blank" rel="noopener noreferrer">
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" data-project-item data-title="TeraDL" data-category="Web Development"
+                data-description="Terabox file downloader yang dibuat dengan Python dan Flask. Memungkinkan pengguna untuk mengunduh file dari Terabox dengan bypass limit."
+                data-tech="Python,Flask,HTML,CSS,JavaScript" data-live=""
+                data-github="https://github.com/Erzambayu/TeraDL">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -795,8 +826,10 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="https://github.com/Erzambayu/UserRecon" target="_blank" rel="noopener noreferrer">
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#" data-project-item data-title="UserRecon" data-category="Applications"
+                data-description="OSINT (Open Source Intelligence) tool untuk username reconnaissance. Membantu menemukan keberadaan username di berbagai platform media sosial."
+                data-tech="Python,CLI,OSINT" data-live="" data-github="https://github.com/Erzambayu/UserRecon">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -815,8 +848,10 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#" target="_blank">
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" data-project-item data-title="Birthday Website" data-category="Web Development"
+                data-description="Custom birthday greeting page dengan animasi dan efek visual yang menarik. Dibuat khusus untuk memberikan ucapan ulang tahun yang berkesan."
+                data-tech="HTML,CSS,JavaScript,Animation" data-live="" data-github="">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -835,8 +870,10 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#" target="_blank">
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" data-project-item data-title="ThisForYou" data-category="Web Development"
+                data-description="Personal message website untuk mengirimkan pesan khusus kepada orang tersayang dengan tampilan yang elegan dan romantis."
+                data-tech="HTML,CSS,JavaScript" data-live="" data-github="">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -887,7 +924,7 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="https://formspree.io/f/erzambayu@gmail.com" method="POST" class="form" data-form>
+          <form action="https://formspree.io/f/xwvvqwbk" method="POST" class="form" data-form>
 
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
@@ -920,6 +957,52 @@
   <!--
     - custom js link
   -->
+
+  <!--
+    - #PROJECT MODAL
+  -->
+
+  <div class="modal-container" data-project-modal-container>
+    <div class="overlay" data-project-overlay></div>
+
+    <div class="project-modal">
+      <button class="modal-close-btn" data-project-modal-close>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+      <div class="project-modal-header">
+        <figure class="project-modal-img">
+          <img src="" alt="" data-project-modal-img>
+        </figure>
+
+        <div class="project-modal-info">
+          <h3 class="project-modal-title" data-project-modal-title></h3>
+          <p class="project-modal-category" data-project-modal-category></p>
+        </div>
+      </div>
+
+      <p class="project-modal-description" data-project-modal-description></p>
+
+      <div class="tech-stack">
+        <h4 class="tech-stack-title">Tech Stack</h4>
+        <div class="tech-stack-list" data-project-modal-tech></div>
+      </div>
+
+      <div class="project-modal-actions" data-project-modal-actions></div>
+    </div>
+  </div>
+
+
+  <!--
+    - #FLOATING DOWNLOAD CV BUTTON (Mobile)
+  -->
+
+  <a href="./Erzam_Bayu_CV_ATS_english.pdf" class="download-cv-fixed" download title="Download CV">
+    <ion-icon name="download-outline"></ion-icon>
+    <span>Download CV</span>
+  </a>
+
+
   <script src="./assets/js/script.js"></script>
 
   <!--
