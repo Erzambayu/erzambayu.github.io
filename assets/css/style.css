@@ -372,6 +372,12 @@ main {
   border-radius: 20px;
 }
 
+.avatar-box img {
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
 .info-content .name {
   color: var(--white-2);
   font-size: var(--fs-3);
@@ -2383,12 +2389,11 @@ textarea.form-input::-webkit-resizer {
 }
 
 /* Technology Icons Hover */
-.clients-item a {
-  display: block;
+.clients-item {
   transition: transform 0.3s ease;
 }
 
-.clients-item a:hover {
+.clients-item:hover {
   transform: scale(1.2) rotate(5deg);
 }
 
@@ -2790,12 +2795,20 @@ textarea.form-input::-webkit-resizer {
 \*-----------------------------------*/
 
 .sidebar-actions {
-  position: absolute;
-  top: 8px;
-  right: 8px;
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+/* Mobile / tablet (< 1250px): float top-right over the avatar area.
+   At >=1250px the sidebar is a column; the media rule at line ~2112 switches
+   .sidebar-actions back to position: relative so it sits under the avatar. */
+@media (max-width: 1249px) {
+  .sidebar-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
 }
 
 .lang-toggle {
@@ -2886,10 +2899,162 @@ textarea.form-input::-webkit-resizer {
   }
 }
 
-/* Large desktop */
-@media (min-width: 1024px) {
+/* Large tablet / small desktop (sidebar still in row layout).
+   Scoped to < 1250px so it doesn't override the column-layout rules below. */
+@media (min-width: 1024px) and (max-width: 1249px) {
   .sidebar-actions {
     top: 20px;
     right: 20px;
   }
+}
+
+
+
+/*-----------------------------------*\
+  #THEME TOGGLE BUTTON
+\*-----------------------------------*/
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--jet);
+  background: var(--eerie-black-2);
+  color: var(--orange-yellow-crayola);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 9998;
+  box-shadow: var(--shadow-2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 0 18px hsla(45, 100%, 72%, 0.35);
+}
+
+.theme-toggle ion-icon {
+  font-size: 22px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  position: absolute;
+}
+
+[data-theme="dark"] .theme-toggle ion-icon[data-theme-icon="dark"] { opacity: 1; transform: rotate(0); }
+[data-theme="dark"] .theme-toggle ion-icon[data-theme-icon="light"] { opacity: 0; transform: rotate(90deg); }
+[data-theme="light"] .theme-toggle ion-icon[data-theme-icon="dark"] { opacity: 0; transform: rotate(-90deg); }
+[data-theme="light"] .theme-toggle ion-icon[data-theme-icon="light"] { opacity: 1; transform: rotate(0); }
+
+@media (min-width: 580px) {
+  .theme-toggle {
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+  }
+  .theme-toggle ion-icon { font-size: 24px; }
+}
+
+
+
+/*-----------------------------------*\
+  #LIGHT THEME OVERRIDES
+\*-----------------------------------*/
+
+[data-theme="light"] {
+  --jet: hsl(0, 0%, 78%);
+  --onyx: hsl(0, 0%, 92%);
+  --eerie-black-1: hsl(0, 0%, 98%);
+  --eerie-black-2: hsl(0, 0%, 100%);
+  /* --smoky-black is intentionally NOT overridden.
+     It is used as dark text on yellow-accent backgrounds (lang toggle active,
+     download CV button, ::selection). Swapping it to light would make text
+     unreadable. Body background is overridden directly below. */
+  --white-1: hsl(240, 5%, 12%);
+  --white-2: hsl(240, 5%, 18%);
+  --light-gray: hsl(240, 3%, 32%);
+  --light-gray-70: hsla(240, 3%, 32%, 0.75);
+
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 96%) 3%, hsl(0, 0%, 92%) 97%);
+  --bg-gradient-jet: linear-gradient(to bottom right, hsla(0, 0%, 90%, 0.4) 0%, hsla(0, 0%, 95%, 0) 100%), hsl(0, 0%, 100%);
+  --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 78%) 0%, hsla(0, 0%, 78%, 0) 50%);
+
+  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.08);
+  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.06);
+  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.08);
+  --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.06);
+  --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.1);
+}
+
+[data-theme="light"] body {
+  background: hsl(0, 0%, 96%);
+}
+
+[data-theme="light"] .clients-item img {
+  filter: grayscale(0.4) brightness(0.85);
+}
+
+/* --- Light-mode specific contrast fixes --- */
+
+/* Theme toggle needs stronger outline on bright body bg */
+[data-theme="light"] .theme-toggle {
+  border-color: hsl(0, 0%, 60%);
+  box-shadow: 0 6px 20px hsla(0, 0%, 0%, 0.12);
+}
+
+/* Language toggle contrast against light sidebar gradient */
+[data-theme="light"] .lang-toggle {
+  border-color: hsl(0, 0%, 70%);
+  box-shadow: 0 4px 14px hsla(0, 0%, 0%, 0.08);
+}
+
+/* Inactive lang button: keep legible in light mode */
+[data-theme="light"] .lang-toggle-btn {
+  color: hsl(240, 3%, 32%);
+}
+[data-theme="light"] .lang-toggle-btn:hover:not(.active) {
+  color: hsl(240, 5%, 12%);
+}
+
+/* Scrollbar thumb looks too light against the white body */
+[data-theme="light"] body::-webkit-scrollbar-thumb,
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 70%);
+}
+
+/* Loading screen should match theme to avoid dark flash in light mode */
+[data-theme="light"] .loading-screen {
+  background: hsl(0, 0%, 96%);
+}
+
+
+
+/*-----------------------------------*\
+  #CONTACT FORM FEEDBACK
+\*-----------------------------------*/
+
+.form-feedback {
+  margin-top: 12px;
+  font-size: var(--fs-7);
+  min-height: 1.2em;
+  padding: 0 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-feedback.success,
+.form-feedback.error {
+  opacity: 1;
+}
+
+.form-feedback.success {
+  color: hsl(142, 60%, 55%);
+}
+
+.form-feedback.error {
+  color: var(--bittersweet-shimmer);
 }

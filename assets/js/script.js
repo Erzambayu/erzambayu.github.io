@@ -1,5 +1,36 @@
 'use strict';
 
+// ============================================
+// THEME TOGGLE (light/dark)
+// ============================================
+
+const themeToggleBtn = document.getElementById("theme-toggle");
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  try { localStorage.setItem("theme", theme); } catch (e) { /* ignore quota */ }
+  if (themeToggleBtn) {
+    themeToggleBtn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+    themeToggleBtn.setAttribute(
+      "aria-label",
+      theme === "light" ? "Switch to dark theme" : "Switch to light theme"
+    );
+  }
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute("content", theme === "light" ? "#f5f5f7" : "#1e1e1f");
+  }
+}
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", function () {
+    const current = document.documentElement.getAttribute("data-theme") || "dark";
+    const next = current === "light" ? "dark" : "light";
+    applyTheme(next);
+  });
+  applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
+}
+
 
 
 // ============================================
@@ -54,49 +85,12 @@ const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 // sidebar toggle functionality for mobile
 if (sidebarBtn) {
-  sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-}
-
-
-
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-  if (modalContainer) modalContainer.classList.toggle("active");
-  if (overlay) overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-  testimonialsItem[i].addEventListener("click", function () {
-
-    if (modalImg) {
-      modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-      modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    }
-    if (modalTitle) modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    if (modalText) modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-    testimonialsModalFunc();
-
+  sidebarBtn.addEventListener("click", function () {
+    elementToggleFunc(sidebar);
+    const expanded = sidebar && sidebar.classList.contains("active");
+    sidebarBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
   });
-
 }
-
-// add click event to modal close button
-if (modalCloseBtn) modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-if (overlay) overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
@@ -106,17 +100,11 @@ const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
+if (select) {
+  select.addEventListener("click", function () {
+    elementToggleFunc(this);
+    const expanded = this.classList.contains("active");
+    this.setAttribute("aria-expanded", expanded ? "true" : "false");
   });
 }
 
@@ -124,38 +112,40 @@ for (let i = 0; i < selectItems.length; i++) {
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
-
   for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    if (selectedValue === "all" || selectedValue === filterItems[i].dataset.category) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
     }
-
   }
+};
 
+for (let i = 0; i < selectItems.length; i++) {
+  selectItems[i].addEventListener("click", function () {
+    const selectedValue = this.innerText.toLowerCase();
+    if (selectValue) selectValue.innerText = this.innerText;
+    if (select) {
+      elementToggleFunc(select);
+      select.setAttribute("aria-expanded", "false");
+    }
+    filterFunc(selectedValue);
+  });
 }
 
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
-
   filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+    const selectedValue = this.innerText.toLowerCase();
+    if (selectValue) selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
 
-    lastClickedBtn.classList.remove("active");
+    if (lastClickedBtn) lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
-
   });
-
 }
 
 
@@ -164,18 +154,62 @@ for (let i = 0; i < filterBtn.length; i++) {
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
+const formFeedback = document.querySelector("[data-form-feedback]");
 
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
+    if (form && form.checkValidity()) {
+      if (formBtn) formBtn.removeAttribute("disabled");
     } else {
+      if (formBtn) formBtn.setAttribute("disabled", "");
+    }
+  });
+}
+
+// AJAX submit via Formspree so user stays on the page with inline feedback.
+if (form) {
+  form.addEventListener("submit", async function (e) {
+    if (!form.checkValidity()) return;
+    e.preventDefault();
+
+    const originalLabel = formBtn ? formBtn.querySelector("span").textContent : "";
+    if (formBtn) {
       formBtn.setAttribute("disabled", "");
+      formBtn.querySelector("span").textContent = "Sending…";
+    }
+    if (formFeedback) {
+      formFeedback.textContent = "";
+      formFeedback.className = "form-feedback";
     }
 
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      });
+
+      if (res.ok) {
+        form.reset();
+        if (formFeedback) {
+          formFeedback.className = "form-feedback success";
+          formFeedback.textContent = "Pesan terkirim. Terima kasih!";
+        }
+      } else {
+        throw new Error("Bad response");
+      }
+    } catch (err) {
+      if (formFeedback) {
+        formFeedback.className = "form-feedback error";
+        formFeedback.textContent = "Gagal mengirim. Coba lagi atau email langsung ke erzambayu@gmail.com.";
+      }
+    } finally {
+      if (formBtn) {
+        formBtn.querySelector("span").textContent = originalLabel || "Send Message";
+        if (!form.checkValidity()) formBtn.setAttribute("disabled", "");
+      }
+    }
   });
 }
 
@@ -190,7 +224,6 @@ const pageNames = ["about", "resume", "portfolio", "contact"];
 
 // Function to activate a page by name
 function activatePage(pageName) {
-  // Update pages
   for (let j = 0; j < pages.length; j++) {
     if (pageName === pages[j].dataset.page) {
       pages[j].classList.add("active");
@@ -199,13 +232,14 @@ function activatePage(pageName) {
     }
   }
 
-  // Update navigation links
   const pageIndex = pageNames.indexOf(pageName);
   for (let j = 0; j < navigationLinks.length; j++) {
     if (j === pageIndex) {
       navigationLinks[j].classList.add("active");
+      navigationLinks[j].setAttribute("aria-current", "page");
     } else {
       navigationLinks[j].classList.remove("active");
+      navigationLinks[j].removeAttribute("aria-current");
     }
   }
 }
@@ -283,16 +317,39 @@ const projectModalDescription = document.querySelector("[data-project-modal-desc
 const projectModalTech = document.querySelector("[data-project-modal-tech]");
 const projectModalActions = document.querySelector("[data-project-modal-actions]");
 
-// Toggle project modal
-const toggleProjectModal = function () {
-  if (projectModalContainer) projectModalContainer.classList.toggle("active");
-  if (projectOverlay) projectOverlay.classList.toggle("active");
-}
+// Track the element that opened the modal so we can restore focus on close.
+let lastFocusedBeforeModal = null;
+
+const openProjectModal = function () {
+  if (projectModalContainer) {
+    projectModalContainer.classList.add("active");
+    projectModalContainer.setAttribute("aria-hidden", "false");
+  }
+  if (projectOverlay) projectOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+  if (projectModalCloseBtn) {
+    setTimeout(function () { projectModalCloseBtn.focus(); }, 50);
+  }
+};
+
+const closeProjectModal = function () {
+  if (projectModalContainer) {
+    projectModalContainer.classList.remove("active");
+    projectModalContainer.setAttribute("aria-hidden", "true");
+  }
+  if (projectOverlay) projectOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+  if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === "function") {
+    lastFocusedBeforeModal.focus();
+    lastFocusedBeforeModal = null;
+  }
+};
 
 // Add click event to all project items
 projectItems.forEach(function (item) {
   item.addEventListener("click", function (e) {
     e.preventDefault();
+    lastFocusedBeforeModal = this;
 
     // Get project data from attributes
     const title = this.dataset.title;
@@ -337,18 +394,38 @@ projectItems.forEach(function (item) {
       projectModalActions.innerHTML = actionsHtml;
     }
 
-    toggleProjectModal();
+    openProjectModal();
   });
 });
 
 // Close modal events
-if (projectModalCloseBtn) projectModalCloseBtn.addEventListener("click", toggleProjectModal);
-if (projectOverlay) projectOverlay.addEventListener("click", toggleProjectModal);
+if (projectModalCloseBtn) projectModalCloseBtn.addEventListener("click", closeProjectModal);
+if (projectOverlay) projectOverlay.addEventListener("click", closeProjectModal);
 
-// Close modal on ESC key
+// Close modal on ESC key + basic focus trap
 document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape" && projectModalContainer && projectModalContainer.classList.contains("active")) {
-    toggleProjectModal();
+  if (!projectModalContainer || !projectModalContainer.classList.contains("active")) return;
+
+  if (e.key === "Escape") {
+    closeProjectModal();
+    return;
+  }
+
+  if (e.key === "Tab") {
+    const focusable = projectModalContainer.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 });
 
@@ -408,18 +485,6 @@ window.addEventListener("load", animateSkillBars);
 
 
 // ============================================
-// TYPING ANIMATION FOR TITLE
-// ============================================
-
-const typingElement = document.querySelector(".title");
-if (typingElement) {
-  const originalText = typingElement.textContent;
-  typingElement.classList.add("typing-text");
-}
-
-
-
-// ============================================
 // MULTI-LANGUAGE SUPPORT
 // ============================================
 
@@ -437,8 +502,8 @@ const translations = {
     "Technologies I Use": "Teknologi yang Saya Gunakan",
 
     // About text
-    "about_p1": "🎮 Game promoter & web developer yang berbasis di Jakarta. Saya memiliki pengalaman sekitar 2 tahun di bidang gaming marketing dan sedang aktif mengembangkan skill di web development.",
-    "about_p2": "Saya memiliki pengalaman di PT Indofun sebagai Game Promoter, dimana saya belajar banyak tentang strategi marketing digital dan community management. Selain gaming, saya juga tertarik dengan network engineering dan mobile device repair.",
+    "about_p1": "Game promoter & web developer yang berbasis di Jakarta. Saya punya pengalaman sekitar 2 tahun di bidang gaming marketing dan aktif mengembangkan skill di web development, networking, dan mobile device repair.",
+    "about_p2": "Saat ini saya di PT Indofun Digital Technology sebagai Game Promoter — banyak belajar strategi marketing digital dan community management. Sebelumnya sempat jadi IT Technician di PT IASA Multi Integrator (Cisco/Mikrotik) dan Apple UP Certified Mobile Technician.",
 
     // Services
     "Game Marketing": "Game Marketing",
@@ -485,8 +550,8 @@ const translations = {
     "Technologies I Use": "Technologies I Use",
 
     // About text
-    "about_p1": "🎮 Game promoter & web developer based in Jakarta. I have approximately 2 years of experience in gaming marketing and am actively developing skills in web development.",
-    "about_p2": "I have experience at PT Indofun as a Game Promoter, where I learned a lot about digital marketing strategies and community management. Besides gaming, I'm also interested in network engineering and mobile device repair.",
+    "about_p1": "Game promoter & web developer based in Jakarta. I have around 2 years of experience in gaming marketing and am actively developing skills in web development, networking, and mobile device repair.",
+    "about_p2": "Currently at PT Indofun Digital Technology as a Game Promoter — learning digital marketing strategies and community management. Previously an IT Technician at PT IASA Multi Integrator (Cisco/Mikrotik) and an Apple UP Certified Mobile Technician.",
 
     // Services
     "Game Marketing": "Game Marketing",
@@ -546,11 +611,9 @@ function applyLanguage(lang) {
 
   // Update toggle buttons
   langButtons.forEach(function (btn) {
-    if (btn.dataset.lang === lang) {
-      btn.classList.add("active");
-    } else {
-      btn.classList.remove("active");
-    }
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
   });
 
   // Translate about text

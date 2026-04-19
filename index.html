@@ -5,49 +5,111 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Erzam Bayu | Game Promoter & Full-Stack Developer Jakarta</title>
+  <meta name="theme-color" content="#1e1e1f">
+  <meta name="color-scheme" content="dark light">
+  <title>Erzam Bayu | Game Promoter & Web Developer Jakarta</title>
   <meta name="description"
-    content="🎮 Game promoter & full-stack developer Jakarta dengan 7+ years expertise dalam gaming marketing, web development, dan tech innovation.">
+    content="Game promoter & web developer asal Jakarta. Portfolio Erzam Bayu: gaming marketing, web development (Python/Flask/JavaScript), networking, dan mobile repair.">
   <meta name="keywords"
-    content="Erzam Bayu, Game Promoter, Full-Stack Developer, Jakarta, Web Developer, Python, Flask, JavaScript">
+    content="Erzam Bayu, Game Promoter, Web Developer, Jakarta, Full-Stack, Python, Flask, JavaScript, Network Engineer">
   <meta name="author" content="Erzam Bayu">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://erzambayu.net/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Erzam Bayu | Game Promoter & Full-Stack Developer">
+  <meta property="og:title" content="Erzam Bayu | Game Promoter & Web Developer">
   <meta property="og:description"
-    content="🎮 Game promoter & full-stack developer Jakarta dengan 7+ years expertise dalam gaming marketing, web development, dan tech innovation.">
+    content="Portfolio Erzam Bayu — game promoter & web developer Jakarta. Gaming marketing, web development, networking, dan mobile repair.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://erzambayu.github.io">
+  <meta property="og:url" content="https://erzambayu.net/">
   <meta property="og:image" content="https://erzambayu.net/assets/images/og-image.png">
+  <meta property="og:image:alt" content="Erzam Bayu — Game Promoter & Web Developer Jakarta">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="id_ID">
+  <meta property="og:locale:alternate" content="en_US">
   <meta property="og:site_name" content="Erzam Bayu Portfolio">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Erzam Bayu | Game Promoter & Full-Stack Developer">
-  <meta name="twitter:description" content="🎮 Game promoter & full-stack developer Jakarta dengan expertise dalam gaming marketing dan web development.">
+  <meta name="twitter:title" content="Erzam Bayu | Game Promoter & Web Developer">
+  <meta name="twitter:description" content="Portfolio Erzam Bayu — gaming marketing, web development, networking, dan mobile repair.">
   <meta name="twitter:image" content="https://erzambayu.net/assets/images/og-image.png">
+  <meta name="twitter:image:alt" content="Erzam Bayu — Game Promoter & Web Developer Jakarta">
   <meta name="twitter:site" content="@bayuerzam">
   <meta name="twitter:creator" content="@bayuerzam">
 
-  <!--
-    - favicon
-  -->
+  <!-- favicon -->
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="./assets/images/logo.ico">
 
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
-    - google font link
-  -->
+  <!-- preconnect untuk CDN eksternal -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- custom css -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Theme bootstrap: set data-theme sebelum paint untuk hindari flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+        var theme = saved || (prefersLight ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- JSON-LD Person schema untuk Google rich result -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Erzam Bayu",
+    "url": "https://erzambayu.net/",
+    "image": "https://erzambayu.net/assets/images/avatar.jpg",
+    "jobTitle": "Game Promoter & Web Developer",
+    "description": "Game promoter & web developer Jakarta dengan fokus di gaming marketing, web development, networking, dan mobile repair.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "PT Indofun Digital Technology"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Jakarta",
+      "addressCountry": "ID"
+    },
+    "email": "mailto:erzambayu@gmail.com",
+    "sameAs": [
+      "https://github.com/erzambayu",
+      "https://linkedin.com/in/erzam-bayu",
+      "https://instagram.com/erzam.bayu",
+      "https://twitter.com/bayuerzam",
+      "https://youtube.com/erzambayu",
+      "https://facebook.com/erzam.bayu"
+    ],
+    "knowsAbout": [
+      "Gaming Marketing",
+      "Web Development",
+      "Network Engineering",
+      "Mobile Device Repair",
+      "Python",
+      "Flask",
+      "JavaScript"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -60,9 +122,16 @@
     </div>
   </div>
 
+  <!-- Theme toggle (light/dark) -->
+  <button type="button" class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle light/dark theme"
+    aria-pressed="false">
+    <ion-icon name="moon-outline" aria-hidden="true" data-theme-icon="dark"></ion-icon>
+    <ion-icon name="sunny-outline" aria-hidden="true" data-theme-icon="light"></ion-icon>
+  </button>
+
   <!-- Back to Top Button -->
-  <button class="back-to-top" id="back-to-top" title="Back to Top" aria-label="Back to Top">
-    <ion-icon name="chevron-up-outline"></ion-icon>
+  <button type="button" class="back-to-top" id="back-to-top" title="Back to Top" aria-label="Back to Top">
+    <ion-icon name="chevron-up-outline" aria-hidden="true"></ion-icon>
   </button>
 
   <!--
@@ -80,9 +149,8 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img
-            src="https://assets.kompasiana.com/items/album/2023/09/12/305315085-1709967759387772-2221161566711831765-n-64ff80d9e1a1677017485c62.jpg?t=o&v=740&x=416"
-            alt="Erzam Bayu" width="80">
+          <img src="./assets/images/avatar.jpg" alt="Erzam Bayu" width="80" height="80"
+            fetchpriority="high" decoding="async">
         </figure>
 
         <div class="info-content">
@@ -92,20 +160,20 @@
         </div>
 
         <div class="sidebar-actions">
-          <div class="lang-toggle" title="Switch Language">
-            <button class="lang-toggle-btn active" data-lang="id">ID</button>
-            <button class="lang-toggle-btn" data-lang="en">EN</button>
+          <div class="lang-toggle" role="group" aria-label="Switch Language">
+            <button type="button" class="lang-toggle-btn active" data-lang="id" aria-pressed="true">ID</button>
+            <button type="button" class="lang-toggle-btn" data-lang="en" aria-pressed="false">EN</button>
           </div>
 
-          <button class="info_more-btn" data-sidebar-btn>
+          <button type="button" class="info_more-btn" data-sidebar-btn aria-expanded="false" aria-controls="sidebar-info-more">
             <span>Show Contacts</span>
-            <ion-icon name="chevron-down"></ion-icon>
+            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
           </button>
         </div>
 
       </div>
 
-      <div class="sidebar-info_more">
+      <div class="sidebar-info_more" id="sidebar-info-more">
 
         <div class="separator"></div>
 
@@ -147,43 +215,43 @@
 
           <li class="social-item">
             <a href="https://github.com/erzambayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="GitHub Profile">
-              <ion-icon name="logo-github"></ion-icon>
+              title="GitHub Profile" aria-label="GitHub profile">
+              <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
             <a href="https://linkedin.com/in/erzam-bayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="LinkedIn Profile">
-              <ion-icon name="logo-linkedin"></ion-icon>
+              title="LinkedIn Profile" aria-label="LinkedIn profile">
+              <ion-icon name="logo-linkedin" aria-hidden="true"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
             <a href="https://instagram.com/erzam.bayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="Instagram Profile">
-              <ion-icon name="logo-instagram"></ion-icon>
+              title="Instagram Profile" aria-label="Instagram profile">
+              <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
             <a href="https://facebook.com/erzam.bayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="Facebook Profile">
-              <ion-icon name="logo-facebook"></ion-icon>
+              title="Facebook Profile" aria-label="Facebook profile">
+              <ion-icon name="logo-facebook" aria-hidden="true"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
             <a href="https://twitter.com/bayuerzam" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="Twitter Profile">
-              <ion-icon name="logo-twitter"></ion-icon>
+              title="Twitter Profile" aria-label="Twitter profile">
+              <ion-icon name="logo-twitter" aria-hidden="true"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
             <a href="https://youtube.com/erzambayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="YouTube Channel">
-              <ion-icon name="logo-youtube"></ion-icon>
+              title="YouTube Channel" aria-label="YouTube channel">
+              <ion-icon name="logo-youtube" aria-hidden="true"></ion-icon>
             </a>
           </li>
 
@@ -214,24 +282,24 @@
         - #NAVBAR
       -->
 
-      <nav class="navbar">
+      <nav class="navbar" aria-label="Main navigation">
 
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button type="button" class="navbar-link active" data-nav-link aria-current="page">About</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
+            <button type="button" class="navbar-link" data-nav-link>Resume</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
+            <button type="button" class="navbar-link" data-nav-link>Portfolio</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
+            <button type="button" class="navbar-link" data-nav-link>Contact</button>
           </li>
 
         </ul>
@@ -254,14 +322,15 @@
 
         <section class="about-text">
           <p>
-            🎮 Game promoter & web developer yang berbasis di Jakarta. Saya memiliki pengalaman sekitar 2 tahun
-            di bidang gaming marketing dan sedang aktif mengembangkan skill di web development.
+            Game promoter & web developer yang berbasis di Jakarta. Saya punya pengalaman sekitar 2 tahun di
+            bidang gaming marketing dan aktif mengembangkan skill di web development, networking, dan mobile
+            device repair.
           </p>
 
           <p>
-            Saya memiliki pengalaman di PT Indofun sebagai Game Promoter, dimana saya belajar banyak tentang
-            strategi marketing digital dan community management. Selain gaming, saya juga tertarik dengan
-            network engineering dan mobile device repair.
+            Saat ini saya di PT Indofun Digital Technology sebagai Game Promoter — banyak belajar strategi
+            marketing digital dan community management. Sebelumnya sempat jadi IT Technician di PT IASA Multi
+            Integrator (Cisco/Mikrotik) dan Apple UP Certified Mobile Technician.
           </p>
         </section>
 
@@ -279,8 +348,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="game marketing icon" width="40">
+                <img src="./assets/images/icon-design.svg" alt="" width="40" height="40" loading="lazy">
               </div>
 
               <div class="service-content-box">
@@ -296,7 +364,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+                <img src="./assets/images/icon-dev.svg" alt="" width="40" height="40" loading="lazy">
               </div>
 
               <div class="service-content-box">
@@ -312,7 +380,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="network icon" width="40">
+                <img src="./assets/images/icon-app.svg" alt="" width="40" height="40" loading="lazy">
               </div>
 
               <div class="service-content-box">
@@ -328,7 +396,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="mobile repair icon" width="40">
+                <img src="./assets/images/icon-photo.svg" alt="" width="40" height="40" loading="lazy">
               </div>
 
               <div class="service-content-box">
@@ -357,57 +425,43 @@
           <ul class="clients-list has-scrollbar">
 
             <li class="clients-item">
-              <a href="#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                  alt="Python">
-              </a>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                alt="Python" width="60" height="60" loading="lazy" decoding="async">
             </li>
 
             <li class="clients-item">
-              <a href="#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                  alt="JavaScript">
-              </a>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                alt="JavaScript" width="60" height="60" loading="lazy" decoding="async">
             </li>
 
             <li class="clients-item">
-              <a href="#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
-                  alt="Flask">
-              </a>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
+                alt="Flask" width="60" height="60" loading="lazy" decoding="async">
             </li>
 
             <li class="clients-item">
-              <a href="#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                  alt="HTML5">
-              </a>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                alt="HTML5" width="60" height="60" loading="lazy" decoding="async">
             </li>
 
             <li class="clients-item">
-              <a href="#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3">
-              </a>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                alt="CSS3" width="60" height="60" loading="lazy" decoding="async">
             </li>
 
             <li class="clients-item">
-              <a href="#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-                  alt="Linux">
-              </a>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
+                alt="Linux" width="60" height="60" loading="lazy" decoding="async">
             </li>
 
             <li class="clients-item">
-              <a href="#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git">
-              </a>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                alt="Git" width="60" height="60" loading="lazy" decoding="async">
             </li>
 
             <li class="clients-item">
-              <a href="#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
-                  alt="Docker">
-              </a>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                alt="Docker" width="60" height="60" loading="lazy" decoding="async">
             </li>
 
           </ul>
@@ -737,43 +791,59 @@
           <ul class="filter-list">
 
             <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
+              <button type="button" class="active" data-filter-btn>All</button>
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn>Web Development</button>
+              <button type="button" data-filter-btn>Web Development</button>
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn>Applications</button>
+              <button type="button" data-filter-btn>Applications</button>
+            </li>
+
+            <li class="filter-item">
+              <button type="button" data-filter-btn>Browser Extension</button>
+            </li>
+
+            <li class="filter-item">
+              <button type="button" data-filter-btn>E-Commerce</button>
             </li>
 
           </ul>
 
           <div class="filter-select-box">
 
-            <button class="filter-select" data-select>
+            <button type="button" class="filter-select" data-select aria-haspopup="listbox" aria-expanded="false">
 
               <div class="select-value" data-selecct-value>Select category</div>
 
               <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
+                <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
               </div>
 
             </button>
 
-            <ul class="select-list">
+            <ul class="select-list" role="listbox">
 
               <li class="select-item">
-                <button data-select-item>All</button>
+                <button type="button" data-select-item>All</button>
               </li>
 
               <li class="select-item">
-                <button data-select-item>Web Development</button>
+                <button type="button" data-select-item>Web Development</button>
               </li>
 
               <li class="select-item">
-                <button data-select-item>Applications</button>
+                <button type="button" data-select-item>Applications</button>
+              </li>
+
+              <li class="select-item">
+                <button type="button" data-select-item>Browser Extension</button>
+              </li>
+
+              <li class="select-item">
+                <button type="button" data-select-item>E-Commerce</button>
               </li>
 
             </ul>
@@ -796,7 +866,7 @@
 
                   <img
                     src="https://images.unsplash.com/photo-1633675254053-d96c7668c3b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="WA-BOT" loading="lazy">
+                    alt="WA-BOT project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
 
                 <h3 class="project-title">WA-BOT ⭐21</h3>
@@ -820,7 +890,7 @@
 
                   <img
                     src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="BudgetKu" loading="lazy">
+                    alt="BudgetKu project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
 
                 <h3 class="project-title">BudgetKu ⭐18</h3>
@@ -831,7 +901,7 @@
             </li>
 
             <!-- ⭐ Session Changer - 10 Stars -->
-            <li class="project-item active" data-filter-item data-category="applications">
+            <li class="project-item active" data-filter-item data-category="browser extension">
               <a href="#" data-project-item data-title="Session Changer" data-category="Browser Extension"
                 data-description="Browser extension untuk switching login sessions dengan mudah. Mendukung multiple accounts dan quick switch antar sesi login di berbagai website. ⭐ 10 Stars"
                 data-tech="JavaScript,Chrome Extension,Browser API" data-live=""
@@ -844,7 +914,7 @@
 
                   <img
                     src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Session Changer" loading="lazy">
+                    alt="Session Changer project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
 
                 <h3 class="project-title">Session Changer ⭐10</h3>
@@ -868,7 +938,7 @@
 
                   <img
                     src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="TaskFlow" loading="lazy">
+                    alt="TaskFlow project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
 
                 <h3 class="project-title">TaskFlow ⭐6</h3>
@@ -892,7 +962,7 @@
 
                   <img
                     src="https://images.unsplash.com/photo-1585036156171-384164a8c675?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Homepage Islami" loading="lazy">
+                    alt="Homepage Islami project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
 
                 <h3 class="project-title">Homepage Islami ⭐1</h3>
@@ -903,7 +973,7 @@
             </li>
 
             <!-- ⭐ Toko Aplikasi Premium - 1 Star -->
-            <li class="project-item active" data-filter-item data-category="web development">
+            <li class="project-item active" data-filter-item data-category="e-commerce">
               <a href="#" data-project-item data-title="Toko Aplikasi Premium" data-category="E-Commerce"
                 data-description="Platform e-commerce untuk menjual aplikasi premium. Dilengkapi dengan sistem pembayaran dan katalog produk digital. ⭐ 1 Star"
                 data-tech="JavaScript,HTML,CSS" data-live=""
@@ -916,7 +986,7 @@
 
                   <img
                     src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Toko Aplikasi Premium" loading="lazy">
+                    alt="Toko Aplikasi Premium project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
 
                 <h3 class="project-title">Toko Aplikasi ⭐1</h3>
@@ -940,7 +1010,7 @@
 
                   <img
                     src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="GitHub Unfollower" loading="lazy">
+                    alt="GitHub Unfollower project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
 
                 <h3 class="project-title">GitHub Unfollower ⭐1</h3>
@@ -951,7 +1021,7 @@
             </li>
 
             <!-- Smart Translate Extension -->
-            <li class="project-item active" data-filter-item data-category="applications">
+            <li class="project-item active" data-filter-item data-category="browser extension">
               <a href="#" data-project-item data-title="Smart Translate Extension" data-category="Browser Extension"
                 data-description="Ekstensi Chrome untuk menerjemahkan teks secara instan menggunakan berbagai layanan AI. Cukup blok teks dan terjemahan akan muncul otomatis!"
                 data-tech="JavaScript,Chrome Extension,AI API" data-live=""
@@ -964,7 +1034,7 @@
 
                   <img
                     src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Smart Translate Extension" loading="lazy">
+                    alt="Smart Translate Extension project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
 
                 <h3 class="project-title">Smart Translate</h3>
@@ -998,7 +1068,8 @@
           <figure>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.65295052886!2d106.68942892812503!3d-6.229386947785692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%2C%20Indonesia!5e0!3m2!1sen!2sus!4v1705657800000!5m2!1sen!2sus"
-              width="400" height="300" loading="lazy" title="Jakarta, Indonesia Location Map"></iframe>
+              width="400" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Jakarta, Indonesia location map"></iframe>
           </figure>
         </section>
 
@@ -1006,20 +1077,25 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="https://formspree.io/f/xwvvqwbk" method="POST" class="form" data-form>
+          <form action="https://formspree.io/f/xwvvqwbk" method="POST" class="form" data-form novalidate>
 
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required minlength="2"
+                autocomplete="name" data-form-input>
 
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" required
+                autocomplete="email" data-form-input>
             </div>
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <textarea name="message" class="form-input" placeholder="Your Message" required minlength="10"
+              data-form-input></textarea>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
+              <ion-icon name="paper-plane" aria-hidden="true"></ion-icon>
               <span>Send Message</span>
             </button>
+
+            <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
 
           </form>
 
@@ -1044,12 +1120,14 @@
     - #PROJECT MODAL
   -->
 
-  <div class="modal-container" data-project-modal-container>
+  <div class="modal-container" data-project-modal-container role="dialog" aria-modal="true"
+    aria-labelledby="project-modal-title" aria-hidden="true">
     <div class="overlay" data-project-overlay></div>
 
     <div class="project-modal">
-      <button class="modal-close-btn" data-project-modal-close title="Close modal" aria-label="Close modal">
-        <ion-icon name="close-outline"></ion-icon>
+      <button type="button" class="modal-close-btn" data-project-modal-close title="Close modal"
+        aria-label="Close modal">
+        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
       </button>
 
       <div class="project-modal-header">
@@ -1058,7 +1136,7 @@
         </figure>
 
         <div class="project-modal-info">
-          <h3 class="project-modal-title" data-project-modal-title></h3>
+          <h3 class="project-modal-title" id="project-modal-title" data-project-modal-title></h3>
           <p class="project-modal-category" data-project-modal-category></p>
         </div>
       </div>
