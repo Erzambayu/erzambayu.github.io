@@ -1311,17 +1311,75 @@ textarea.form__input {
 }
 
 
-/* ===== 14. ANIMATIONS (scroll reveal) ===== */
+/* ===== 14. ANIMATIONS ===== */
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+/* --- Keyframes --- */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 var(--accent-glow); }
+  50%      { transform: scale(1.03); box-shadow: 0 0 20px 5px var(--accent-glow); }
 }
 
+@keyframes blink {
+  0%, 50%   { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* --- Typing cursor effect --- */
+.sidebar__role.is-typing::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  background: var(--accent);
+  margin-left: 4px;
+  vertical-align: text-top;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* --- Scroll reveal: bottom (default) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* --- Scroll reveal: from left --- */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- Scroll reveal: from right --- */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- Staggered animation delays --- */
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.40s; }
+.stagger-6 { transition-delay: 0.48s; }
+
+/* --- Pulse for CTA buttons --- */
+.pulse-cta {
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
 

@@ -371,11 +371,25 @@ const skillObserver = new IntersectionObserver((entries, observer) => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 
-/* ===== 10. SCROLL REVEAL ===== */
+/* ===== 10. SCROLL REVEAL (directional + staggered) ===== */
 
+// apply directional reveal classes per element type
 const revealTargets = $$('.service-card, .timeline__item, .skill, .project, .tech__item');
 
-revealTargets.forEach(el => el.classList.add('reveal'));
+revealTargets.forEach(el => {
+  if (el.classList.contains('timeline__item') || el.classList.contains('tech__item')) {
+    el.classList.add('reveal-left');
+  } else if (el.classList.contains('service-card')) {
+    el.classList.add('reveal-right');
+  } else {
+    el.classList.add('reveal');
+  }
+});
+
+// apply staggered delays within each group (cycle 1–6)
+['.service-card', '.timeline__item', '.skill', '.project', '.tech__item'].forEach(sel => {
+  $$(sel).forEach((el, i) => el.classList.add('stagger-' + ((i % 6) + 1)));
+});
 
 const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
@@ -386,7 +400,32 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-revealTargets.forEach(el => revealObserver.observe(el));
+$$('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+
+/* ===== 10a. TYPING ANIMATION ===== */
+
+const typingEl = $('.sidebar__role');
+let typingTimer = null;
+
+function typeText(el, text, speed) {
+  if (typingTimer) clearTimeout(typingTimer);
+  el.textContent = '';
+  el.classList.add('is-typing');
+  let i = 0;
+  (function step() {
+    if (i < text.length) {
+      el.textContent = text.slice(0, ++i);
+      typingTimer = setTimeout(step, speed);
+    }
+  })();
+}
+
+if (typingEl) {
+  const roleText = typingEl.textContent;
+  // start after loader fades + slight delay
+  setTimeout(() => typeText(typingEl, roleText, 45), 600);
+}
 
 
 /* ===== 11. i18n (data-i18n driven) ===== */
