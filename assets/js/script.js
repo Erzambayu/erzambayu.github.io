@@ -1,423 +1,290 @@
 'use strict';
 
-// ============================================
-// THEME TOGGLE (light/dark)
-// ============================================
+/* ==================================================
+   ERZAM BAYU — PORTFOLIO  (rebuilt 2026)
+   Sections:
+   1.  Theme toggle
+   2.  Loader
+   3.  Back-to-top
+   4.  Sidebar toggle
+   5.  Page navigation (tabs)
+   6.  Portfolio filter
+   7.  Project modal
+   8.  Contact form
+   9.  Skill bar animation
+   10. Scroll reveal
+   11. i18n (data-i18n driven)
+   ================================================== */
 
-const themeToggleBtn = document.getElementById("theme-toggle");
+const $  = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  try { localStorage.setItem("theme", theme); } catch (e) { /* ignore quota */ }
-  if (themeToggleBtn) {
-    themeToggleBtn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
-    themeToggleBtn.setAttribute(
-      "aria-label",
-      theme === "light" ? "Switch to dark theme" : "Switch to light theme"
-    );
+
+/* ===== 1. THEME TOGGLE ===== */
+
+const themeToggle = $('#theme-toggle');
+
+const setTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  try { localStorage.setItem('theme', theme); } catch (e) { /* quota */ }
+
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+    themeToggle.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
   }
-  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-  if (themeColorMeta) {
-    themeColorMeta.setAttribute("content", theme === "light" ? "#f5f5f7" : "#1e1e1f");
-  }
-}
 
-if (themeToggleBtn) {
-  themeToggleBtn.addEventListener("click", function () {
-    const current = document.documentElement.getAttribute("data-theme") || "dark";
-    const next = current === "light" ? "dark" : "light";
-    applyTheme(next);
-  });
-  applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
-}
+  const meta = $('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', theme === 'light' ? '#f4f4f6' : '#0a0a0b');
+};
+
+themeToggle?.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  setTheme(current === 'light' ? 'dark' : 'light');
+});
+
+// sync initial aria state
+setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
 
 
+/* ===== 2. LOADER ===== */
 
-// ============================================
-// LOADING SCREEN
-// ============================================
+const loader = $('#loader');
 
-const loadingScreen = document.getElementById("loading-screen");
-
-window.addEventListener("load", function () {
-  setTimeout(function () {
-    if (loadingScreen) {
-      loadingScreen.classList.add("hidden");
-    }
-  }, 500);
+window.addEventListener('load', () => {
+  // small delay to let fonts/icons settle
+  setTimeout(() => loader?.classList.add('hidden'), 200);
 });
 
 
+/* ===== 3. BACK TO TOP ===== */
 
-// ============================================
-// BACK TO TOP BUTTON
-// ============================================
+const backToTop = $('#back-to-top');
 
-const backToTopBtn = document.getElementById("back-to-top");
+window.addEventListener('scroll', () => {
+  backToTop?.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
 
-window.addEventListener("scroll", function () {
-  if (window.scrollY > 300) {
-    if (backToTopBtn) backToTopBtn.classList.add("visible");
+backToTop?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
+/* ===== 4. SIDEBAR TOGGLE ===== */
+
+const sidebar     = $('[data-sidebar]');
+const sidebarBtn  = $('[data-sidebar-btn]');
+
+sidebarBtn?.addEventListener('click', () => {
+  sidebar?.classList.toggle('active');
+  const expanded = sidebar?.classList.contains('active');
+  sidebarBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+});
+
+
+/* ===== 5. PAGE NAVIGATION ===== */
+
+const navLinks = $$('[data-nav-link]');
+const pages    = $$('article[data-page]');
+const validPages = pages.map(p => p.dataset.page);
+
+const activatePage = (pageName) => {
+  if (!validPages.includes(pageName)) return;
+
+  pages.forEach(p => p.classList.toggle('active', p.dataset.page === pageName));
+
+  navLinks.forEach(link => {
+    const isActive = link.dataset.page === pageName;
+    link.classList.toggle('active', isActive);
+    if (isActive) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+
+  window.scrollTo(0, 0);
+};
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const page = link.dataset.page;
+    activatePage(page);
+    try { localStorage.setItem('activePage', page); } catch (e) { /* quota */ }
+    history.replaceState(null, '', '#' + page);
+  });
+});
+
+// restore on load: URL hash > localStorage > default (about)
+const restorePage = () => {
+  const hash = location.hash.replace('#', '');
+  if (hash && validPages.includes(hash)) {
+    activatePage(hash);
   } else {
-    if (backToTopBtn) backToTopBtn.classList.remove("visible");
-  }
-});
-
-if (backToTopBtn) {
-  backToTopBtn.addEventListener("click", function () {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-}
-
-
-
-// element toggle function
-const elementToggleFunc = function (elem) { if (elem) elem.classList.toggle("active"); }
-
-
-
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-// sidebar toggle functionality for mobile
-if (sidebarBtn) {
-  sidebarBtn.addEventListener("click", function () {
-    elementToggleFunc(sidebar);
-    const expanded = sidebar && sidebar.classList.contains("active");
-    sidebarBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
-  });
-}
-
-
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-if (select) {
-  select.addEventListener("click", function () {
-    elementToggleFunc(this);
-    const expanded = this.classList.contains("active");
-    this.setAttribute("aria-expanded", expanded ? "true" : "false");
-  });
-}
-
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const filterFunc = function (selectedValue) {
-  for (let i = 0; i < filterItems.length; i++) {
-    if (selectedValue === "all" || selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
+    const saved = (() => { try { return localStorage.getItem('activePage'); } catch (e) { return null; } })();
+    activatePage(saved && validPages.includes(saved) ? saved : 'about');
   }
 };
 
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-    const selectedValue = this.innerText.toLowerCase();
-    if (selectValue) selectValue.innerText = this.innerText;
-    if (select) {
-      elementToggleFunc(select);
-      select.setAttribute("aria-expanded", "false");
-    }
-    filterFunc(selectedValue);
+restorePage();
+
+window.addEventListener('hashchange', () => {
+  const hash = location.hash.replace('#', '');
+  if (hash && validPages.includes(hash)) activatePage(hash);
+});
+
+
+/* ===== 6. PORTFOLIO FILTER ===== */
+
+const filterBtns   = $$('[data-filter-btn]');
+const selectBtn    = $('[data-select]');
+const selectItems  = $$('[data-select-item]');
+const selectValue = $('[data-select-value]');
+const projectItems = $$('[data-filter-item]');
+
+const filterProjects = (value) => {
+  projectItems.forEach(item => {
+    const match = value === 'all' || item.dataset.category === value;
+    item.classList.toggle('active', match);
   });
-}
+};
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
-for (let i = 0; i < filterBtn.length; i++) {
-  filterBtn[i].addEventListener("click", function () {
-    const selectedValue = this.innerText.toLowerCase();
-    if (selectValue) selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
-
-    if (lastClickedBtn) lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
+// desktop filter buttons
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const value = btn.textContent.toLowerCase();
+    filterProjects(value);
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (selectValue) selectValue.textContent = btn.textContent;
   });
-}
+});
 
+// mobile select
+selectBtn?.addEventListener('click', () => {
+  const list = selectBtn.nextElementSibling;
+  const isOpen = list?.classList.contains('show');
+  list?.classList.toggle('show');
+  selectBtn.classList.toggle('active');
+  selectBtn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+});
 
+selectItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const value = item.textContent.toLowerCase();
+    selectValue.textContent = item.textContent;
+    const list = selectBtn.nextElementSibling;
+    list?.classList.remove('show');
+    selectBtn.classList.remove('active');
+    selectBtn.setAttribute('aria-expanded', 'false');
+    filterProjects(value);
 
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-const formFeedback = document.querySelector("[data-form-feedback]");
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-    if (form && form.checkValidity()) {
-      if (formBtn) formBtn.removeAttribute("disabled");
-    } else {
-      if (formBtn) formBtn.setAttribute("disabled", "");
-    }
+    // sync desktop buttons
+    filterBtns.forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === value));
   });
-}
+});
 
-// AJAX submit via Formspree so user stays on the page with inline feedback.
-if (form) {
-  form.addEventListener("submit", async function (e) {
-    if (!form.checkValidity()) return;
+// close select on outside click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.projects__select')) {
+    const list = selectBtn?.nextElementSibling;
+    list?.classList.remove('show');
+    selectBtn?.classList.remove('active');
+    selectBtn?.setAttribute('aria-expanded', 'false');
+  }
+});
+
+
+/* ===== 7. PROJECT MODAL ===== */
+
+const modalContainer = $('[data-modal]');
+const modalOverlay   = $('[data-modal-overlay]');
+const modalClose     = $('[data-modal-close]');
+const modalImg       = $('[data-modal-img]');
+const modalTitle     = $('[data-modal-title]');
+const modalCategory  = $('[data-modal-category]');
+const modalDesc      = $('[data-modal-desc]');
+const modalTech      = $('[data-modal-tech]');
+const modalActions   = $('[data-modal-actions]');
+
+let lastFocus = null;
+
+const openModal = () => {
+  modalContainer?.classList.add('active');
+  modalContainer?.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => modalClose?.focus(), 50);
+};
+
+const closeModal = () => {
+  modalContainer?.classList.remove('active');
+  modalContainer?.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  if (lastFocus) {
+    lastFocus.focus();
+    lastFocus = null;
+  }
+};
+
+// event delegation for project items
+$$('[data-project-item]').forEach(item => {
+  item.addEventListener('click', (e) => {
     e.preventDefault();
+    lastFocus = item;
 
-    const originalLabel = formBtn ? formBtn.querySelector("span").textContent : "";
-    if (formBtn) {
-      formBtn.setAttribute("disabled", "");
-      formBtn.querySelector("span").textContent = "Sending…";
+    const img = item.querySelector('img');
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    modalTitle.textContent = item.dataset.title || '';
+    modalCategory.textContent = item.dataset.category || '';
+    modalDesc.textContent = item.dataset.description || '';
+
+    // tech badges
+    const tech = item.dataset.tech || '';
+    modalTech.innerHTML = tech
+      .split(',')
+      .map(t => `<span class="tech-badge">${t.trim()}</span>`)
+      .join('');
+
+    // action buttons
+    const live = item.dataset.live;
+    const repo = item.dataset.github;
+    let actions = '';
+
+    if (live) {
+      actions += `<a href="${live}" class="primary" target="_blank" rel="noopener noreferrer">` +
+        `<ion-icon name="open-outline"></ion-icon><span data-i18n="modal.live">Live Demo</span></a>`;
     }
-    if (formFeedback) {
-      formFeedback.textContent = "";
-      formFeedback.className = "form-feedback";
+    if (repo) {
+      actions += `<a href="${repo}" class="secondary" target="_blank" rel="noopener noreferrer">` +
+        `<ion-icon name="logo-github"></ion-icon><span data-i18n="modal.code">View Code</span></a>`;
+    }
+    if (!live && !repo) {
+      actions = `<span class="tech-badge" data-i18n="modal.private">Private Project</span>`;
     }
 
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: new FormData(form)
-      });
+    modalActions.innerHTML = actions;
 
-      if (res.ok) {
-        form.reset();
-        if (formFeedback) {
-          formFeedback.className = "form-feedback success";
-          formFeedback.textContent = "Pesan terkirim. Terima kasih!";
-        }
-      } else {
-        throw new Error("Bad response");
-      }
-    } catch (err) {
-      if (formFeedback) {
-        formFeedback.className = "form-feedback error";
-        formFeedback.textContent = "Gagal mengirim. Coba lagi atau email langsung ke erzambayu@gmail.com.";
-      }
-    } finally {
-      if (formBtn) {
-        formBtn.querySelector("span").textContent = originalLabel || "Send Message";
-        if (!form.checkValidity()) formBtn.setAttribute("disabled", "");
-      }
-    }
+    // re-apply current language to newly injected nodes
+    applyLanguage(currentLang);
+
+    openModal();
   });
-}
+});
 
+modalClose?.addEventListener('click', closeModal);
+modalOverlay?.addEventListener('click', closeModal);
 
+// ESC + focus trap
+document.addEventListener('keydown', (e) => {
+  if (!modalContainer?.classList.contains('active')) return;
 
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// Map navigation links to page names (fixed order: about, resume, portfolio, contact)
-const pageNames = ["about", "resume", "portfolio", "contact"];
-
-// Function to activate a page by name
-function activatePage(pageName) {
-  for (let j = 0; j < pages.length; j++) {
-    if (pageName === pages[j].dataset.page) {
-      pages[j].classList.add("active");
-    } else {
-      pages[j].classList.remove("active");
-    }
-  }
-
-  const pageIndex = pageNames.indexOf(pageName);
-  for (let j = 0; j < navigationLinks.length; j++) {
-    if (j === pageIndex) {
-      navigationLinks[j].classList.add("active");
-      navigationLinks[j].setAttribute("aria-current", "page");
-    } else {
-      navigationLinks[j].classList.remove("active");
-      navigationLinks[j].removeAttribute("aria-current");
-    }
-  }
-}
-
-// Restore last active page from localStorage or URL hash
-function restoreActivePage() {
-  // Check URL hash first (e.g., #resume)
-  const hash = window.location.hash.replace("#", "");
-  if (hash && pageNames.includes(hash)) {
-    activatePage(hash);
-    localStorage.setItem("activePage", hash);
+  if (e.key === 'Escape') {
+    closeModal();
     return;
   }
 
-  // Otherwise check localStorage
-  const savedPage = localStorage.getItem("activePage");
-  if (savedPage && pageNames.includes(savedPage)) {
-    activatePage(savedPage);
-  }
-}
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  // Store the page target in a closure
-  const targetPage = pageNames[i];
-
-  navigationLinks[i].addEventListener("click", function () {
-    activatePage(targetPage);
-    
-    // Save to localStorage
-    localStorage.setItem("activePage", targetPage);
-    
-    // Update URL hash without scrolling
-    history.replaceState(null, null, "#" + targetPage);
-
-    window.scrollTo(0, 0);
-  });
-}
-
-// Restore page on load
-restoreActivePage();
-
-// Listen for hash changes (browser back/forward)
-window.addEventListener("hashchange", function () {
-  const hash = window.location.hash.replace("#", "");
-  if (hash && pageNames.includes(hash)) {
-    activatePage(hash);
-    localStorage.setItem("activePage", hash);
-  }
-});
-
-// Initialize skill progress bars from data-width attribute
-const skillProgressBars = document.querySelectorAll(".skill-progress-fill[data-width]");
-skillProgressBars.forEach(function (bar) {
-  const width = bar.getAttribute("data-width");
-  if (width) {
-    bar.style.width = width + "%";
-  }
-});
-
-
-
-// ============================================
-// PROJECT MODAL FUNCTIONALITY
-// ============================================
-
-const projectItems = document.querySelectorAll("[data-project-item]");
-const projectModalContainer = document.querySelector("[data-project-modal-container]");
-const projectOverlay = document.querySelector("[data-project-overlay]");
-const projectModalCloseBtn = document.querySelector("[data-project-modal-close]");
-const projectModalImg = document.querySelector("[data-project-modal-img]");
-const projectModalTitle = document.querySelector("[data-project-modal-title]");
-const projectModalCategory = document.querySelector("[data-project-modal-category]");
-const projectModalDescription = document.querySelector("[data-project-modal-description]");
-const projectModalTech = document.querySelector("[data-project-modal-tech]");
-const projectModalActions = document.querySelector("[data-project-modal-actions]");
-
-// Track the element that opened the modal so we can restore focus on close.
-let lastFocusedBeforeModal = null;
-
-const openProjectModal = function () {
-  if (projectModalContainer) {
-    projectModalContainer.classList.add("active");
-    projectModalContainer.setAttribute("aria-hidden", "false");
-  }
-  if (projectOverlay) projectOverlay.classList.add("active");
-  document.body.style.overflow = "hidden";
-  if (projectModalCloseBtn) {
-    setTimeout(function () { projectModalCloseBtn.focus(); }, 50);
-  }
-};
-
-const closeProjectModal = function () {
-  if (projectModalContainer) {
-    projectModalContainer.classList.remove("active");
-    projectModalContainer.setAttribute("aria-hidden", "true");
-  }
-  if (projectOverlay) projectOverlay.classList.remove("active");
-  document.body.style.overflow = "";
-  if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === "function") {
-    lastFocusedBeforeModal.focus();
-    lastFocusedBeforeModal = null;
-  }
-};
-
-// Add click event to all project items
-projectItems.forEach(function (item) {
-  item.addEventListener("click", function (e) {
-    e.preventDefault();
-    lastFocusedBeforeModal = this;
-
-    // Get project data from attributes
-    const title = this.dataset.title;
-    const category = this.dataset.category;
-    const description = this.dataset.description;
-    const tech = this.dataset.tech;
-    const liveUrl = this.dataset.live;
-    const githubUrl = this.dataset.github;
-    const imgSrc = this.querySelector("img").src;
-    const imgAlt = this.querySelector("img").alt;
-
-    // Populate modal
-    if (projectModalImg) {
-      projectModalImg.src = imgSrc;
-      projectModalImg.alt = imgAlt;
-    }
-    if (projectModalTitle) projectModalTitle.textContent = title;
-    if (projectModalCategory) projectModalCategory.textContent = category;
-    if (projectModalDescription) projectModalDescription.textContent = description;
-
-    // Generate tech badges
-    if (projectModalTech && tech) {
-      projectModalTech.innerHTML = tech.split(",").map(function (t) {
-        return '<span class="tech-badge">' + t.trim() + '</span>';
-      }).join("");
-    }
-
-    // Generate action buttons
-    if (projectModalActions) {
-      let actionsHtml = "";
-      if (liveUrl) {
-        actionsHtml += '<a href="' + liveUrl + '" class="modal-action-btn" target="_blank" rel="noopener noreferrer">' +
-          '<ion-icon name="open-outline"></ion-icon><span>Live Demo</span></a>';
-      }
-      if (githubUrl) {
-        actionsHtml += '<a href="' + githubUrl + '" class="modal-action-btn secondary" target="_blank" rel="noopener noreferrer">' +
-          '<ion-icon name="logo-github"></ion-icon><span>View Code</span></a>';
-      }
-      if (!liveUrl && !githubUrl) {
-        actionsHtml = '<span class="tech-badge">Private Project</span>';
-      }
-      projectModalActions.innerHTML = actionsHtml;
-    }
-
-    openProjectModal();
-  });
-});
-
-// Close modal events
-if (projectModalCloseBtn) projectModalCloseBtn.addEventListener("click", closeProjectModal);
-if (projectOverlay) projectOverlay.addEventListener("click", closeProjectModal);
-
-// Close modal on ESC key + basic focus trap
-document.addEventListener("keydown", function (e) {
-  if (!projectModalContainer || !projectModalContainer.classList.contains("active")) return;
-
-  if (e.key === "Escape") {
-    closeProjectModal();
-    return;
-  }
-
-  if (e.key === "Tab") {
-    const focusable = projectModalContainer.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    if (focusable.length === 0) return;
+  if (e.key === 'Tab') {
+    const focusable = $$('button, [href], input, [tabindex]:not([tabindex="-1"])', modalContainer);
+    if (!focusable.length) return;
     const first = focusable[0];
-    const last = focusable[focusable.length - 1];
+    const last  = focusable[focusable.length - 1];
 
     if (e.shiftKey && document.activeElement === first) {
       e.preventDefault();
@@ -430,282 +297,240 @@ document.addEventListener("keydown", function (e) {
 });
 
 
+/* ===== 8. CONTACT FORM ===== */
 
-// ============================================
-// SCROLL REVEAL ANIMATIONS
-// ============================================
+const form        = $('[data-form]');
+const formInputs  = $$('[data-form-input]');
+const formBtn     = $('[data-form-btn]');
+const formFeedback = $('[data-form-feedback]');
 
-const revealElements = document.querySelectorAll(".service-item, .timeline-item, .skills-item, .project-item");
+const checkFormValidity = () => {
+  if (!form || !formBtn) return;
+  formBtn.disabled = !form.checkValidity();
+};
 
-const revealOnScroll = function () {
-  revealElements.forEach(function (element) {
-    const elementTop = element.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
+formInputs.forEach(input => {
+  input.addEventListener('input', checkFormValidity);
+});
 
-    if (elementTop < windowHeight - 100) {
-      element.classList.add("revealed");
+form?.addEventListener('submit', async (e) => {
+  if (!form.checkValidity()) return;
+  e.preventDefault();
+
+  const btnSpan = formBtn.querySelector('span');
+  const originalText = btnSpan.textContent;
+
+  formBtn.disabled = true;
+  btnSpan.textContent = currentLang === 'id' ? 'Mengirim…' : 'Sending…';
+  formFeedback.textContent = '';
+  formFeedback.className = 'form__feedback';
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(form),
+    });
+
+    if (res.ok) {
+      form.reset();
+      formFeedback.className = 'form__feedback success';
+      formFeedback.textContent = currentLang === 'id'
+        ? 'Pesan terkirim. Terima kasih!'
+        : 'Message sent. Thank you!';
+    } else {
+      throw new Error('Bad response');
+    }
+  } catch {
+    formFeedback.className = 'form__feedback error';
+    formFeedback.textContent = currentLang === 'id'
+      ? 'Gagal mengirim. Coba lagi atau email langsung ke erzambayu@gmail.com.'
+      : 'Failed to send. Try again or email erzambayu@gmail.com directly.';
+  } finally {
+    btnSpan.textContent = originalText;
+    checkFormValidity();
+  }
+});
+
+
+/* ===== 9. SKILL BAR ANIMATION ===== */
+
+const skillBars = $$('.skill__fill[data-width]');
+
+const skillObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const width = bar.dataset.width;
+      bar.style.width = width + '%';
+      observer.unobserve(bar);
     }
   });
-}
+}, { threshold: 0.3 });
 
-// Initial check
-window.addEventListener("load", revealOnScroll);
-window.addEventListener("scroll", revealOnScroll);
+skillBars.forEach(bar => skillObserver.observe(bar));
 
 
+/* ===== 10. SCROLL REVEAL ===== */
 
-// ============================================
-// SKILL PROGRESS BAR ANIMATION ON SCROLL
-// ============================================
+const revealTargets = $$('.service-card, .timeline__item, .skill, .project, .tech__item');
 
-const skillSection = document.querySelector(".skill");
-let skillAnimated = false;
+revealTargets.forEach(el => el.classList.add('reveal'));
 
-const animateSkillBars = function () {
-  if (skillSection && !skillAnimated) {
-    const sectionTop = skillSection.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (sectionTop < windowHeight - 100) {
-      skillProgressBars.forEach(function (bar, index) {
-        const width = bar.getAttribute("data-width");
-        bar.style.width = "0%";
-        setTimeout(function () {
-          bar.style.width = width + "%";
-        }, index * 100);
-      });
-      skillAnimated = true;
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     }
-  }
-}
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-window.addEventListener("scroll", animateSkillBars);
-window.addEventListener("load", animateSkillBars);
-
+revealTargets.forEach(el => revealObserver.observe(el));
 
 
-// ============================================
-// MULTI-LANGUAGE SUPPORT
-// ============================================
+/* ===== 11. i18n (data-i18n driven) ===== */
 
 const translations = {
   id: {
-    // Navbar
-    "About": "Tentang",
-    "Resume": "Resume",
-    "Portfolio": "Portofolio",
-    "Contact": "Kontak",
+    'nav.about': 'Tentang',
+    'nav.resume': 'Resume',
+    'nav.portfolio': 'Portofolio',
+    'nav.contact': 'Kontak',
 
-    // About section
-    "About me": "Tentang Saya",
-    "What I'm Doing": "Yang Saya Kerjakan",
-    "Technologies I Use": "Teknologi yang Saya Gunakan",
+    'about.title': 'Tentang Saya',
+    'about.p1': 'Game promoter & web developer yang berbasis di Jakarta. Saya punya pengalaman sekitar 2 tahun di bidang gaming marketing dan aktif mengembangkan skill di web development, networking, dan mobile device repair.',
+    'about.p2': 'Saat ini saya di PT Indofun Digital Technology sebagai Game Promoter — banyak belajar strategi marketing digital dan community management. Sebelumnya sempat jadi IT Technician di PT IASA Multi Integrator (Cisco/Mikrotik) dan Apple UP Certified Mobile Technician.',
 
-    // About text
-    "about_p1": "Game promoter & web developer yang berbasis di Jakarta. Saya punya pengalaman sekitar 2 tahun di bidang gaming marketing dan aktif mengembangkan skill di web development, networking, dan mobile device repair.",
-    "about_p2": "Saat ini saya di PT Indofun Digital Technology sebagai Game Promoter — banyak belajar strategi marketing digital dan community management. Sebelumnya sempat jadi IT Technician di PT IASA Multi Integrator (Cisco/Mikrotik) dan Apple UP Certified Mobile Technician.",
+    'services.title': 'Yang Saya Kerjakan',
+    'services.marketing': 'Game Marketing',
+    'services.marketing_desc': 'Strategi pemasaran digital untuk game dengan fokus user acquisition dan community engagement.',
+    'services.webdev': 'Web Development',
+    'services.webdev_desc': 'Full-stack development dengan Python, Flask, JavaScript untuk aplikasi web modern.',
+    'services.network': 'Network Engineering',
+    'services.network_desc': 'Konfigurasi Cisco & Mikrotik, network security, dan system administration.',
+    'services.repair': 'Mobile Repair',
+    'services.repair_desc': 'Apple UP Certified technician untuk repair iPhone dan perangkat mobile lainnya.',
 
-    // Services
-    "Game Marketing": "Game Marketing",
-    "game_marketing_desc": "Strategi pemasaran digital untuk game dengan fokus user acquisition dan community engagement.",
-    "Web Development": "Web Development",
-    "web_dev_desc": "Full-stack development dengan Python, Flask, JavaScript untuk aplikasi web modern.",
-    "Network Engineering": "Network Engineering",
-    "network_desc": "Konfigurasi Cisco & Mikrotik, network security, dan system administration.",
-    "Mobile Repair": "Mobile Repair",
-    "mobile_desc": "Apple UP Certified technician untuk repair iPhone dan perangkat mobile lainnya.",
+    'tech.title': 'Teknologi yang Saya Gunakan',
 
-    // Resume
-    "Education": "Pendidikan",
-    "Experience": "Pengalaman",
-    "Technical Skills": "Kemampuan Teknis",
-    "Non-Technical Skills": "Kemampuan Non-Teknis",
+    'resume.title': 'Resume',
+    'resume.education': 'Pendidikan',
+    'resume.experience': 'Pengalaman',
+    'resume.tech_skills': 'Kemampuan Teknis',
+    'resume.soft_skills': 'Kemampuan Non-Teknis',
 
-    // Contact
-    "Contact Form": "Form Kontak",
-    "Full name": "Nama Lengkap",
-    "Email address": "Alamat Email",
-    "Your Message": "Pesan Anda",
-    "Send Message": "Kirim Pesan",
+    'portfolio.title': 'Portofolio',
+    'portfolio.select': 'Pilih kategori',
 
-    // Download CV
-    "Download CV": "Unduh CV",
+    'contact.title': 'Kontak',
+    'contact.form_title': 'Form Kontak',
+    'contact.fullname': 'Nama Lengkap',
+    'contact.email': 'Alamat Email',
+    'contact.message': 'Pesan Anda',
+    'contact.send': 'Kirim Pesan',
 
-    // Modal
-    "Tech Stack": "Tech Stack",
-    "Live Demo": "Demo Live",
-    "View Code": "Lihat Kode",
-    "Private Project": "Proyek Privat"
+    'email': 'Email',
+    'location': 'Lokasi',
+    'download_cv': 'Unduh CV',
+    'show_contacts': 'Tampilkan Kontak',
+
+    'modal.tech': 'Tech Stack',
+    'modal.live': 'Demo Live',
+    'modal.code': 'Lihat Kode',
+    'modal.private': 'Proyek Privat',
   },
+
   en: {
-    // Navbar
-    "About": "About",
-    "Resume": "Resume",
-    "Portfolio": "Portfolio",
-    "Contact": "Contact",
+    'nav.about': 'About',
+    'nav.resume': 'Resume',
+    'nav.portfolio': 'Portfolio',
+    'nav.contact': 'Contact',
 
-    // About section
-    "About me": "About me",
-    "What I'm Doing": "What I'm Doing",
-    "Technologies I Use": "Technologies I Use",
+    'about.title': 'About Me',
+    'about.p1': 'Game promoter & web developer based in Jakarta. I have around 2 years of experience in gaming marketing and am actively developing skills in web development, networking, and mobile device repair.',
+    'about.p2': 'Currently at PT Indofun Digital Technology as a Game Promoter — learning digital marketing strategies and community management. Previously an IT Technician at PT IASA Multi Integrator (Cisco/Mikrotik) and an Apple UP Certified Mobile Technician.',
 
-    // About text
-    "about_p1": "Game promoter & web developer based in Jakarta. I have around 2 years of experience in gaming marketing and am actively developing skills in web development, networking, and mobile device repair.",
-    "about_p2": "Currently at PT Indofun Digital Technology as a Game Promoter — learning digital marketing strategies and community management. Previously an IT Technician at PT IASA Multi Integrator (Cisco/Mikrotik) and an Apple UP Certified Mobile Technician.",
+    'services.title': "What I'm Doing",
+    'services.marketing': 'Game Marketing',
+    'services.marketing_desc': 'Digital marketing strategies for games focusing on user acquisition and community engagement.',
+    'services.webdev': 'Web Development',
+    'services.webdev_desc': 'Full-stack development with Python, Flask, JavaScript for modern web applications.',
+    'services.network': 'Network Engineering',
+    'services.network_desc': 'Cisco & Mikrotik configuration, network security, and system administration.',
+    'services.repair': 'Mobile Repair',
+    'services.repair_desc': 'Apple UP Certified technician for iPhone and other mobile device repairs.',
 
-    // Services
-    "Game Marketing": "Game Marketing",
-    "game_marketing_desc": "Digital marketing strategies for games focusing on user acquisition and community engagement.",
-    "Web Development": "Web Development",
-    "web_dev_desc": "Full-stack development with Python, Flask, JavaScript for modern web applications.",
-    "Network Engineering": "Network Engineering",
-    "network_desc": "Cisco & Mikrotik configuration, network security, and system administration.",
-    "Mobile Repair": "Mobile Repair",
-    "mobile_desc": "Apple UP Certified technician for iPhone and other mobile device repairs.",
+    'tech.title': 'Technologies I Use',
 
-    // Resume
-    "Education": "Education",
-    "Experience": "Experience",
-    "Technical Skills": "Technical Skills",
-    "Non-Technical Skills": "Non-Technical Skills",
+    'resume.title': 'Resume',
+    'resume.education': 'Education',
+    'resume.experience': 'Experience',
+    'resume.tech_skills': 'Technical Skills',
+    'resume.soft_skills': 'Non-Technical Skills',
 
-    // Contact
-    "Contact Form": "Contact Form",
-    "Full name": "Full name",
-    "Email address": "Email address",
-    "Your Message": "Your Message",
-    "Send Message": "Send Message",
+    'portfolio.title': 'Portfolio',
+    'portfolio.select': 'Select category',
 
-    // Download CV
-    "Download CV": "Download CV",
+    'contact.title': 'Contact',
+    'contact.form_title': 'Contact Form',
+    'contact.fullname': 'Full name',
+    'contact.email': 'Email address',
+    'contact.message': 'Your Message',
+    'contact.send': 'Send Message',
 
-    // Modal
-    "Tech Stack": "Tech Stack",
-    "Live Demo": "Live Demo",
-    "View Code": "View Code",
-    "Private Project": "Private Project"
+    'email': 'Email',
+    'location': 'Location',
+    'download_cv': 'Download CV',
+    'show_contacts': 'Show Contacts',
+
+    'modal.tech': 'Tech Stack',
+    'modal.live': 'Live Demo',
+    'modal.code': 'View Code',
+    'modal.private': 'Private Project',
   }
 };
 
-// Elements to translate
-const translatableSelectors = {
-  ".article-title": "textContent",
-  ".navbar-link": "textContent",
-  ".h3.service-title": "textContent",
-  ".h3.clients-title": "textContent",
-  ".h3.skills-title": "textContent",
-  ".h3.form-title": "textContent",
-  ".download-cv-btn span": "textContent",
-  ".download-cv-fixed span": "textContent"
-};
+let currentLang = (() => {
+  try { return localStorage.getItem('preferredLang') || 'id'; }
+  catch (e) { return 'id'; }
+})();
 
-// Get language toggle buttons
-const langButtons = document.querySelectorAll(".lang-toggle-btn");
-let currentLang = localStorage.getItem("preferredLang") || "id";
-
-// Apply saved language on load
 function applyLanguage(lang) {
   currentLang = lang;
-  localStorage.setItem("preferredLang", lang);
+  try { localStorage.setItem('preferredLang', lang); } catch (e) { /* quota */ }
   document.documentElement.lang = lang;
 
-  // Update toggle buttons
-  langButtons.forEach(function (btn) {
+  const dict = translations[lang] || translations.id;
+
+  // text content
+  $$('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+
+  // placeholders
+  $$('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (dict[key] !== undefined) el.placeholder = dict[key];
+  });
+
+  // language buttons
+  $$('.lang__btn').forEach(btn => {
     const isActive = btn.dataset.lang === lang;
-    btn.classList.toggle("active", isActive);
-    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
-  });
-
-  // Translate about text
-  const aboutTexts = document.querySelectorAll(".about-text p");
-  if (aboutTexts.length >= 2) {
-    aboutTexts[0].textContent = translations[lang]["about_p1"];
-    aboutTexts[1].textContent = translations[lang]["about_p2"];
-  }
-
-  // Translate service descriptions
-  const serviceItems = document.querySelectorAll(".service-item-text");
-  const serviceKeys = ["game_marketing_desc", "web_dev_desc", "network_desc", "mobile_desc"];
-  serviceItems.forEach(function (item, index) {
-    if (serviceKeys[index]) {
-      item.textContent = translations[lang][serviceKeys[index]];
-    }
-  });
-
-  // Translate navbar
-  const navLinks = document.querySelectorAll(".navbar-link");
-  const navKeys = ["About", "Resume", "Portfolio", "Contact"];
-  navLinks.forEach(function (link, index) {
-    if (navKeys[index] && translations[lang][navKeys[index]]) {
-      link.textContent = translations[lang][navKeys[index]];
-    }
-  });
-
-  // Translate section titles
-  const articleTitles = document.querySelectorAll(".article-title");
-  const titleTexts = ["About me", "Resume", "Portfolio", "Contact"];
-  articleTitles.forEach(function (title, index) {
-    if (titleTexts[index] && translations[lang][titleTexts[index]]) {
-      title.textContent = translations[lang][titleTexts[index]];
-    }
-  });
-
-  // Translate Download CV buttons
-  document.querySelectorAll(".download-cv-btn span, .download-cv-fixed span").forEach(function (span) {
-    span.textContent = translations[lang]["Download CV"];
-  });
-
-  // Translate form
-  const formTitle = document.querySelector(".form-title");
-  if (formTitle) formTitle.textContent = translations[lang]["Contact Form"];
-
-  const formInputs = document.querySelectorAll(".form-input");
-  const placeholders = ["Full name", "Email address", "Your Message"];
-  formInputs.forEach(function (input, index) {
-    if (placeholders[index] && translations[lang][placeholders[index]]) {
-      input.placeholder = translations[lang][placeholders[index]];
-    }
-  });
-
-  const sendBtn = document.querySelector(".form-btn span");
-  if (sendBtn) sendBtn.textContent = translations[lang]["Send Message"];
-
-  // Translate h3 titles
-  const serviceTitleEl = document.querySelector(".service-title");
-  if (serviceTitleEl) serviceTitleEl.textContent = translations[lang]["What I'm Doing"];
-
-  const clientsTitleEl = document.querySelector(".clients-title");
-  if (clientsTitleEl) clientsTitleEl.textContent = translations[lang]["Technologies I Use"];
-
-  // Skills titles
-  document.querySelectorAll(".skills-title").forEach(function (el, index) {
-    const keys = ["Technical Skills", "Non-Technical Skills"];
-    if (keys[index]) el.textContent = translations[lang][keys[index]];
-  });
-
-  // Education/Experience titles
-  const timelineTitles = document.querySelectorAll(".timeline .title-wrapper .h3");
-  const timelineKeys = ["Education", "Experience"];
-  timelineTitles.forEach(function (el, index) {
-    if (timelineKeys[index]) el.textContent = translations[lang][timelineKeys[index]];
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
   });
 }
 
-// Add click events to language buttons
-langButtons.forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    const lang = this.dataset.lang;
-    applyLanguage(lang);
-  });
+// language toggle buttons
+$$('.lang__btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
 });
 
-// Apply language immediately and on DOM ready
-// This ensures text appears without needing refresh
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", function () {
-    applyLanguage(currentLang);
-  });
+// apply on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => applyLanguage(currentLang));
 } else {
-  // DOM already loaded, apply immediately
   applyLanguage(currentLang);
 }

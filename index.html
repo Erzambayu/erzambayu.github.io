@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1e1e1f">
+  <meta name="theme-color" content="#0a0a0b">
   <meta name="color-scheme" content="dark light">
   <title>Erzam Bayu | Game Promoter & Web Developer Jakarta</title>
   <meta name="description"
@@ -41,23 +40,24 @@
   <meta name="twitter:site" content="@bayuerzam">
   <meta name="twitter:creator" content="@bayuerzam">
 
-  <!-- favicon -->
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a0b'/%3E%3Ctext x='50' y='70' font-family='Poppins,sans-serif' font-size='60' font-weight='600' fill='%23ffb72e' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="./assets/images/logo.ico">
 
-  <!-- preconnect untuk CDN eksternal -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="dns-prefetch" href="https://images.unsplash.com">
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- custom css -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- Theme bootstrap: set data-theme sebelum paint untuk hindari flash -->
+  <!-- Theme bootstrap: set data-theme before paint to prevent FOUC -->
   <script>
     (function () {
       try {
@@ -71,7 +71,7 @@
     })();
   </script>
 
-  <!-- JSON-LD Person schema untuk Google rich result -->
+  <!-- JSON-LD Person schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -114,1053 +114,480 @@
 
 <body>
 
-  <!-- Loading Screen -->
-  <div class="loading-screen" id="loading-screen">
-    <div class="loader">
-      <div class="loader-circle"></div>
-      <span class="loader-text">Loading...</span>
-    </div>
+  <!-- Loading screen -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__spinner"></div>
   </div>
 
-  <!-- Theme toggle (light/dark) -->
-  <button type="button" class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle light/dark theme"
-    aria-pressed="false">
-    <ion-icon name="moon-outline" aria-hidden="true" data-theme-icon="dark"></ion-icon>
-    <ion-icon name="sunny-outline" aria-hidden="true" data-theme-icon="light"></ion-icon>
+  <!-- Floating controls -->
+  <button type="button" class="float-btn float-btn--theme" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
+    <ion-icon name="moon-outline" data-theme-icon="dark"></ion-icon>
+    <ion-icon name="sunny-outline" data-theme-icon="light"></ion-icon>
   </button>
 
-  <!-- Back to Top Button -->
-  <button type="button" class="back-to-top" id="back-to-top" title="Back to Top" aria-label="Back to Top">
-    <ion-icon name="chevron-up-outline" aria-hidden="true"></ion-icon>
+  <button type="button" class="float-btn float-btn--top" id="back-to-top" aria-label="Back to top">
+    <ion-icon name="arrow-up-outline"></ion-icon>
   </button>
 
-  <!--
-    - #MAIN
-  -->
+  <main class="layout">
 
-  <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
+    <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar" data-sidebar>
 
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="./assets/images/avatar.jpg" alt="Erzam Bayu" width="80" height="80"
+      <div class="sidebar__top">
+        <figure class="sidebar__avatar">
+          <img src="./assets/images/avatar.jpg" alt="Erzam Bayu" width="120" height="120"
             fetchpriority="high" decoding="async">
         </figure>
 
-        <div class="info-content">
-          <h1 class="name" title="Erzam Bayu">Erzam Bayu</h1>
-
-          <p class="title">Game Promoter & Developer</p>
+        <div class="sidebar__id">
+          <h1 class="sidebar__name">Erzam Bayu</h1>
+          <p class="sidebar__role">Game Promoter & Developer</p>
         </div>
 
-        <div class="sidebar-actions">
-          <div class="lang-toggle" role="group" aria-label="Switch Language">
-            <button type="button" class="lang-toggle-btn active" data-lang="id" aria-pressed="true">ID</button>
-            <button type="button" class="lang-toggle-btn" data-lang="en" aria-pressed="false">EN</button>
+        <div class="sidebar__actions">
+          <div class="lang" role="group" aria-label="Switch language">
+            <button type="button" class="lang__btn active" data-lang="id" aria-pressed="true">ID</button>
+            <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
           </div>
 
-          <button type="button" class="info_more-btn" data-sidebar-btn aria-expanded="false" aria-controls="sidebar-info-more">
-            <span>Show Contacts</span>
-            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+          <button type="button" class="sidebar__more" data-sidebar-btn aria-expanded="false" aria-controls="sidebar-contacts">
+            <span data-i18n="show_contacts">Show Contacts</span>
+            <ion-icon name="chevron-down"></ion-icon>
           </button>
         </div>
-
       </div>
 
-      <div class="sidebar-info_more" id="sidebar-info-more">
+      <div class="sidebar__contacts" id="sidebar-contacts">
+        <div class="divider"></div>
 
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
+        <ul class="contact-list">
+          <li class="contact-list__item">
+            <div class="contact-list__icon"><ion-icon name="mail-outline"></ion-icon></div>
+            <div class="contact-list__info">
+              <p class="contact-list__label" data-i18n="email">Email</p>
+              <a href="mailto:erzambayu@gmail.com" class="contact-list__value">erzambayu@gmail.com</a>
             </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:erzambayu@gmail.com" class="contact-link">erzambayu@gmail.com</a>
-            </div>
-
           </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
+          <li class="contact-list__item">
+            <div class="contact-list__icon"><ion-icon name="location-outline"></ion-icon></div>
+            <div class="contact-list__info">
+              <p class="contact-list__label" data-i18n="location">Location</p>
+              <address class="contact-list__value">Jakarta, Indonesia</address>
             </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Jakarta, Indonesia</address>
-            </div>
-
           </li>
-
         </ul>
 
-        <div class="separator"></div>
+        <div class="divider"></div>
 
         <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://github.com/erzambayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="GitHub Profile" aria-label="GitHub profile">
-              <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://linkedin.com/in/erzam-bayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="LinkedIn Profile" aria-label="LinkedIn profile">
-              <ion-icon name="logo-linkedin" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://instagram.com/erzam.bayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="Instagram Profile" aria-label="Instagram profile">
-              <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://facebook.com/erzam.bayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="Facebook Profile" aria-label="Facebook profile">
-              <ion-icon name="logo-facebook" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://twitter.com/bayuerzam" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="Twitter Profile" aria-label="Twitter profile">
-              <ion-icon name="logo-twitter" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://youtube.com/erzambayu" class="social-link" target="_blank" rel="noopener noreferrer"
-              title="YouTube Channel" aria-label="YouTube channel">
-              <ion-icon name="logo-youtube" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
+          <li><a href="https://github.com/erzambayu" class="social-list__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><ion-icon name="logo-github"></ion-icon></a></li>
+          <li><a href="https://linkedin.com/in/erzam-bayu" class="social-list__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li><a href="https://instagram.com/erzam.bayu" class="social-list__link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="https://facebook.com/erzam.bayu" class="social-list__link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="https://twitter.com/bayuerzam" class="social-list__link" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li><a href="https://youtube.com/erzambayu" class="social-list__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><ion-icon name="logo-youtube"></ion-icon></a></li>
         </ul>
 
-        <div class="separator"></div>
+        <div class="divider"></div>
 
-        <a href="./Erzam_Bayu_CV_ATS_english.pdf" class="download-cv-btn" download>
+        <a href="./Erzam_Bayu_CV_ATS_english.pdf" class="cv-btn" download>
           <ion-icon name="download-outline"></ion-icon>
-          <span>Download CV</span>
+          <span data-i18n="download_cv">Download CV</span>
         </a>
-
       </div>
 
     </aside>
 
+    <!-- ===== CONTENT ===== -->
+    <div class="content">
 
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar" aria-label="Main navigation">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button type="button" class="navbar-link active" data-nav-link aria-current="page">About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button type="button" class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button type="button" class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-
-          <li class="navbar-item">
-            <button type="button" class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><button type="button" class="nav__link active" data-nav-link data-page="about" aria-current="page" data-i18n="nav.about">About</button></li>
+          <li><button type="button" class="nav__link" data-nav-link data-page="resume" data-i18n="nav.resume">Resume</button></li>
+          <li><button type="button" class="nav__link" data-nav-link data-page="portfolio" data-i18n="nav.portfolio">Portfolio</button></li>
+          <li><button type="button" class="nav__link" data-nav-link data-page="contact" data-i18n="nav.contact">Contact</button></li>
         </ul>
-
       </nav>
 
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
+      <!-- ===== ABOUT ===== -->
+      <article class="page active" data-page="about">
+        <header class="page__header">
+          <h2 class="page__title" data-i18n="about.title">About Me</h2>
         </header>
 
-        <section class="about-text">
-          <p>
-            Game promoter & web developer yang berbasis di Jakarta. Saya punya pengalaman sekitar 2 tahun di
-            bidang gaming marketing dan aktif mengembangkan skill di web development, networking, dan mobile
-            device repair.
-          </p>
-
-          <p>
-            Saat ini saya di PT Indofun Digital Technology sebagai Game Promoter — banyak belajar strategi
-            marketing digital dan community management. Sebelumnya sempat jadi IT Technician di PT IASA Multi
-            Integrator (Cisco/Mikrotik) dan Apple UP Certified Mobile Technician.
-          </p>
+        <section class="about">
+          <p data-i18n="about.p1">Game promoter & web developer yang berbasis di Jakarta. Saya punya pengalaman sekitar 2 tahun di bidang gaming marketing dan aktif mengembangkan skill di web development, networking, dan mobile device repair.</p>
+          <p data-i18n="about.p2">Saat ini saya di PT Indofun Digital Technology sebagai Game Promoter — banyak belajar strategi marketing digital dan community management. Sebelumnya sempat jadi IT Technician di PT IASA Multi Integrator (Cisco/Mikrotik) dan Apple UP Certified Mobile Technician.</p>
         </section>
 
+        <section class="services">
+          <h3 class="section-title" data-i18n="services.title">What I'm Doing</h3>
+          <div class="services__grid">
+            <div class="service-card">
+              <div class="service-card__icon"><img src="./assets/images/icon-design.svg" alt="" width="40" height="40" loading="lazy"></div>
+              <h4 class="service-card__title" data-i18n="services.marketing">Game Marketing</h4>
+              <p class="service-card__text" data-i18n="services.marketing_desc">Strategi pemasaran digital untuk game dengan fokus user acquisition dan community engagement.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-card__icon"><img src="./assets/images/icon-dev.svg" alt="" width="40" height="40" loading="lazy"></div>
+              <h4 class="service-card__title" data-i18n="services.webdev">Web Development</h4>
+              <p class="service-card__text" data-i18n="services.webdev_desc">Full-stack development dengan Python, Flask, JavaScript untuk aplikasi web modern.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-card__icon"><img src="./assets/images/icon-app.svg" alt="" width="40" height="40" loading="lazy"></div>
+              <h4 class="service-card__title" data-i18n="services.network">Network Engineering</h4>
+              <p class="service-card__text" data-i18n="services.network_desc">Konfigurasi Cisco & Mikrotik, network security, dan system administration.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-card__icon"><img src="./assets/images/icon-photo.svg" alt="" width="40" height="40" loading="lazy"></div>
+              <h4 class="service-card__title" data-i18n="services.repair">Mobile Repair</h4>
+              <p class="service-card__text" data-i18n="services.repair_desc">Apple UP Certified technician untuk repair iPhone dan perangkat mobile lainnya.</p>
+            </div>
+          </div>
+        </section>
 
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What I'm Doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg" alt="" width="40" height="40" loading="lazy">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Game Marketing</h4>
-
-                <p class="service-item-text">
-                  Strategi pemasaran digital untuk game dengan fokus user acquisition dan community engagement.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="" width="40" height="40" loading="lazy">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web Development</h4>
-
-                <p class="service-item-text">
-                  Full-stack development dengan Python, Flask, JavaScript untuk aplikasi web modern.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="" width="40" height="40" loading="lazy">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Network Engineering</h4>
-
-                <p class="service-item-text">
-                  Konfigurasi Cisco & Mikrotik, network security, dan system administration.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="" width="40" height="40" loading="lazy">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile Repair</h4>
-
-                <p class="service-item-text">
-                  Apple UP Certified technician untuk repair iPhone dan perangkat mobile lainnya.
-                </p>
-              </div>
-
-            </li>
-
+        <section class="tech">
+          <h3 class="section-title" data-i18n="tech.title">Technologies I Use</h3>
+          <ul class="tech__list">
+            <li class="tech__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="48" height="48" loading="lazy" decoding="async"></li>
+            <li class="tech__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" width="48" height="48" loading="lazy" decoding="async"></li>
+            <li class="tech__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" width="48" height="48" loading="lazy" decoding="async"></li>
+            <li class="tech__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" width="48" height="48" loading="lazy" decoding="async"></li>
+            <li class="tech__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" width="48" height="48" loading="lazy" decoding="async"></li>
+            <li class="tech__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" width="48" height="48" loading="lazy" decoding="async"></li>
+            <li class="tech__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" width="48" height="48" loading="lazy" decoding="async"></li>
+            <li class="tech__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" width="48" height="48" loading="lazy" decoding="async"></li>
           </ul>
-
         </section>
-
-
-        <!--
-          - clients / technologies
-        -->
-
-        <section class="clients">
-
-          <h3 class="h3 clients-title">Technologies I Use</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                alt="Python" width="60" height="60" loading="lazy" decoding="async">
-            </li>
-
-            <li class="clients-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                alt="JavaScript" width="60" height="60" loading="lazy" decoding="async">
-            </li>
-
-            <li class="clients-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
-                alt="Flask" width="60" height="60" loading="lazy" decoding="async">
-            </li>
-
-            <li class="clients-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                alt="HTML5" width="60" height="60" loading="lazy" decoding="async">
-            </li>
-
-            <li class="clients-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                alt="CSS3" width="60" height="60" loading="lazy" decoding="async">
-            </li>
-
-            <li class="clients-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-                alt="Linux" width="60" height="60" loading="lazy" decoding="async">
-            </li>
-
-            <li class="clients-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
-                alt="Git" width="60" height="60" loading="lazy" decoding="async">
-            </li>
-
-            <li class="clients-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
-                alt="Docker" width="60" height="60" loading="lazy" decoding="async">
-            </li>
-
-          </ul>
-
-        </section>
-
       </article>
 
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
+      <!-- ===== RESUME ===== -->
+      <article class="page" data-page="resume">
+        <header class="page__header">
+          <h2 class="page__title" data-i18n="resume.title">Resume</h2>
         </header>
 
         <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
+          <div class="timeline__heading">
+            <div class="timeline__icon"><ion-icon name="book-outline"></ion-icon></div>
+            <h3 class="section-title" data-i18n="resume.education">Education</h3>
           </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">S1 Information Systems - Universitas Terbuka</h4>
-
-              <span>2024 — Present</span>
-
-              <p class="timeline-text">
-                Courses: Desktop-Based Programming, Business and Technical Communication, Software Engineering,
-                System Analysis and Design, IT Infrastructure Fundamentals, Information Systems Risk Management
-                and Audit, Server Administration.
-              </p>
-
+          <ol class="timeline__list">
+            <li class="timeline__item">
+              <h4 class="timeline__title">S1 Information Systems — Universitas Terbuka</h4>
+              <span class="timeline__date">2024 — Present</span>
+              <p class="timeline__text">Courses: Desktop-Based Programming, Business and Technical Communication, Software Engineering, System Analysis and Design, IT Infrastructure Fundamentals, Information Systems Risk Management and Audit, Server Administration.</p>
             </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Vocational High School Computer and Network Engineering - SMK Perguruan
-                Rakyat 2</h4>
-
-              <span>2018 — 2020</span>
-
-              <p class="timeline-text">
-                Located in Duren Sawit, East Jakarta. Achieved Runner-Up position in DKI Jakarta Network Engineering
-                Competition.
-              </p>
-
+            <li class="timeline__item">
+              <h4 class="timeline__title">Vocational High School Computer and Network Engineering — SMK Perguruan Rakyat 2</h4>
+              <span class="timeline__date">2018 — 2020</span>
+              <p class="timeline__text">Located in Duren Sawit, East Jakarta. Achieved Runner-Up position in DKI Jakarta Network Engineering Competition.</p>
             </li>
-
           </ol>
-
         </section>
 
         <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="briefcase-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
+          <div class="timeline__heading">
+            <div class="timeline__icon"><ion-icon name="briefcase-outline"></ion-icon></div>
+            <h3 class="section-title" data-i18n="resume.experience">Experience</h3>
           </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Leader - PT Indofun Digital Technology</h4>
-
-              <span>October 2023 — Present</span>
-
-              <p class="timeline-text">
-                • Clearly introduced game products to customers.<br>
-                • Demonstrated game features and benefits to increase interest.<br>
-                • Collaborated with the marketing team for effective promotional strategies.<br>
-                • Significantly increased game product visibility and sales.
-              </p>
-
+          <ol class="timeline__list">
+            <li class="timeline__item">
+              <h4 class="timeline__title">Leader — PT Indofun Digital Technology</h4>
+              <span class="timeline__date">October 2023 — Present</span>
+              <p class="timeline__text">• Clearly introduced game products to customers.<br>• Demonstrated game features and benefits to increase interest.<br>• Collaborated with the marketing team for effective promotional strategies.<br>• Significantly increased game product visibility and sales.</p>
             </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Mobile Phone Technician - Apple UP</h4>
-
-              <span>March 2023 — June 2023</span>
-
-              <p class="timeline-text">
-                • Repaired mobile phone damages, especially Apple products, quickly and efficiently.<br>
-                • Ensured customers received satisfactory and quality service.<br>
-                • Served customers in the store friendly and professionally.<br>
-                • Greeted potential customers to provide information and increase sales.
-              </p>
-
+            <li class="timeline__item">
+              <h4 class="timeline__title">Mobile Phone Technician — Apple UP</h4>
+              <span class="timeline__date">March 2023 — June 2023</span>
+              <p class="timeline__text">• Repaired mobile phone damages, especially Apple products, quickly and efficiently.<br>• Ensured customers received satisfactory and quality service.<br>• Served customers in the store friendly and professionally.<br>• Greeted potential customers to provide information and increase sales.</p>
             </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Telemarketing - JAGA DIRI (PT Central Asia Financial)</h4>
-
-              <span>February 2022 — March 2022</span>
-
-              <p class="timeline-text">
-                • Ensured accurate customer lists.<br>
-                • Called customers to provide optimal service.<br>
-                • Promoted and offered insurance products effectively.<br>
-                • Managed timely payment of customer insurance premiums.
-              </p>
-
+            <li class="timeline__item">
+              <h4 class="timeline__title">Telemarketing — JAGA DIRI (PT Central Asia Financial)</h4>
+              <span class="timeline__date">February 2022 — March 2022</span>
+              <p class="timeline__text">• Ensured accurate customer lists.<br>• Called customers to provide optimal service.<br>• Promoted and offered insurance products effectively.<br>• Managed timely payment of customer insurance premiums.</p>
             </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">IT Technician - PT. IASA MULTI INTEGRATOR</h4>
-
-              <span>March 2021 — November 2021</span>
-
-              <p class="timeline-text">
-                • Provided network consultation for companies and ensured optimal performance of network devices.<br>
-                • Implemented and configured Cisco network equipment including routers, switches, and firewalls.<br>
-                • Conducted regular network performance audits and security assessments.<br>
-                • Resolved complex technical issues with minimal downtime.<br>
-                • Reduced network downtime by 30% through efficient troubleshooting.<br>
-                • Managed over 50 network devices for corporate clients.
-              </p>
-
+            <li class="timeline__item">
+              <h4 class="timeline__title">IT Technician — PT. IASA Multi Integrator</h4>
+              <span class="timeline__date">March 2021 — November 2021</span>
+              <p class="timeline__text">• Provided network consultation for companies and ensured optimal performance of network devices.<br>• Implemented and configured Cisco network equipment including routers, switches, and firewalls.<br>• Conducted regular network performance audits and security assessments.<br>• Resolved complex technical issues with minimal downtime.<br>• Reduced network downtime by 30% through efficient troubleshooting.<br>• Managed over 50 network devices for corporate clients.</p>
             </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">IT Support (Field Work Practice) - STTJ Jakarta</h4>
-
-              <span>June 2019 — August 2019</span>
-
-              <p class="timeline-text">
-                • Assisted IT Support tasks to ensure smooth IT system operations.<br>
-                • Monitored application development in the university environment to improve efficiency.<br>
-                • Performed network and server maintenance to ensure optimal performance and data security.
-              </p>
-
+            <li class="timeline__item">
+              <h4 class="timeline__title">IT Support (Field Work Practice) — STTJ Jakarta</h4>
+              <span class="timeline__date">June 2019 — August 2019</span>
+              <p class="timeline__text">• Assisted IT Support tasks to ensure smooth IT system operations.<br>• Monitored application development in the university environment to improve efficiency.<br>• Performed network and server maintenance to ensure optimal performance and data security.</p>
             </li>
-
           </ol>
-
         </section>
 
-        <section class="skill">
-
-          <h3 class="h3 skills-title">Technical Skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Networking (Router, Switch, Firewall)</h5>
-                <data value="85">85%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="85"></div>
-              </div>
-
+        <section class="skills">
+          <h3 class="section-title" data-i18n="resume.tech_skills">Technical Skills</h3>
+          <ul class="skills__list">
+            <li class="skill">
+              <div class="skill__head"><span>Networking (Router, Switch, Firewall)</span><data value="85">85%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="85"></div></div>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Server Administration (Windows & Linux)</h5>
-                <data value="75">75%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="75"></div>
-              </div>
-
+            <li class="skill">
+              <div class="skill__head"><span>Server Administration (Windows & Linux)</span><data value="75">75%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="75"></div></div>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Hardware Troubleshooting & PC Assembly</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="80"></div>
-              </div>
-
+            <li class="skill">
+              <div class="skill__head"><span>Hardware Troubleshooting & PC Assembly</span><data value="80">80%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="80"></div></div>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Operating Systems (Windows, Linux, macOS)</h5>
-                <data value="85">85%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="85"></div>
-              </div>
-
+            <li class="skill">
+              <div class="skill__head"><span>Operating Systems (Windows, Linux, macOS)</span><data value="85">85%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="85"></div></div>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Software Installation & Office Applications</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="90"></div>
-              </div>
-
+            <li class="skill">
+              <div class="skill__head"><span>Software Installation & Office Applications</span><data value="90">90%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="90"></div></div>
             </li>
-
           </ul>
-
         </section>
 
-        <section class="skill">
-
-          <h3 class="h3 skills-title">Non-Technical Skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Game Promotion & Marketing</h5>
-                <data value="85">85%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="85"></div>
-              </div>
-
+        <section class="skills">
+          <h3 class="section-title" data-i18n="resume.soft_skills">Non-Technical Skills</h3>
+          <ul class="skills__list">
+            <li class="skill">
+              <div class="skill__head"><span>Game Promotion & Marketing</span><data value="85">85%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="85"></div></div>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Problem Solving & Decision Making</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="80"></div>
-              </div>
-
+            <li class="skill">
+              <div class="skill__head"><span>Problem Solving & Decision Making</span><data value="80">80%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="80"></div></div>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Leadership & Teamwork</h5>
-                <data value="85">85%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="85"></div>
-              </div>
-
+            <li class="skill">
+              <div class="skill__head"><span>Leadership & Teamwork</span><data value="85">85%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="85"></div></div>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Customer Service & Communication</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="90"></div>
-              </div>
-
+            <li class="skill">
+              <div class="skill__head"><span>Customer Service & Communication</span><data value="90">90%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="90"></div></div>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Time Management & Adaptation</h5>
-                <data value="85">85%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="85"></div>
-              </div>
-
+            <li class="skill">
+              <div class="skill__head"><span>Time Management & Adaptation</span><data value="85">85%</data></div>
+              <div class="skill__bar"><div class="skill__fill" data-width="85"></div></div>
             </li>
-
           </ul>
-
         </section>
-
       </article>
 
-
-
-
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="portfolio" data-page="portfolio">
-
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
+      <!-- ===== PORTFOLIO ===== -->
+      <article class="page" data-page="portfolio">
+        <header class="page__header">
+          <h2 class="page__title" data-i18n="portfolio.title">Portfolio</h2>
         </header>
 
         <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button type="button" class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button type="button" data-filter-btn>Web Development</button>
-            </li>
-
-            <li class="filter-item">
-              <button type="button" data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-              <button type="button" data-filter-btn>Browser Extension</button>
-            </li>
-
-            <li class="filter-item">
-              <button type="button" data-filter-btn>E-Commerce</button>
-            </li>
-
+          <ul class="projects__filters">
+            <li><button type="button" class="active" data-filter-btn>All</button></li>
+            <li><button type="button" data-filter-btn>Web Development</button></li>
+            <li><button type="button" data-filter-btn>Applications</button></li>
+            <li><button type="button" data-filter-btn>Browser Extension</button></li>
+            <li><button type="button" data-filter-btn>E-Commerce</button></li>
           </ul>
 
-          <div class="filter-select-box">
-
-            <button type="button" class="filter-select" data-select aria-haspopup="listbox" aria-expanded="false">
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-              </div>
-
+          <div class="projects__select">
+            <button type="button" class="projects__select-btn" data-select aria-haspopup="listbox" aria-expanded="false">
+              <span data-select-value data-i18n="portfolio.select">Select category</span>
+              <ion-icon name="chevron-down"></ion-icon>
             </button>
-
-            <ul class="select-list" role="listbox">
-
-              <li class="select-item">
-                <button type="button" data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button type="button" data-select-item>Web Development</button>
-              </li>
-
-              <li class="select-item">
-                <button type="button" data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button type="button" data-select-item>Browser Extension</button>
-              </li>
-
-              <li class="select-item">
-                <button type="button" data-select-item>E-Commerce</button>
-              </li>
-
+            <ul class="projects__select-list" role="listbox">
+              <li><button type="button" data-select-item>All</button></li>
+              <li><button type="button" data-select-item>Web Development</button></li>
+              <li><button type="button" data-select-item>Applications</button></li>
+              <li><button type="button" data-select-item>Browser Extension</button></li>
+              <li><button type="button" data-select-item>E-Commerce</button></li>
             </ul>
-
           </div>
 
-          <ul class="project-list">
-
-            <!-- ⭐ WA-BOT - 21 Stars -->
-            <li class="project-item active" data-filter-item data-category="applications">
+          <div class="projects__grid">
+            <!-- WA-BOT -->
+            <div class="project active" data-filter-item data-category="applications">
               <a href="#" data-project-item data-title="WA-BOT" data-category="WhatsApp Bot"
                 data-description="WhatsApp Bot dengan berbagai fitur automation. Bot yang powerful untuk membantu otomatisasi pesan dan interaksi di WhatsApp. ⭐ 21 Stars"
                 data-tech="JavaScript,Node.js,WhatsApp Web API" data-live=""
                 data-github="https://github.com/Erzambayu/WA-BOT">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1633675254053-d96c7668c3b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="WA-BOT project preview" width="800" height="533" loading="lazy" decoding="async">
+                <figure class="project__img">
+                  <div class="project__zoom"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="https://images.unsplash.com/photo-1633675254053-d96c7668c3b8?auto=format&fit=crop&w=800&q=70" alt="WA-BOT project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
-
-                <h3 class="project-title">WA-BOT ⭐21</h3>
-
-                <p class="project-category">WhatsApp Bot</p>
-
+                <h3 class="project__title">WA-BOT ⭐21</h3>
+                <p class="project__category">WhatsApp Bot</p>
               </a>
-            </li>
+            </div>
 
-            <!-- ⭐ BudgetKu - 18 Stars -->
-            <li class="project-item active" data-filter-item data-category="web development">
+            <!-- BudgetKu -->
+            <div class="project active" data-filter-item data-category="web development">
               <a href="#" data-project-item data-title="BudgetKu" data-category="Web Application"
                 data-description="Aplikasi manajemen keuangan modern dengan analisis prediktif dan UI yang elegan. Kelola budget dan pengeluaran dengan mudah! ⭐ 18 Stars"
                 data-tech="JavaScript,HTML,CSS,LocalStorage" data-live="https://erzambayu.me/BudgetKu/"
                 data-github="https://github.com/Erzambayu/BudgetKu">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="BudgetKu project preview" width="800" height="533" loading="lazy" decoding="async">
+                <figure class="project__img">
+                  <div class="project__zoom"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=70" alt="BudgetKu project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
-
-                <h3 class="project-title">BudgetKu ⭐18</h3>
-
-                <p class="project-category">Web Application</p>
-
+                <h3 class="project__title">BudgetKu ⭐18</h3>
+                <p class="project__category">Web Application</p>
               </a>
-            </li>
+            </div>
 
-            <!-- ⭐ Session Changer - 10 Stars -->
-            <li class="project-item active" data-filter-item data-category="browser extension">
+            <!-- Session Changer -->
+            <div class="project active" data-filter-item data-category="browser extension">
               <a href="#" data-project-item data-title="Session Changer" data-category="Browser Extension"
                 data-description="Browser extension untuk switching login sessions dengan mudah. Mendukung multiple accounts dan quick switch antar sesi login di berbagai website. ⭐ 10 Stars"
                 data-tech="JavaScript,Chrome Extension,Browser API" data-live=""
                 data-github="https://github.com/Erzambayu/sessionns-changerr">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Session Changer project preview" width="800" height="533" loading="lazy" decoding="async">
+                <figure class="project__img">
+                  <div class="project__zoom"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=70" alt="Session Changer project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
-
-                <h3 class="project-title">Session Changer ⭐10</h3>
-
-                <p class="project-category">Browser Extension</p>
-
+                <h3 class="project__title">Session Changer ⭐10</h3>
+                <p class="project__category">Browser Extension</p>
               </a>
-            </li>
+            </div>
 
-            <!-- ⭐ TaskFlow - 6 Stars -->
-            <li class="project-item active" data-filter-item data-category="web development">
+            <!-- TaskFlow -->
+            <div class="project active" data-filter-item data-category="web development">
               <a href="#" data-project-item data-title="TaskFlow" data-category="Web Application"
                 data-description="Task management application dengan TypeScript. Kelola tugas dan workflow dengan interface yang modern dan intuitif. ⭐ 6 Stars"
                 data-tech="TypeScript,React,CSS" data-live=""
                 data-github="https://github.com/Erzambayu/taskflow">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="TaskFlow project preview" width="800" height="533" loading="lazy" decoding="async">
+                <figure class="project__img">
+                  <div class="project__zoom"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=70" alt="TaskFlow project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
-
-                <h3 class="project-title">TaskFlow ⭐6</h3>
-
-                <p class="project-category">Web Application</p>
-
+                <h3 class="project__title">TaskFlow ⭐6</h3>
+                <p class="project__category">Web Application</p>
               </a>
-            </li>
+            </div>
 
-            <!-- ⭐ Homepage Islami - 1 Star -->
-            <li class="project-item active" data-filter-item data-category="web development">
+            <!-- Homepage Islami -->
+            <div class="project active" data-filter-item data-category="web development">
               <a href="#" data-project-item data-title="Homepage Islami" data-category="Web Development"
                 data-description="Homepage dengan tema Islami. Menampilkan jadwal sholat, Al-Quran digital, dan konten Islami lainnya dengan desain yang elegan. ⭐ 1 Star"
                 data-tech="JavaScript,HTML,CSS,API" data-live="https://erzambayu.me/homepage-islami/"
                 data-github="https://github.com/Erzambayu/homepage-islami">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1585036156171-384164a8c675?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Homepage Islami project preview" width="800" height="533" loading="lazy" decoding="async">
+                <figure class="project__img">
+                  <div class="project__zoom"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&w=800&q=70" alt="Homepage Islami project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
-
-                <h3 class="project-title">Homepage Islami ⭐1</h3>
-
-                <p class="project-category">Web Development</p>
-
+                <h3 class="project__title">Homepage Islami ⭐1</h3>
+                <p class="project__category">Web Development</p>
               </a>
-            </li>
+            </div>
 
-            <!-- ⭐ Toko Aplikasi Premium - 1 Star -->
-            <li class="project-item active" data-filter-item data-category="e-commerce">
+            <!-- Toko Aplikasi Premium -->
+            <div class="project active" data-filter-item data-category="e-commerce">
               <a href="#" data-project-item data-title="Toko Aplikasi Premium" data-category="E-Commerce"
                 data-description="Platform e-commerce untuk menjual aplikasi premium. Dilengkapi dengan sistem pembayaran dan katalog produk digital. ⭐ 1 Star"
                 data-tech="JavaScript,HTML,CSS" data-live=""
                 data-github="https://github.com/Erzambayu/toko-aplikasi-premium">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Toko Aplikasi Premium project preview" width="800" height="533" loading="lazy" decoding="async">
+                <figure class="project__img">
+                  <div class="project__zoom"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=70" alt="Toko Aplikasi Premium project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
-
-                <h3 class="project-title">Toko Aplikasi ⭐1</h3>
-
-                <p class="project-category">E-Commerce</p>
-
+                <h3 class="project__title">Toko Aplikasi ⭐1</h3>
+                <p class="project__category">E-Commerce</p>
               </a>
-            </li>
+            </div>
 
-            <!-- ⭐ GitHub Unfollower - 1 Star -->
-            <li class="project-item active" data-filter-item data-category="web development">
+            <!-- GitHub Unfollower -->
+            <div class="project active" data-filter-item data-category="web development">
               <a href="#" data-project-item data-title="GitHub Unfollower" data-category="Web Application"
                 data-description="🕵️ Detect GitHub users who don't follow you back and those you don't follow back. Supports accounts with +6,000 connections using personal access tokens. ⭐ 1 Star"
                 data-tech="JavaScript,GitHub API,HTML,CSS" data-live="https://erzambayu.net/github-unfollower/"
                 data-github="https://github.com/Erzambayu/github-unfollower">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="GitHub Unfollower project preview" width="800" height="533" loading="lazy" decoding="async">
+                <figure class="project__img">
+                  <div class="project__zoom"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=70" alt="GitHub Unfollower project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
-
-                <h3 class="project-title">GitHub Unfollower ⭐1</h3>
-
-                <p class="project-category">Web Application</p>
-
+                <h3 class="project__title">GitHub Unfollower ⭐1</h3>
+                <p class="project__category">Web Application</p>
               </a>
-            </li>
+            </div>
 
             <!-- Smart Translate Extension -->
-            <li class="project-item active" data-filter-item data-category="browser extension">
+            <div class="project active" data-filter-item data-category="browser extension">
               <a href="#" data-project-item data-title="Smart Translate Extension" data-category="Browser Extension"
                 data-description="Ekstensi Chrome untuk menerjemahkan teks secara instan menggunakan berbagai layanan AI. Cukup blok teks dan terjemahan akan muncul otomatis!"
                 data-tech="JavaScript,Chrome Extension,AI API" data-live=""
                 data-github="https://github.com/Erzambayu/smart-translate-extension">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img
-                    src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=70"
-                    alt="Smart Translate Extension project preview" width="800" height="533" loading="lazy" decoding="async">
+                <figure class="project__img">
+                  <div class="project__zoom"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=70" alt="Smart Translate Extension project preview" width="800" height="533" loading="lazy" decoding="async">
                 </figure>
-
-                <h3 class="project-title">Smart Translate</h3>
-
-                <p class="project-category">Browser Extension</p>
-
+                <h3 class="project__title">Smart Translate</h3>
+                <p class="project__category">Browser Extension</p>
               </a>
-            </li>
-
-          </ul>
-
+            </div>
+          </div>
         </section>
-
       </article>
 
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
+      <!-- ===== CONTACT ===== -->
+      <article class="page" data-page="contact">
+        <header class="page__header">
+          <h2 class="page__title" data-i18n="contact.title">Contact</h2>
         </header>
 
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.65295052886!2d106.68942892812503!3d-6.229386947785692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%2C%20Indonesia!5e0!3m2!1sen!2sus!4v1705657800000!5m2!1sen!2sus"
-              width="400" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              title="Jakarta, Indonesia location map"></iframe>
-          </figure>
+        <section class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.65295052886!2d106.68942892812503!3d-6.229386947785692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%2C%20Indonesia!5e0!3m2!1sen!2sus!4v1705657800000!5m2!1sen!2sus"
+            width="400" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Jakarta, Indonesia location map"></iframe>
         </section>
 
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
+        <section class="form-section">
+          <h3 class="section-title" data-i18n="contact.form_title">Contact Form</h3>
           <form action="https://formspree.io/f/xwvvqwbk" method="POST" class="form" data-form novalidate>
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required minlength="2"
-                autocomplete="name" data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required
-                autocomplete="email" data-form-input>
+            <div class="form__row">
+              <input type="text" name="fullname" class="form__input" placeholder="Full name" required minlength="2" autocomplete="name" data-form-input data-i18n-placeholder="contact.fullname">
+              <input type="email" name="email" class="form__input" placeholder="Email address" required autocomplete="email" data-form-input data-i18n-placeholder="contact.email">
             </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required minlength="10"
-              data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane" aria-hidden="true"></ion-icon>
-              <span>Send Message</span>
+            <textarea name="message" class="form__input" placeholder="Your Message" required minlength="10" data-form-input data-i18n-placeholder="contact.message"></textarea>
+            <button class="form__btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span data-i18n="contact.send">Send Message</span>
             </button>
-
-            <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
-
+            <p class="form__feedback" data-form-feedback role="status" aria-live="polite"></p>
           </form>
-
         </section>
-
       </article>
 
     </div>
-
   </main>
 
-
-
-
-
-
-  <!--
-    - custom js link
-  -->
-
-  <!--
-    - #PROJECT MODAL
-  -->
-
-  <div class="modal-container" data-project-modal-container role="dialog" aria-modal="true"
-    aria-labelledby="project-modal-title" aria-hidden="true">
-    <div class="overlay" data-project-overlay></div>
-
-    <div class="project-modal">
-      <button type="button" class="modal-close-btn" data-project-modal-close title="Close modal"
-        aria-label="Close modal">
-        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+  <!-- ===== PROJECT MODAL ===== -->
+  <div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal__overlay" data-modal-overlay></div>
+    <div class="modal__box">
+      <button type="button" class="modal__close" data-modal-close aria-label="Close modal">
+        <ion-icon name="close-outline"></ion-icon>
       </button>
-
-      <div class="project-modal-header">
-        <figure class="project-modal-img">
-          <img src="" alt="" data-project-modal-img>
-        </figure>
-
-        <div class="project-modal-info">
-          <h3 class="project-modal-title" id="project-modal-title" data-project-modal-title></h3>
-          <p class="project-modal-category" data-project-modal-category></p>
+      <div class="modal__header">
+        <figure class="modal__img"><img src="" alt="" data-modal-img></figure>
+        <div class="modal__info">
+          <h3 class="modal__title" id="modal-title" data-modal-title></h3>
+          <p class="modal__category" data-modal-category></p>
         </div>
       </div>
-
-      <p class="project-modal-description" data-project-modal-description></p>
-
-      <div class="tech-stack">
-        <h4 class="tech-stack-title">Tech Stack</h4>
-        <div class="tech-stack-list" data-project-modal-tech></div>
+      <p class="modal__desc" data-modal-desc></p>
+      <div class="modal__tech">
+        <h4 class="modal__tech-title" data-i18n="modal.tech">Tech Stack</h4>
+        <div class="modal__tech-list" data-modal-tech></div>
       </div>
-
-      <div class="project-modal-actions" data-project-modal-actions></div>
+      <div class="modal__actions" data-modal-actions></div>
     </div>
   </div>
 
-
+  <!-- Scripts -->
   <script src="./assets/js/script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </body>
 
 </html>

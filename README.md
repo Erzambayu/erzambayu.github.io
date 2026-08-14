@@ -5,18 +5,21 @@ Game Promoter & Web Developer asal Jakarta. Live di **[erzambayu.net](https://er
 ## Fitur
 
 - Single-page vCard style, 4 tab: About / Resume / Portfolio / Contact
-- Dua bahasa (ID / EN) dengan preferensi tersimpan di `localStorage`
+- Dua bahasa (ID / EN) via `data-i18n` attribute system, preferensi tersimpan di `localStorage`
 - Light / dark theme toggle (respek `prefers-color-scheme`, no-flash bootstrap)
-- Project modal dengan fokus trap & ESC-to-close
+- Project modal dengan focus trap & ESC-to-close
 - Filter portfolio (All / Web Development / Applications / Browser Extension / E-Commerce)
 - Form kontak via Formspree dengan submit AJAX + inline feedback
 - SEO-ready: canonical, OpenGraph, Twitter Card, JSON-LD `Person`, sitemap, robots.txt
 - Lazy-loaded images dengan `width`/`height` eksplisit untuk hindari CLS
+- Scroll reveal & skill bar animation via `IntersectionObserver` (bukan scroll listener)
+- Inline SVG favicon + `.ico` fallback
 - Responsif dari 320 px sampai desktop lebar
+- `prefers-reduced-motion` support
 
 ## Stack
 
-Vanilla **HTML5 · CSS3 · JavaScript** — tanpa framework, tanpa build step. Icon pakai [Ionicons](https://ionic.io/ionicons), tech icons dari [devicon](https://devicon.dev/).
+Vanilla **HTML5 · CSS3 · JavaScript (ES6+)** — tanpa framework, tanpa build step. Icon pakai [Ionicons](https://ionic.io/ionicons), tech icons dari [devicon](https://devicon.dev/).
 
 ## Struktur
 
@@ -24,8 +27,8 @@ Vanilla **HTML5 · CSS3 · JavaScript** — tanpa framework, tanpa build step. I
 .
 ├── index.html            # Entry point (semua konten)
 ├── assets/
-│   ├── css/style.css     # Single stylesheet
-│   ├── js/script.js      # Interaktivitas (tab, modal, i18n, theme, form)
+│   ├── css/style.css     # Single stylesheet (design tokens + components)
+│   ├── js/script.js      # Interaktivitas (tab, modal, i18n, theme, form, observers)
 │   └── images/           # Avatar, OG image, icon SVG
 ├── Erzam_Bayu_CV_ATS_english.pdf
 ├── robots.txt
@@ -39,11 +42,11 @@ Vanilla **HTML5 · CSS3 · JavaScript** — tanpa framework, tanpa build step. I
 Tidak perlu bundler — cukup serve folder root dengan static server apa pun:
 
 ```bash
-# Python (paling praktis)
-python3 -m http.server 5173
-
-# atau Node
+# Node (paling praktis)
 npx serve . -l 5173
+
+# atau Python
+python3 -m http.server 5173
 ```
 
 Buka `http://localhost:5173`.
@@ -68,7 +71,7 @@ GitHub Action di `.github/workflows/ci.yml` menjalankan pada setiap push / PR:
 
 ## Credits
 
-Template dasar awalnya diadaptasi dari [vCard Personal Portfolio by @codewithsadee](https://github.com/codewithsadee/vcard-personal-portfolio), kemudian di-refactor signifikan (i18n, theme toggle, project modal, filter, SEO, a11y, performance).
+Template dasar awalnya diadaptasi dari [vCard Personal Portfolio by @codewithsadee](https://github.com/codewithsadee/vcard-personal-portfolio), kemudian di-refactor signifikan (i18n, theme toggle, project modal, filter, SEO, a11y, performance). Rebuilt total 2026: design system baru, `data-i18n` driven translations, `IntersectionObserver` scroll animations, dead code removal (~45% kode dipangkas).
 
 ## Lisensi
 
