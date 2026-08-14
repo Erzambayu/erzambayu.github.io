@@ -29,5 +29,5 @@ jobs:
       - name: Link check (ignore external flaky hosts)
         run: >-
           npx linkinator "index.html"
-          --skip "^https?://(images\\.unsplash\\.com|cdn\\.jsdelivr\\.net|unpkg\\.com|fonts\\.(googleapis|gstatic)\\.com|www\\.google\\.com/maps|formspree\\.io|youtube\\.com|facebook\\.com)"
+          --skip "^https?://(images\\.unsplash\\.com|cdn\\.jsdelivr\\.net|unpkg\\.com|fonts\\.(googleapis|gstatic)\\.com|www\\.google\\.com/maps|formspree\\.io|youtube\\.com|facebook\\.com|linkedin\\.com|instagram\\.com|twitter\\.com|erzambayu\\.tech)"
           --silent
