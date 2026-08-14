@@ -87,11 +87,16 @@ const navLinks = $$('[data-nav-link]');
 const pages    = $$('article[data-page]');
 const validPages = pages.map(p => p.dataset.page);
 
+let isTransitioning = false;
+
 const activatePage = (pageName) => {
-  if (!validPages.includes(pageName)) return;
+  if (!validPages.includes(pageName) || isTransitioning) return;
 
-  pages.forEach(p => p.classList.toggle('active', p.dataset.page === pageName));
+  const current = pages.find(p => p.classList.contains('active'));
+  const next    = pages.find(p => p.dataset.page === pageName);
+  if (!next || current === next) return;
 
+  // update nav immediately
   navLinks.forEach(link => {
     const isActive = link.dataset.page === pageName;
     link.classList.toggle('active', isActive);
@@ -99,7 +104,20 @@ const activatePage = (pageName) => {
     else link.removeAttribute('aria-current');
   });
 
-  window.scrollTo(0, 0);
+  if (current) {
+    // sequential: fade out old → swap → fade in new
+    isTransitioning = true;
+    current.classList.add('is-leaving');
+    setTimeout(() => {
+      current.classList.remove('active', 'is-leaving');
+      next.classList.add('active');
+      window.scrollTo(0, 0);
+      isTransitioning = false;
+    }, 180);
+  } else {
+    next.classList.add('active');
+    window.scrollTo(0, 0);
+  }
 };
 
 navLinks.forEach(link => {
