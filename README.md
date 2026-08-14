@@ -1,6 +1,6 @@
 # Erzam Bayu — Personal Portfolio
 
-Game Promoter & Web Developer asal Jakarta. Live di **[erzambayu.net](https://erzambayu.net/)** (via GitHub Pages + custom domain).
+Game Promoter & Web Developer asal Jakarta. Live di **[erzambayu.tech](https://erzambayu.tech/)** (via GitHub Pages + custom domain).
 
 ## Fitur
 
@@ -33,7 +33,7 @@ Vanilla **HTML5 · CSS3 · JavaScript (ES6+)** — tanpa framework, tanpa build 
 ├── Erzam_Bayu_CV_ATS_english.pdf
 ├── robots.txt
 ├── sitemap.xml
-├── CNAME                 # Custom domain: erzambayu.net
+├── CNAME                 # Custom domain: erzambayu.tech
 └── .github/workflows/ci.yml
 ```
 
@@ -53,7 +53,7 @@ Buka `http://localhost:5173`.
 
 ## Deploy
 
-Push ke branch `main` → GitHub Pages otomatis deploy (file `CNAME` mengarahkan ke `erzambayu.net`).
+Push ke branch `main` → GitHub Pages otomatis deploy (file `CNAME` mengarahkan ke `erzambayu.tech`).
 
 ## CI
 

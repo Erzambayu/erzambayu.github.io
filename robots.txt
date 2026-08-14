@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /.git/
 
-Sitemap: https://erzambayu.net/sitemap.xml
+Sitemap: https://erzambayu.tech/sitemap.xml
