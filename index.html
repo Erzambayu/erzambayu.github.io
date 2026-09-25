@@ -158,7 +158,7 @@
         </div>
       </div>
 
-      <div class="sidebar__contacts" id="sidebar-contacts">
+      <div class="sidebar__contacts" id="sidebar-contacts" aria-hidden="true">
         <div class="divider"></div>
 
         <ul class="contact-list">
@@ -383,11 +383,11 @@
 
         <section class="projects">
           <ul class="projects__filters">
-            <li><button type="button" class="active" data-filter-btn>All</button></li>
-            <li><button type="button" data-filter-btn>Web Development</button></li>
-            <li><button type="button" data-filter-btn>Applications</button></li>
-            <li><button type="button" data-filter-btn>Browser Extension</button></li>
-            <li><button type="button" data-filter-btn>E-Commerce</button></li>
+            <li><button type="button" class="active" data-filter-btn data-filter="all" aria-pressed="true">All</button></li>
+            <li><button type="button" data-filter-btn data-filter="web development" aria-pressed="false">Web Development</button></li>
+            <li><button type="button" data-filter-btn data-filter="applications" aria-pressed="false">Applications</button></li>
+            <li><button type="button" data-filter-btn data-filter="browser extension" aria-pressed="false">Browser Extension</button></li>
+            <li><button type="button" data-filter-btn data-filter="e-commerce" aria-pressed="false">E-Commerce</button></li>
           </ul>
 
           <div class="projects__select">
@@ -396,11 +396,11 @@
               <ion-icon name="chevron-down"></ion-icon>
             </button>
             <ul class="projects__select-list" role="listbox">
-              <li><button type="button" data-select-item>All</button></li>
-              <li><button type="button" data-select-item>Web Development</button></li>
-              <li><button type="button" data-select-item>Applications</button></li>
-              <li><button type="button" data-select-item>Browser Extension</button></li>
-              <li><button type="button" data-select-item>E-Commerce</button></li>
+              <li><button type="button" data-select-item data-filter="all">All</button></li>
+              <li><button type="button" data-select-item data-filter="web development">Web Development</button></li>
+              <li><button type="button" data-select-item data-filter="applications">Applications</button></li>
+              <li><button type="button" data-select-item data-filter="browser extension">Browser Extension</button></li>
+              <li><button type="button" data-select-item data-filter="e-commerce">E-Commerce</button></li>
             </ul>
           </div>
 
@@ -622,9 +622,9 @@
   </main>
 
   <!-- ===== PROJECT MODAL ===== -->
-  <div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal" data-modal role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
     <div class="modal__overlay" data-modal-overlay></div>
-    <div class="modal__box">
+    <div class="modal__box" tabindex="-1">
       <button type="button" class="modal__close" data-modal-close aria-label="Close modal">
         <ion-icon name="close-outline"></ion-icon>
       </button>

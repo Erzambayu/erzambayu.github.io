@@ -73,12 +73,21 @@ backToTop?.addEventListener('click', () => {
 
 const sidebar     = $('[data-sidebar]');
 const sidebarBtn  = $('[data-sidebar-btn]');
+const sidebarContacts = sidebar?.querySelector('.sidebar__contacts');
+
+const syncSidebarAccessibility = () => {
+  const isDesktop = window.matchMedia('(min-width: 1250px)').matches;
+  sidebarContacts?.setAttribute('aria-hidden', isDesktop || sidebar?.classList.contains('active') ? 'false' : 'true');
+};
 
 sidebarBtn?.addEventListener('click', () => {
-  sidebar?.classList.toggle('active');
-  const expanded = sidebar?.classList.contains('active');
+  const expanded = !sidebar?.classList.contains('active');
+  sidebar?.classList.toggle('active', expanded);
+  syncSidebarAccessibility();
   sidebarBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
 });
+syncSidebarAccessibility();
+window.addEventListener('resize', syncSidebarAccessibility, { passive: true });
 
 
 /* ===== 5. PAGE NAVIGATION ===== */
@@ -124,6 +133,9 @@ navLinks.forEach(link => {
   link.addEventListener('click', () => {
     const page = link.dataset.page;
     activatePage(page);
+    sidebar?.classList.remove('active');
+    syncSidebarAccessibility();
+    sidebarBtn?.setAttribute('aria-expanded', 'false');
     try { localStorage.setItem('activePage', page); } catch (e) { /* quota */ }
     history.replaceState(null, '', '#' + page);
   });
@@ -131,7 +143,7 @@ navLinks.forEach(link => {
 
 // restore on load: URL hash > localStorage > default (about)
 const restorePage = () => {
-  const hash = location.hash.replace('#', '');
+  const hash = location.hash.slice(1);
   if (hash && validPages.includes(hash)) {
     activatePage(hash);
   } else {
@@ -143,7 +155,7 @@ const restorePage = () => {
 restorePage();
 
 window.addEventListener('hashchange', () => {
-  const hash = location.hash.replace('#', '');
+  const hash = location.hash.slice(1);
   if (hash && validPages.includes(hash)) activatePage(hash);
 });
 
@@ -160,16 +172,20 @@ const filterProjects = (value) => {
   projectItems.forEach(item => {
     const match = value === 'all' || item.dataset.category === value;
     item.classList.toggle('active', match);
+    item.setAttribute('aria-hidden', match ? 'false' : 'true');
   });
 };
 
 // desktop filter buttons
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    const value = btn.textContent.toLowerCase();
+    const value = btn.dataset.filter;
     filterProjects(value);
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    filterBtns.forEach(b => {
+      const isActive = b === btn;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
     if (selectValue) selectValue.textContent = btn.textContent;
   });
 });
@@ -185,7 +201,7 @@ selectBtn?.addEventListener('click', () => {
 
 selectItems.forEach(item => {
   item.addEventListener('click', () => {
-    const value = item.textContent.toLowerCase();
+    const value = item.dataset.filter;
     selectValue.textContent = item.textContent;
     const list = selectBtn.nextElementSibling;
     list?.classList.remove('show');
@@ -194,9 +210,15 @@ selectItems.forEach(item => {
     filterProjects(value);
 
     // sync desktop buttons
-    filterBtns.forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === value));
+    filterBtns.forEach(b => {
+      const isActive = b.dataset.filter === value;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
   });
 });
+
+filterProjects('all');
 
 // close select on outside click
 document.addEventListener('click', (e) => {
@@ -247,43 +269,64 @@ $$('[data-project-item]').forEach(item => {
     lastFocus = item;
 
     const img = item.querySelector('img');
-    modalImg.src = img.src;
-    modalImg.alt = img.alt;
+    if (modalImg && img) {
+      modalImg.src = img.currentSrc || img.src;
+      modalImg.alt = img.alt;
+    }
     modalTitle.textContent = item.dataset.title || '';
     modalCategory.textContent = item.dataset.category || '';
     modalDesc.textContent = item.dataset.description || '';
 
     // tech badges
     const tech = item.dataset.tech || '';
-    modalTech.innerHTML = tech
+    modalTech.replaceChildren(...tech
       .split(',')
-      .map(t => `<span class="tech-badge">${t.trim()}</span>`)
-      .join('');
+      .filter(Boolean)
+      .map(t => {
+        const badge = document.createElement('span');
+        badge.className = 'tech-badge';
+        badge.textContent = t.trim();
+        return badge;
+      }));
 
     // action buttons
     const live = item.dataset.live;
     const repo = item.dataset.github;
-    let actions = '';
+    modalActions.replaceChildren();
 
     if (live) {
-      actions += `<a href="${live}" class="primary" target="_blank" rel="noopener noreferrer">` +
-        `<ion-icon name="open-outline"></ion-icon><span data-i18n="modal.live">Live Demo</span></a>`;
+      modalActions.append(createModalLink(live, 'primary', 'open-outline', 'modal.live'));
     }
     if (repo) {
-      actions += `<a href="${repo}" class="secondary" target="_blank" rel="noopener noreferrer">` +
-        `<ion-icon name="logo-github"></ion-icon><span data-i18n="modal.code">View Code</span></a>`;
+      modalActions.append(createModalLink(repo, 'secondary', 'logo-github', 'modal.code'));
     }
     if (!live && !repo) {
-      actions = `<span class="tech-badge" data-i18n="modal.private">Private Project</span>`;
+      const privateBadge = document.createElement('span');
+      privateBadge.className = 'tech-badge';
+      privateBadge.dataset.i18n = 'modal.private';
+      modalActions.append(privateBadge);
     }
-
-    modalActions.innerHTML = actions;
 
     // re-apply current language to newly injected nodes
     applyLanguage(currentLang);
 
     openModal();
   });
+
+  function createModalLink(url, variant, iconName, translationKey) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.className = variant;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+
+    const icon = document.createElement('ion-icon');
+    icon.name = iconName;
+    const label = document.createElement('span');
+    label.dataset.i18n = translationKey;
+    link.append(icon, label);
+    return link;
+  }
 });
 
 modalClose?.addEventListener('click', closeModal);
@@ -375,19 +418,25 @@ form?.addEventListener('submit', async (e) => {
 
 const skillBars = $$('.skill__fill[data-width]');
 
-const skillObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const bar = entry.target;
-      const width = bar.dataset.width;
-      bar.style.width = width + '%';
-      observer.unobserve(bar);
-    }
-  });
+const observeWhenVisible = (targets, callback, options) => {
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(target => callback(target));
+    return null;
+  }
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) callback(entry.target, currentObserver);
+    });
+  }, options);
+  targets.forEach(target => observer.observe(target));
+  return observer;
+};
+
+const skillObserver = observeWhenVisible(skillBars, (bar, observer) => {
+  const width = Math.min(100, Math.max(0, Number(bar.dataset.width) || 0));
+  bar.style.width = width + '%';
+  observer?.unobserve(bar);
 }, { threshold: 0.3 });
-
-skillBars.forEach(bar => skillObserver.observe(bar));
-
 
 /* ===== 10. SCROLL REVEAL (directional + staggered) ===== */
 
@@ -409,16 +458,14 @@ revealTargets.forEach(el => {
   $$(sel).forEach((el, i) => el.classList.add('stagger-' + ((i % 6) + 1)));
 });
 
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-$$('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+const revealObserver = observeWhenVisible(
+  $$('.reveal, .reveal-left, .reveal-right'),
+  (element, observer) => {
+    element.classList.add('visible');
+    observer?.unobserve(element);
+  },
+  { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+);
 
 
 /* ===== 10a. TYPING ANIMATION ===== */
